@@ -1,0 +1,44 @@
+@import '../../../styles/lib';
+
+.contact-block {
+  @include flex(row, flex-start, center);
+  height: 5rem;
+
+  &:not(:last-child) {
+    margin-top: 0.3rem;
+  }
+
+  &__info {
+    width: calc(100% - 4rem);
+  }
+
+  & p {
+    margin: 0;
+    max-width: inherit;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  &__value {
+    color: $secondary;
+    word-wrap: break-word;
+    font-size: 1rem;
+  }
+
+  &__icon {
+    color: $accent;
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    width: 3rem;
+    text-align: center;
+  }
+}
