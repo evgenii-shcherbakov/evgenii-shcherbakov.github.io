@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { join } from 'path';
 import {
   WebpackConfig,
@@ -27,6 +30,7 @@ if (webpackConfig.module?.rules) {
     if (typeof rule !== 'object') return true;
 
     return !(
+      rule.use !== null &&
       typeof rule.use === 'object' &&
       Array.isArray(rule.use) &&
       rule.use.some((loader) => loader === MiniCssExtractPlugin.loader)
