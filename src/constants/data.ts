@@ -137,8 +137,10 @@ export const FULLSTACK_DATA: Data = {
         experienceBlocks: [
           {
             company: 'yumasoft inc.',
-            position: 'Node.js developer',
+            position: 'Full-Stack developer',
             summary: [
+              `worked with Nest.js and TypeORM`,
+              `worked with React.js and Material UI, RTK Query, MobX, Styled Components`,
               `improved backend performance and stability using Promise.all-based emulation of 
                 multithreading with clever type inference via generics`,
               `implemented more useful and declarative custom send email system using reflect-metadata 
