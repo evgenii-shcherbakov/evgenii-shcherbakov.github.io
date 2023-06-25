@@ -1,6 +1,12 @@
 @import '../../styles/lib';
 
 .header {
+  @include flex(row, space-between, center);
+
+  @media (max-width: 800px) {
+    @include flex(column-reverse, flex-start, flex-start);
+  }
+
   &__title {
     margin: 0.2rem 0;
     text-transform: uppercase;
@@ -20,6 +26,26 @@
     color: $secondary;
     margin: 0.2rem 0;
     font-size: 1.2rem;
+  }
+
+  &__info {
+    max-width: calc(100% - 8rem);
+
+    @media (max-width: 800px) {
+      max-width: 100%;
+    }
+  }
+
+  &__photo {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: $secondary center no-repeat;
+
+    @media (max-width: 800px) {
+      align-self: center;
+      margin-bottom: 1rem;
+    }
   }
 
   .material-symbols-outlined {
