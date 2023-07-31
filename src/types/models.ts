@@ -1,7 +1,17 @@
-export type ExperienceBlock = {
+export type Project = {
+  link?: string;
+  name?: string;
+  summary: string;
+  stack: string[];
+};
+
+export type ProjectBlock = {
+  projects: Project[];
+};
+
+export type ExperienceBlock = ProjectBlock & {
   company: string;
   position: string;
-  summary: string[];
   dates: string;
 };
 
@@ -12,9 +22,12 @@ export type EducationBlock = {
   dates: string;
 };
 
-export type SkillBlock = {
-  group: string;
+type SkillBlockGroup = {
   values: string[];
+};
+
+export type SkillBlock = {
+  groups: SkillBlockGroup[];
 };
 
 export type CertificateBlock = {
@@ -27,8 +40,7 @@ export type CertificateBlock = {
 export type ContactBlock = {
   name: string;
   value: string;
-  iconClass: string;
-  link: string;
+  link?: string;
 };
 
 export type BinaryBlock = {
@@ -46,13 +58,13 @@ export type Section = {
     skillBlocks?: SkillBlock[];
     educationBlocks?: EducationBlock[];
     experienceBlocks?: ExperienceBlock[];
+    projectBlocks?: ProjectBlock[];
   };
 };
 
 export type Data = {
   title: string;
   job: string;
-  location: string;
   aside: Section[];
   content: Section[];
 };

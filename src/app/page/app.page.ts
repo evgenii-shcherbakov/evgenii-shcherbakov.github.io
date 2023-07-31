@@ -17,6 +17,7 @@ import { Data, Section } from '../../types/models';
 import { SectionStrategy } from '../../types/common';
 import { IRouter } from 'rxspa/dist/browser/interfaces';
 import { PageQuery } from '../../constants/enums';
+import { ProjectBlockComponent } from '../../components/blocks/project/project-block.component';
 
 @component({ template })
 export class AppPage extends Page<AppContext> {
@@ -41,6 +42,7 @@ export class AppPage extends Page<AppContext> {
     texts: TextBlockComponent,
     educationBlocks: EducationBlockComponent,
     experienceBlocks: ExperienceBlockComponent,
+    projectBlocks: ProjectBlockComponent,
   };
 
   private static getSectionContent(content: Section['content']): HTMLElement[] {
@@ -66,7 +68,7 @@ export class AppPage extends Page<AppContext> {
 
     const data: Data = this.context.data.data.value;
 
-    this.header = new HeaderComponent(data.title, data.job, data.location);
+    this.header = new HeaderComponent(data.title, data.job);
 
     this.asideSections.push(
       ...data.aside.map((section: Section) => {

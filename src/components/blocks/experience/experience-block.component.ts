@@ -1,8 +1,10 @@
-import { component, HTMLTemplateVars, useHtml } from 'rxspa';
+import { component, HTMLTemplateVars } from 'rxspa';
 import { AppComponent } from '../../../app';
 import template from './experience-block.component.html';
 import './experience-block.component.scss';
 import { ExperienceBlock } from '../../../types/models';
+import { ProjectBlockComponent } from '../project/project-block.component';
+import { SvgPath } from '../../../constants/enums';
 
 @component({ template })
 export class ExperienceBlockComponent extends AppComponent {
@@ -15,16 +17,11 @@ export class ExperienceBlockComponent extends AppComponent {
       company: this.props.company,
       position: this.props.position,
       dates: this.props.dates,
+      calendarSvgPath: SvgPath.CALENDAR,
     };
   }
 
   protected inject() {
-    this.node
-      .querySelector('ul')
-      ?.append(
-        ...this.props.summary.map((summaryText: string) =>
-          useHtml('<li>{{text}}</li>', { text: summaryText }),
-        ),
-      );
+    this.node.append(new ProjectBlockComponent(this.props).render());
   }
 }

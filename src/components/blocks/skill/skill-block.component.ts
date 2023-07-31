@@ -1,4 +1,4 @@
-import { component, HTMLTemplateVars } from 'rxspa';
+import { component, useHtml } from 'rxspa';
 import { AppComponent } from '../../../app';
 import template from './skill-block.component.html';
 import './skill-block.component.scss';
@@ -10,10 +10,11 @@ export class SkillBlockComponent extends AppComponent {
     super();
   }
 
-  protected vars(): HTMLTemplateVars {
-    return {
-      group: this.props.group,
-      values: this.props.values.join(', '),
-    };
+  protected inject() {
+    this.node.querySelector('ul')?.append(
+      ...this.props.groups.map(({ values }) => {
+        return useHtml('<li>{{text}}</li>', { text: values.join(', ') });
+      }),
+    );
   }
 }

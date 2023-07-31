@@ -11,6 +11,18 @@ export class ContactBlockComponent extends AppComponent {
   }
 
   protected vars(): HTMLTemplateVars {
-    return this.props;
+    return {
+      ...this.props,
+      link: this.props.link ?? '',
+      svgPath: `./assets/icons/${this.props.name}.svg#icon`,
+    };
+  }
+
+  protected compile() {
+    if (this.props.link) {
+      this.template = `<a href="{{ link }}" target="_blank">${this.template}</a>`;
+    }
+
+    super.compile();
   }
 }

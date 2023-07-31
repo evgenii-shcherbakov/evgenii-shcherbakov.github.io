@@ -9,7 +9,7 @@ export const getAppConfig = (location: string): AppConfig<AppContext> => {
     '',
   );
 
-  const entryPage = pageQuery === PageQuery.MOBILE.toString() ? MobilePage : FullstackPage;
+  const entryPage = pageQuery === PageQuery.MOBILE.toString() ? FullstackPage : FullstackPage;
 
   return {
     entry: entryPage,

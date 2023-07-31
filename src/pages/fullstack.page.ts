@@ -5,7 +5,7 @@ import { AppContext } from '../types/store';
 
 export class FullstackPage extends AppPage {
   constructor(router: IRouter, context: AppContext) {
-    super(router, context, PageQuery.MOBILE, PageQuery.MOBILE);
+    super(router, context, PageQuery.FULLSTACK, PageQuery.FULLSTACK);
   }
 
   protected onInit() {

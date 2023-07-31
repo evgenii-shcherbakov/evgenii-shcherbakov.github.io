@@ -1,10 +1,11 @@
 @import '../../../styles/lib';
+@import '../../../styles/vars';
 
 .education-block {
   @include flex(row, space-between, flex-start);
   padding: 0.5rem 0;
 
-  @media (max-width: 800px) {
+  @media (max-width: $paperHalfWidth) {
     @include flex(column-reverse);
   }
 
@@ -19,24 +20,29 @@
 
   &__info {
     width: 60%;
-    font-size: 1.2rem;
 
-    @media (max-width: 800px) {
+    @media (max-width: $paperHalfWidth) {
       width: 100%;
     }
   }
 
-  &__title {
+  &__place {
     text-transform: uppercase;
   }
 
-  &__place {
+  &__title {
     color: $accent;
   }
 
   &__location {
     @include flex(row, flex-start, center);
     font-size: 1rem;
+
+    & .icon {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.25rem;
+    }
   }
 
   &__date {
@@ -45,7 +51,7 @@
     color: $secondary;
     width: 40%;
 
-    @media (max-width: 800px) {
+    @media (max-width: $paperHalfWidth) {
       justify-content: flex-start;
       width: 100%;
     }

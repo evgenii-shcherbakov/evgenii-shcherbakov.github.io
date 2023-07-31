@@ -1,14 +1,16 @@
+@import 'vars';
+
 :root {
   --main_color: white;
   --primary_color: black;
-  --accent_color: #6495ed;
+  --accent_color: #273bc9;
   --secondary_color: #555;
   --divider_color: #999;
 
-  font-size: 16px;
+  font-size: 2.7mm;
   font-weight: 500;
 
-  @media (max-width: 500px) {
-    font-size: 12px;
+  @media (max-width: $paperHalfWidth) {
+    font-size: 2mm;
   }
 }

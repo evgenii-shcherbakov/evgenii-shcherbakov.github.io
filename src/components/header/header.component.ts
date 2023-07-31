@@ -5,11 +5,7 @@ import './header.component.scss';
 
 @component({ template })
 export class HeaderComponent extends AppComponent {
-  constructor(
-    private readonly title: string,
-    private readonly job: string,
-    private readonly location: string,
-  ) {
+  constructor(private readonly title: string, private readonly job: string) {
     super();
   }
 
@@ -17,7 +13,6 @@ export class HeaderComponent extends AppComponent {
     return {
       title: this.title,
       job: this.job,
-      location: this.location,
     };
   }
 }

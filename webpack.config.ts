@@ -10,8 +10,13 @@ import {
 } from 'rxspa/dist/webpack';
 import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+const assetsFileName = isProduction ? 'assets/[name].[contenthash].[ext]' : 'assets/[name].[ext]';
+
+const iconsPath: string = join(__dirname, 'src', 'assets', 'icons');
 
 const webpackParams: WebpackParams = {
   entry: join(__dirname, 'src', 'main.ts'),
@@ -39,6 +44,9 @@ if (webpackConfig.module?.rules) {
 }
 
 export default merge(webpackConfig, {
+  output: {
+    assetModuleFilename: assetsFileName,
+  },
   module: {
     rules: [
       {
@@ -51,4 +59,9 @@ export default merge(webpackConfig, {
       },
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{ from: iconsPath, to: 'assets/icons', force: true }],
+    }),
+  ],
 });

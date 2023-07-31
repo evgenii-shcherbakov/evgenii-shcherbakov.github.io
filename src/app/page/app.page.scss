@@ -1,4 +1,5 @@
 @import '../../styles/lib';
+@import '../../styles/vars';
 
 .app-page {
   top: 0;
@@ -7,17 +8,22 @@
   height: 100%;
   position: absolute;
   @include flex(column, flex-start, center);
-  background-color: $main;
-  font-size: 16px;
+  backdrop-filter: brightness(0.3);
   transform: translateX(-100%);
+  font-size: 1.2rem;
   opacity: 0;
   visibility: hidden;
   animation: 0.5s ease-out;
 
   &__wrapper {
-    padding: 2rem;
-    max-width: 1200px;
+    padding: $paperPadding;
+    max-width: $paperWidth;
     margin: 0 auto;
+    background-color: $main;
+
+    @media(max-width: 400px) {
+      padding: 3rem;
+    }
   }
 
   &.active {
@@ -55,7 +61,7 @@
   &__container {
     @include flex(row, space-between);
 
-    @media (max-width: 1000px) {
+    @media (max-width: $smallerThanA4) {
       @include flex(column);
     }
   }
@@ -63,23 +69,23 @@
   &__row {
     padding: 1rem 0;
 
-    @media (max-width: 1000px) {
+    @media (max-width: $smallerThanA4) {
       padding: 0;
     }
   }
 
   &__aside {
-    width: 35%;
+    width: 30%;
 
-    @media (max-width: 1000px) {
+    @media (max-width: $smallerThanA4) {
       width: 100%;
     }
   }
 
   &__article {
-    width: 60%;
+    width: 65%;
 
-    @media (max-width: 1000px) {
+    @media (max-width: $smallerThanA4) {
       width: 100%;
     }
   }
@@ -87,8 +93,8 @@
   &__nav-anchor {
     top: 10vh;
     position: fixed;
-    color: $secondary;
-    width: calc((100% - 1200px) / 2);
+    color: $divider;
+    width: calc((100% - $paperWidth - $paperPadding) / 2);
     height: 80vh;
     display: block;
     opacity: 0;
@@ -99,6 +105,8 @@
     font-weight: 700;
     font-size: 2rem;
     text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1rem;
 
     &--left {
       left: 1rem;
@@ -112,7 +120,7 @@
       opacity: 1;
     }
 
-    @media (max-width: 1202px) {
+    @media (max-width: calc($paperWidth + 2px)) {
       width: 1rem;
     }
   }

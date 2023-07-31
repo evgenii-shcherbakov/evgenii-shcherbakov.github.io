@@ -1,9 +1,8 @@
-<a href="{{ link }}" target="_blank">
-  <div class="contact-block">
-    <i class="{{ iconClass }} contact-block__icon"></i>
-    <div class="contact-block__info">
-      <p class="contact-block__name">{{ name }}</p>
-      <p class="contact-block__value">{{ value }}</p>
-    </div>
+<div class="contact-block">
+  <svg class="contact-block__icon icon" viewBox="0 0 24 24" aria-label="{{ name }} icon">
+    <use href="{{ svgPath }}"></use>
+  </svg>
+  <div class="contact-block__info">
+    <p>{{ value }}</p>
   </div>
-</a>
+</div>

@@ -1,15 +1,13 @@
 @import '../../../styles/lib';
+@import '../../../styles/vars';
 
 .contact-block {
   @include flex(row, flex-start, center);
-  height: 5rem;
-
-  &:not(:last-child) {
-    margin-top: 0.3rem;
-  }
+  height: 3rem;
 
   &__info {
     width: calc(100% - 4rem);
+    word-wrap: break-word;
   }
 
   & p {
@@ -17,28 +15,14 @@
     max-width: inherit;
   }
 
-  &__name {
-    font-size: 1.2rem;
-
-    &:first-letter {
-      text-transform: capitalize;
-    }
-  }
-
-  &__value {
-    color: $secondary;
-    word-wrap: break-word;
-    font-size: 1rem;
+  &__name:first-letter {
+    text-transform: capitalize;
   }
 
   &__icon {
     color: $accent;
-    font-size: 2rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    padding: 0.5rem;
-    margin-right: 1rem;
-    width: 3rem;
+    margin-right: 0.6rem;
+    width: 1.2rem;
     text-align: center;
   }
 }

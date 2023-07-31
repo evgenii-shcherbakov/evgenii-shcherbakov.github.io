@@ -1,9 +1,10 @@
 @import '../../styles/lib';
+@import '../../styles/vars';
 
 .header {
   @include flex(row, space-between, center);
 
-  @media (max-width: 800px) {
+  @media (max-width: $smallerThanA4) {
     @include flex(column-reverse, flex-start, flex-start);
   }
 
@@ -21,15 +22,8 @@
     font-weight: 500;
   }
 
-  &__location {
-    @include flex(row, flex-start, center);
-    color: $secondary;
-    margin: 0.2rem 0;
-    font-size: 1.2rem;
-  }
-
   &__info {
-    max-width: calc(100% - 8rem);
+    max-width: calc(100% - $photoSize);
 
     @media (max-width: 800px) {
       max-width: 100%;
@@ -37,8 +31,8 @@
   }
 
   &__photo {
-    width: 8rem;
-    height: 8rem;
+    width: $photoSize;
+    height: $photoSize;
     border-radius: 50%;
     background: $secondary center no-repeat;
 
@@ -46,9 +40,5 @@
       align-self: center;
       margin-bottom: 1rem;
     }
-  }
-
-  .material-symbols-outlined {
-    padding-right: 0.2rem;
   }
 }
