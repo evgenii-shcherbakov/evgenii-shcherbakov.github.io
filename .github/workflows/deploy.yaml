@@ -5,6 +5,12 @@ on:
     branches:
       - 'main'
 
+env:
+  BASE_URL: 'https://${{ github.event.repository.name }}'
+  TELEGRAM_API_TOKEN: '${{ secrets.TELEGRAM_API_TOKEN }}'
+  TELEGRAM_AUTHOR_ID: '${{ secrets.TELEGRAM_AUTHOR_ID }}'
+  TELEGRAM_AUTHOR_NICKNAME: '${{ secrets.TELEGRAM_AUTHOR_NICKNAME }}'
+
 jobs:
   Deploy:
     runs-on: 'ubuntu-latest'

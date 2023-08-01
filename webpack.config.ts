@@ -11,6 +11,10 @@ import {
 import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import { DefinePlugin } from 'webpack';
+import { config } from 'dotenv';
+
+config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -62,6 +66,15 @@ export default merge(webpackConfig, {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [{ from: iconsPath, to: 'assets/icons', force: true }],
+    }),
+    new DefinePlugin({
+      env: {
+        PORT: JSON.stringify(process.env.PORT),
+        BASE_URL: JSON.stringify(process.env.BASE_URL),
+        TELEGRAM_API_TOKEN: JSON.stringify(process.env.TELEGRAM_API_TOKEN),
+        TELEGRAM_AUTHOR_ID: JSON.stringify(process.env.TELEGRAM_AUTHOR_ID),
+        TELEGRAM_AUTHOR_NICKNAME: JSON.stringify(process.env.TELEGRAM_AUTHOR_NICKNAME),
+      },
     }),
   ],
 });

@@ -18,6 +18,7 @@ import { SectionStrategy } from '../../types/common';
 import { IRouter } from 'rxspa/dist/browser/interfaces';
 import { PageQuery } from '../../constants/enums';
 import { ProjectBlockComponent } from '../../components/blocks/project/project-block.component';
+import { TelegramComponent } from '../../components/telegram/telegram.component';
 
 @component({ template })
 export class AppPage extends Page<AppContext> {
@@ -81,6 +82,8 @@ export class AppPage extends Page<AppContext> {
         return new SectionComponent(section.header, AppPage.getSectionContent(section.content));
       }),
     );
+
+    new TelegramComponent().render();
   }
 
   protected inject() {
