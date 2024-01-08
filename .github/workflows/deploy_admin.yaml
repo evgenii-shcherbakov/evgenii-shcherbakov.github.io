@@ -37,6 +37,8 @@ jobs:
           token: '${{ env.VERCEL_TOKEN }}'
           projectName: '${{ env.VERCEL_ADMIN_APP_NAME }}'
           envVariableKeys: '${{ env.ADMIN_ENV_VARIABLES }}'
+      - name: 'Merge package.json files'
+        run: 'npx merge-packages admin/package.json shared/package.json --output admin/package.json'
       - name: 'Install dependencies'
         run: 'npm run init:admin && npm run init:shared'
       - name: 'Build'
