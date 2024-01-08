@@ -11,7 +11,7 @@
     { "src": "/(.*)", "dest": "/dist/admin/src/server.js" }
   ],
   "env": {
-    "PORT": 80,
+    "PORT": "80",
     "PAYLOAD_CONFIG_PATH": "dist/admin/src/configs/payload.config.js"
   }
 }
