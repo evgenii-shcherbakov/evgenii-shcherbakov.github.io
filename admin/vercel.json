@@ -5,13 +5,11 @@
     "enabled": false
   },
   "builds": [
-    { "src": "dist/admin/src/server.js", "use": "@vercel/node" }
+    { "src": "dist/admin/src/server.js", "use": "@vercel/node" },
+    { "src": "dist/admin/src/configs/payload.config.js", "use": "@vercel/node" }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/dist/admin/src/server.js" }
-  ],
+  "routes": [{ "src": "/(.*)", "dest": "/dist/admin/src/server.js" }],
   "env": {
-    "PORT": "80",
     "PAYLOAD_CONFIG_PATH": "dist/admin/src/configs/payload.config.js"
   }
 }

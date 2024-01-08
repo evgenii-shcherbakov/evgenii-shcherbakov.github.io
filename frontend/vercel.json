@@ -4,13 +4,6 @@
   "github": {
     "enabled": false
   },
-  "builds": [
-    { "src": "dist/frontend/server/server.mjs", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/dist/frontend/server/server.mjs" }
-  ],
-  "env": {
-    "PORT": "80"
-  }
+  "builds": [{ "src": "dist/frontend/server/server.mjs", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/dist/frontend/server/server.mjs" }]
 }

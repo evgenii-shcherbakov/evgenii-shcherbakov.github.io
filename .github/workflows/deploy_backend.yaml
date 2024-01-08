@@ -37,7 +37,7 @@ jobs:
       - name: 'Merge package.json files'
         run: 'npx merge-packages backend/package.json shared/package.json --output backend/package.json'
       - name: 'Install dependencies'
-        run: 'npm run init:backend && npm run init:shared'
+        run: 'npm run init:backend'
       - name: 'Build'
         run: 'npm run build:backend'
         env:

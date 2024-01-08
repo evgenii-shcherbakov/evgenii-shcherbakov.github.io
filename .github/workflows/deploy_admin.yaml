@@ -40,7 +40,7 @@ jobs:
       - name: 'Merge package.json files'
         run: 'npx merge-packages admin/package.json shared/package.json --output admin/package.json'
       - name: 'Install dependencies'
-        run: 'npm run init:admin && npm run init:shared'
+        run: 'npm run init:admin'
       - name: 'Build'
         run: 'npm run build:admin'
         env:

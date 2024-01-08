@@ -8,7 +8,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   const configService = app.get(ConfigService<BackendEnvironment>);
-  const port = configService.get<string | number>('PORT');
+  const port = configService.get<string | number>('PORT') ?? 5555;
   const logger = new Logger();
 
   configureSwagger(app);
