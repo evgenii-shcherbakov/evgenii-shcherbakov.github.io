@@ -37,7 +37,7 @@ jobs:
       - name: 'Merge package.json files'
         run: 'npx merge-packages frontend/package.json shared/package.json --output frontend/package.json'
       - name: 'Install dependencies'
-        run: 'npm run init:frontend'
+        run: 'npm run init:frontend && npm run init:shared'
       - name: 'Build'
         run: 'npm run build:frontend'
         env:
