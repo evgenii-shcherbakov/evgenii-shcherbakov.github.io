@@ -18,7 +18,7 @@ env:
   DATABASE_URL: '${{ secrets.DATABASE_URL }}'
   PAYLOAD_SECRET: '${{ secrets.PAYLOAD_SECRET }}'
 
-  PAYLOAD_CONFIG_PATH: 'dist/admin/src/configs/payload.config.js'
+  # PAYLOAD_CONFIG_PATH: 'dist/admin/src/configs/payload.config.js'
 
 jobs:
   Deploy:
