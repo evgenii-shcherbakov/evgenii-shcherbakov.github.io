@@ -18,7 +18,6 @@ env:
   DATABASE_URL: '${{ secrets.DATABASE_URL }}'
   PAYLOAD_SECRET: '${{ secrets.PAYLOAD_SECRET }}'
 
-  NODE_ENV: 'production'
   PAYLOAD_CONFIG_PATH: 'dist/admin/src/configs/payload.config.js'
 
 jobs:
@@ -42,6 +41,8 @@ jobs:
         run: 'npm run init:admin && npm run init:shared'
       - name: 'Build'
         run: 'npm run build:admin'
+        env:
+          NODE_ENV: 'production'
       - name: 'Omit dev dependencies'
         run: 'npm run omit:backend'
       - name: 'Deploy'
