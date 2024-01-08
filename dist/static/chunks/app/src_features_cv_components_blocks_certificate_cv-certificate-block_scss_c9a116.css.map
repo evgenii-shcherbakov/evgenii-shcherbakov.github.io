@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/features/cv/components/blocks/certificate/cv-certificate-block.scss.css"],"sourcesContent":[".certificate-block{margin:0;padding:.3rem 0}.certificate-block p{margin:0;padding:.2rem 0}.certificate-block__organization{text-transform:uppercase;color:var(--accent_color)}.certificate-block__name{text-transform:uppercase}.certificate-block__date{color:var(--secondary_color);font-size:1rem}\n/*# sourceMappingURL=cv-certificate-block.scss.css.map */"],"names":[],"mappings":"AAAA,CAAC,iBAAiB,CAAA,CAAC;EAAA,MAAM,EAAC,CAAC;EAAC,OAAO,EAAC,EAAE,GAAG,CAAC,CAAC;AAAA,CAAC;AAAA,CAAC,iBAAiB,CAAC,CAAC,CAAA,CAAC;EAAA,MAAM,EAAC,CAAC;EAAC,OAAO,EAAC,EAAE,GAAG,CAAC,CAAC;AAAA,CAAC;AAAA,CAAC,+BAA+B,CAAA,CAAC;EAAA,cAAc,EAAC,SAAS;EAAC,KAAK,EAAC,GAAG,CAAC,EAAE,AAAF,YAAc;AAAC,CAAC;AAAA,CAAC,uBAAuB,CAAA,CAAC;EAAA,cAAc,EAAC,SAAS;AAAA,CAAC;AAAA,CAAC,uBAAuB,CAAA,CAAC;EAAA,KAAK,EAAC,GAAG,CAAC,EAAE,AAAF,eAAiB;EAAE,SAAS,EAAC,CAAC,GAAG;AAAA,CAAC"}},
+    {"offset": {"line": 19, "column": 1}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

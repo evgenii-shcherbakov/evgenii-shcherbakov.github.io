@@ -1,0 +1,28 @@
+/* [project]/src/features/cv/components/blocks/contact/cv-contact-block.scss.css (css, app) */
+.contact-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3rem;
+}
+.contact-block__info {
+  width: calc(100% - 4rem);
+  word-wrap: break-word;
+}
+.contact-block p {
+  margin: 0;
+  max-width: inherit;
+}
+.contact-block__name:first-letter {
+  text-transform: capitalize;
+}
+.contact-block__icon {
+  color: var(--accent_color);
+  margin-right: .6rem;
+  width: 1.2rem;
+  text-align: center;
+}
+
+
+/*# sourceMappingURL=src_features_cv_components_blocks_contact_cv-contact-block_scss_d9c26b.css.map*/

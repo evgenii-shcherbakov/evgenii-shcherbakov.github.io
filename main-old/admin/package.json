@@ -1,0 +1,8 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "dependencies": {
+    "@payloadcms/plugin-cloud": "^2.2.6",
+    "payload": "^2.2.2"
+  }
+}

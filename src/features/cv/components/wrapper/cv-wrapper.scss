@@ -1,0 +1,127 @@
+@import '../../styles/lib';
+@import '../../styles/vars';
+
+.app-page {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  @include flex(column, flex-start, center);
+  backdrop-filter: brightness(0.3);
+  transform: translateX(-100%);
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  animation: 0.5s ease-out;
+
+  &__wrapper {
+    padding: $paperPadding;
+    max-width: $paperWidth;
+    margin: 0 auto;
+    background-color: $main;
+
+    @media(max-width: 400px) {
+      padding: 3rem;
+    }
+  }
+
+  &.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.anim-prev {
+    animation-name: prev-page-animation;
+  }
+
+  @keyframes prev-page-animation {
+    from {
+      transform: translateX(-100%) scale(0);
+    }
+    to {
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  &.anim-next {
+    animation-name: next-page-animation;
+  }
+
+  @keyframes next-page-animation {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%) scale(0);
+    }
+  }
+
+  &__container {
+    @include flex(row, space-between);
+
+    @media (max-width: $smallerThanA4) {
+      @include flex(column);
+    }
+  }
+
+  &__row {
+    padding: 1rem 0;
+
+    @media (max-width: $smallerThanA4) {
+      padding: 0;
+    }
+  }
+
+  &__aside {
+    width: 30%;
+
+    @media (max-width: $smallerThanA4) {
+      width: 100%;
+    }
+  }
+
+  &__article {
+    width: 65%;
+
+    @media (max-width: $smallerThanA4) {
+      width: 100%;
+    }
+  }
+
+  &__nav-anchor {
+    top: 10vh;
+    position: fixed;
+    color: $divider;
+    width: calc((100% - $paperWidth - $paperPadding) / 2);
+    height: 80vh;
+    display: block;
+    opacity: 0;
+    z-index: 2;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    @include flex(column, center, center);
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1rem;
+
+    &--left {
+      left: 1rem;
+    }
+
+    &--right {
+      right: 1rem;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: calc($paperWidth + 2px)) {
+      width: 1rem;
+    }
+  }
+}

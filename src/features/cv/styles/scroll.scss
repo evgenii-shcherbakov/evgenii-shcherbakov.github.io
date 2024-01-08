@@ -1,0 +1,13 @@
+@import 'lib';
+@import 'vars';
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 0;
+  background-color: $hover;
+
+  &-thumb {
+    background-color: $accent;
+    border-radius: 2px;
+  }
+}

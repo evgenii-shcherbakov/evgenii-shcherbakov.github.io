@@ -1,0 +1,15 @@
+/* [project]/src/features/cv/components/blocks/skill/cv-skill-block.scss.css (css, app) */
+.skill-block {
+  margin: 0;
+  flex-wrap: wrap;
+}
+.skill-block__values {
+  margin-left: 0;
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+  font-weight: 500;
+}
+.skill-block__values li {
+  padding: .3rem 0;
+}
+/*# sourceMappingURL=src_features_cv_components_blocks_skill_cv-skill-block_scss_c9a116.css.map*/

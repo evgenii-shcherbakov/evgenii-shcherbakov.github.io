@@ -1,0 +1,70 @@
+/* [project]/src/features/cv/components/blocks/education/cv-education-block.scss.css (css, app) */
+.education-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: .5rem 0;
+}
+@media (max-width: 10.5cm) {
+  .education-block {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+.education-block:not(:first-child) {
+  margin-top: .5rem;
+}
+.education-block p {
+  margin: 0;
+  padding: .2rem 0;
+}
+.education-block__info {
+  width: 60%;
+}
+@media (max-width: 10.5cm) {
+  .education-block__info {
+    width: 100%;
+  }
+}
+.education-block__place {
+  text-transform: uppercase;
+}
+.education-block__title {
+  color: var(--accent_color);
+}
+.education-block__location {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+}
+.education-block__location .icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: .25rem;
+}
+.education-block__date {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: .2rem 0;
+  color: var(--secondary_color);
+  width: 40%;
+}
+@media (max-width: 10.5cm) {
+  .education-block__date {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+.education-block__date__icon {
+  margin-right: .3em;
+}
+
+
+/*# sourceMappingURL=src_features_cv_components_blocks_education_cv-education-block_scss_35380d.css.map*/

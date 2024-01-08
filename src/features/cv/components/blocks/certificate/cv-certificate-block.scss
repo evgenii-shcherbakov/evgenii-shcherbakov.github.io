@@ -1,0 +1,26 @@
+@import '../../../styles/lib';
+@import '../../../styles/vars';
+
+.certificate-block {
+  margin: 0;
+  padding: 0.3rem 0;
+
+  & p {
+    margin: 0;
+    padding: 0.2rem 0;
+  }
+
+  &__organization {
+    text-transform: uppercase;
+    color: $accent;
+  }
+
+  &__name {
+    text-transform: uppercase;
+  }
+
+  &__date {
+    color: $secondary;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,21 @@
+/* [project]/src/features/cv/components/project/cv-project.scss.css (css, app) */
+.project {
+  padding: 0 1rem;
+  border-left: 1px solid var(--divider_color);
+}
+.project:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.project__name {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.project__summary {
+  padding-bottom: .5rem;
+}
+.project__stack {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--secondary_color);
+}
+/*# sourceMappingURL=src_features_cv_components_project_cv-project_scss_c9a116.css.map*/

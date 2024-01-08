@@ -1,0 +1,12 @@
+$accent: var(--accent_color);
+$main: var(--main_color);
+$primary: var(--primary_color);
+$secondary: var(--secondary_color);
+$divider: var(--divider_color);
+$hover: rgba(0, 0, 0, 0.1);
+
+$paperWidth: 21cm;
+$paperHalfWidth: calc($paperWidth / 2);
+$paperPadding: 1cm;
+$smallerThanA4: 15cm;
+$photoSize: 10rem;

@@ -1,0 +1,133 @@
+/* [project]/src/features/cv/components/wrapper/cv-wrapper.scss.css (css, app) */
+.app-page {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  -webkit-backdrop-filter: brightness(0.3);
+  backdrop-filter: brightness(0.3);
+  transform: translatex(-100%);
+  font-size: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  animation: .5s ease-out;
+}
+.app-page__wrapper {
+  padding: 1cm;
+  max-width: 21cm;
+  margin: 0 auto;
+  background-color: var(--main_color);
+}
+@media (max-width: 400px) {
+  .app-page__wrapper {
+    padding: 3rem;
+  }
+}
+.app-page.active {
+  transform: translatex(0);
+  opacity: 1;
+  visibility: visible;
+}
+.app-page.anim-prev {
+  animation-name: prev-page-animation;
+}
+@keyframes prev-page-animation {
+  from {
+    transform: translatex(-100%) scale(0);
+  }
+  to {
+    transform: translatex(0) scale(1);
+  }
+}
+.app-page.anim-next {
+  animation-name: next-page-animation;
+}
+@keyframes next-page-animation {
+  from {
+    transform: translatex(0);
+  }
+  to {
+    transform: translatex(100%) scale(0);
+  }
+}
+.app-page__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@media (max-width: 15cm) {
+  .app-page__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+.app-page__row {
+  padding: 1rem 0;
+}
+@media (max-width: 15cm) {
+  .app-page__row {
+    padding: 0;
+  }
+}
+.app-page__aside {
+  width: 30%;
+}
+@media (max-width: 15cm) {
+  .app-page__aside {
+    width: 100%;
+  }
+}
+.app-page__article {
+  width: 65%;
+}
+@media (max-width: 15cm) {
+  .app-page__article {
+    width: 100%;
+  }
+}
+.app-page__nav-anchor {
+  top: 10vh;
+  position: fixed;
+  color: var(--divider_color);
+  width: calc((100% - 21cm - 1cm) / 2);
+  height: 80vh;
+  display: block;
+  opacity: 0;
+  z-index: 2;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.app-page__nav-anchor--left {
+  left: 1rem;
+}
+.app-page__nav-anchor--right {
+  right: 1rem;
+}
+.app-page__nav-anchor:hover {
+  opacity: 1;
+}
+@media (max-width: 21.0529166667cm) {
+  .app-page__nav-anchor {
+    width: 1rem;
+  }
+}
+
+
+/*# sourceMappingURL=src_features_cv_components_wrapper_cv-wrapper_scss_bc0a4d.css.map*/

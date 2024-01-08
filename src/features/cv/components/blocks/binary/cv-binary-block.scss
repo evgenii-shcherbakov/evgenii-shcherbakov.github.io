@@ -1,0 +1,10 @@
+@import '../../../styles/lib';
+
+.binary-block {
+  @include flex(row, space-between, center);
+  padding: 0.3rem;
+
+  &__name {
+    text-transform: capitalize;
+  }
+}

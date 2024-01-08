@@ -1,0 +1,14 @@
+/* [project]/src/features/cv/components/blocks/binary/cv-binary-block.scss.css (css, app) */
+.binary-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: .3rem;
+}
+.binary-block__name {
+  text-transform: capitalize;
+}
+
+
+/*# sourceMappingURL=src_features_cv_components_blocks_binary_cv-binary-block_scss_151f2d.css.map*/

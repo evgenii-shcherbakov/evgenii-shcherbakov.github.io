@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/features/cv/components/blocks/skill/cv-skill-block.scss.css"],"sourcesContent":[".skill-block{margin:0;flex-wrap:wrap}.skill-block__values{margin-left:0;margin-top:1rem;padding-left:1.2rem;font-weight:500}.skill-block__values li{padding:.3rem 0}\n/*# sourceMappingURL=cv-skill-block.scss.css.map */"],"names":[],"mappings":"AAAA,CAAC,WAAW,CAAA,CAAC;EAAA,MAAM,EAAC,CAAC;EAAC,SAAS,EAAC,IAAI;AAAA,CAAC;AAAA,CAAC,mBAAmB,CAAA,CAAC;EAAA,WAAW,EAAC,CAAC;EAAC,UAAU,EAAC,CAAC,GAAG;EAAC,YAAY,EAAC,GAAG,GAAG;EAAC,WAAW,EAAC,GAAG;AAAA,CAAC;AAAA,CAAC,mBAAmB,CAAC,EAAE,CAAA,CAAC;EAAA,OAAO,EAAC,EAAE,GAAG,CAAC,CAAC;AAAA,CAAC"}},
+    {"offset": {"line": 13, "column": 1}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

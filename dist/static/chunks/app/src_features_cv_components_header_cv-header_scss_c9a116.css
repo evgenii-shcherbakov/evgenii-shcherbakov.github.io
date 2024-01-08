@@ -1,0 +1,48 @@
+/* [project]/src/features/cv/components/header/cv-header.scss.css (css, app) */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 15cm) {
+  .header {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+.header__title {
+  margin: .2rem 0;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 500;
+}
+.header__job {
+  color: var(--accent_color);
+  margin: .5rem 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.header__info {
+  max-width: calc(100% - 10rem);
+}
+@media (max-width: 800px) {
+  .header__info {
+    max-width: 100%;
+  }
+}
+.header__photo {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: var(--secondary_color) center no-repeat;
+}
+@media (max-width: 800px) {
+  .header__photo {
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+}
+/*# sourceMappingURL=src_features_cv_components_header_cv-header_scss_c9a116.css.map*/
