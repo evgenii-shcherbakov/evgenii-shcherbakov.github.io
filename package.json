@@ -1,34 +1,31 @@
 {
-  "name": "evgenii-shcherbakov.github.io",
-  "version": "0.1.0",
-  "private": true,
+  "name": "platform-ng",
+  "version": "0.0.0",
   "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "alias": "node scripts/paths/generate-path-configs.js",
+    "init:admin": "cd admin && npm install && cd ..",
+    "init:backend": "cd backend && npm install && cd ..",
+    "init:frontend": "cd frontend && npm install && cd ..",
+    "init:shared": "cd shared && npm install && cd ..",
+    "omit:admin": "cd admin && npm install --omit=dev && cd ..",
+    "omit:backend": "cd backend && npm install --omit=dev && cd ..",
+    "omit:frontend": "cd frontend && npm install --omit=dev && cd ..",
+    "prepare": "npm run init:admin && npm run init:backend && npm run init:frontend && npm run init:shared",
+    "dev:admin": "cd admin && npm run dev",
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:frontend": "cd frontend && npm run start",
+    "build:admin": "cd admin && npm run build && cd ..",
+    "build:backend": "cd backend && npm run build && cd ..",
+    "build:frontend": "cd frontend && npm run build && cd ..",
+    "build": "npm run build:admin && npm run build:backend && npm run build:frontend",
+    "start:admin": "cd admin && npm run serve",
+    "start:backend": "cd backend && npm run start:prod",
+    "start:frontend": "cd frontend && npm run ssr"
   },
-  "dependencies": {
-    "@payloadcms/plugin-cloud": "^2.2.6",
-    "express": "^4.18.2",
-    "next": "13.5.6",
-    "node-telegram-bot-api": "^0.64.0",
-    "payload": "^2.2.2",
-    "react": "^18",
-    "react-dom": "^18"
-  },
+  "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/node-telegram-bot-api": "^0.63.0",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "13.5.6",
-    "postcss": "^8",
-    "prettier": "^3.0.3",
-    "sass": "^1.69.5",
-    "tailwindcss": "^3",
-    "typescript": "^5"
+    "prettier": "^3.1.0"
   }
 }

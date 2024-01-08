@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/features/cv/components/blocks/contact/cv-contact-block.scss.css"],"sourcesContent":[".contact-block{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;height:3rem}.contact-block__info{width:calc(100% - 4rem);word-wrap:break-word}.contact-block p{margin:0;max-width:inherit}.contact-block__name:first-letter{text-transform:capitalize}.contact-block__icon{color:var(--accent_color);margin-right:.6rem;width:1.2rem;text-align:center}\n/*# sourceMappingURL=cv-contact-block.scss.css.map */"],"names":[],"mappings":"AAAA,CAAC,aAAa,CAAA,CAAC;EAAA,OAAO,EAAC,IAAI;EAAC,cAAc,EAAC,GAAG;EAAC,eAAe,EAAC,UAAU;EAAC,WAAW,EAAC,MAAM;EAAC,MAAM,EAAC,CAAC,GAAG;AAAA,CAAC;AAAA,CAAC,mBAAmB,CAAA,CAAC;EAAA,KAAK,EAAC,IAAI,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG;EAAE,SAAS,EAAC,UAAU;AAAA,CAAC;AAAA,CAAC,aAAa,CAAC,CAAC,CAAA,CAAC;EAAA,MAAM,EAAC,CAAC;EAAC,SAAS,EAAC,OAAO;AAAA,CAAC;AAAA,CAAC,mBAAmB,CAAC,YAAY,CAAA,CAAC;EAAA,cAAc,EAAC,UAAU;AAAA,CAAC;AAAA,CAAC,mBAAmB,CAAA,CAAC;EAAA,KAAK,EAAC,GAAG,CAAC,EAAE,AAAF,YAAc;EAAE,YAAY,EAAC,EAAE,GAAG;EAAC,KAAK,EAAC,GAAG,GAAG;EAAC,UAAU,EAAC,MAAM;AAAA,CAAC"}},
-    {"offset": {"line": 24, "column": 1}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

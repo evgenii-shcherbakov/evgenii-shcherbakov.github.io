@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/app/favicon--route-entry.js"],"sourcesContent":["import { NextResponse } from 'next/server'\n\nconst contentType = \"image/x-icon\"\nconst cacheControl = \"public, max-age=0, must-revalidate\"\nconst buffer = Buffer.from(\"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMklEQVR4XmNgGAUMDC3//1OEMQRIxRgCpGIMAVIxhgCpGEOAVPz/KsN/SvCoAUADKAUAmlLSwIVqSmQAAAAASUVORK5CYII=\", 'base64')\n\nexport function GET() {\n    return new NextResponse(buffer, {\n        headers: {\n            'Content-Type': contentType,\n            'Cache-Control': cacheControl,\n        },\n    })\n}\n\nexport const dynamic = 'force-static'\n"],"names":[],"mappings":";;;;;;;AAEA,MAAM,cAAc;AACpB,MAAM,eAAe;AACrB,MAAM,SAAS,OAAO,IAAI,CAAC,oJAAoJ;AAExK,SAAS;IACZ,OAAO,wKAAiB,QAAQ;QAC5B,SAAS;YACL,gBAAgB;YAChB,iBAAiB;QACrB;IACJ;AACJ;AAEO,MAAM,UAAU"}},
-    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

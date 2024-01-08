@@ -1,0 +1,60 @@
+name: 'Deploy backend'
+
+on:
+  push:
+    branches:
+      # - 'main'
+      - 'feature/ng-migration'
+    paths:
+      - 'backend/**'
+      - 'shared/**'
+
+env:
+  VERCEL_TOKEN: '${{ secrets.VERCEL_TOKEN }}'
+  VERCEL_BACKEND_APP_NAME: '${{ secrets.VERCEL_BACKEND_APP_NAME }}'
+  VERCEL_BACKEND_ORGANIZATION_ID: '${{ secrets.VERCEL_BACKEND_ORGANIZATION_ID }}'
+  VERCEL_BACKEND_PROJECT_ID: '${{ secrets.VERCEL_BACKEND_PROJECT_ID }}'
+
+  DATABASE_URL: '${{ secrets.DATABASE_URL }}'
+
+  NODE_ENV: 'production'
+
+jobs:
+  Deploy:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - uses: 'actions/checkout@v3'
+      - uses: 'actions/setup-node@v3'
+        with:
+          node-version: 18
+      - name: 'Setup environment'
+        run: 'chmod +x scripts/pipeline/setup_environment.sh && scripts/pipeline/setup_environment.sh'
+      - name: 'Set environment variables'
+        uses: 'dkershner6/vercel-set-env-action@v3'
+        with:
+          token: '${{ env.VERCEL_TOKEN }}'
+          projectName: '${{ env.VERCEL_BACKEND_APP_NAME }}'
+          envVariableKeys: '${{ env.BACKEND_ENV_VARIABLES }}'
+      - name: 'Install dependencies'
+        run: 'npm run init:backend && npm run init:shared'
+      - name: 'Build'
+        run: 'npm run build:backend'
+      - name: 'Omit dev dependencies'
+        run: 'npm run omit:backend'
+      - name: 'Deploy'
+        uses: 'amondnet/vercel-action@v20'
+        with:
+          vercel-token: '${{ env.VERCEL_TOKEN }}'
+          vercel-args: '--prod --yes'
+          vercel-org-id: '${{ env.VERCEL_BACKEND_ORGANIZATION_ID }}'
+          vercel-project-id: '${{ env.VERCEL_BACKEND_PROJECT_ID }}'
+          working-directory: './backend'
+      - name: 'Get deploy info'
+        id: 'build-state'
+        uses: 'justincase-jp/vercel-preview-url-alias@0.2.1'
+        with:
+          vercel_access_token: '${{ env.VERCEL_TOKEN }}'
+          vercel_project_id: '${{ env.VERCEL_BACKEND_PROJECT_ID }}'
+      - name: 'Check build status'
+        run: '[[ ${{ steps.build-state.outputs.status }} == "READY" ]] && echo Success build! || exit 1'

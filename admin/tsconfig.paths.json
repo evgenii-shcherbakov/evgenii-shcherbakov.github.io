@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@admin": [
+        "src"
+      ],
+      "@admin/*": [
+        "src/*"
+      ],
+      "@backend": [
+        "../backend/src"
+      ],
+      "@backend/*": [
+        "../backend/src/*"
+      ],
+      "@frontend": [
+        "../frontend/src"
+      ],
+      "@frontend/*": [
+        "../frontend/src/*"
+      ],
+      "@shared": [
+        "../shared/src"
+      ],
+      "@shared/*": [
+        "../shared/src/*"
+      ],
+      "payload/generated-types": [
+        "src/types/payload-types.ts"
+      ]
+    }
+  },
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  }
+}

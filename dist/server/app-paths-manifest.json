@@ -1,6 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/cv/page": "app/cv/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/internal/telegram/spy-on-request/route": "app/api/internal/telegram/spy-on-request/route.js"
-}

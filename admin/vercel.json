@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "public": false,
+  "github": {
+    "enabled": false
+  },
+  "builds": [
+    { "src": "dist/admin/src/server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/dist/admin/src/server.js" }
+  ]
+}

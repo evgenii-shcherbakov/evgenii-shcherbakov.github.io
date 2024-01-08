@@ -1,0 +1,42 @@
+{
+  "name": "admin",
+  "description": "A blank template to get started with Payload",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env PAYLOAD_CONFIG_PATH=src/configs/payload.config.ts nodemon",
+    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/configs/payload.config.ts payload build",
+    "build:server": "cross-env PAYLOAD_CONFIG_PATH=src/configs/payload.config.ts tsc && tsc-alias",
+    "build": "yarn copyfiles && yarn build:payload && yarn build:server",
+    "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/admin/src/configs/payload.config.js NODE_ENV=production node dist/admin/src/server.js",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
+    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/configs/payload.config.ts payload generate:types",
+    "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/configs/payload.config.ts payload generate:graphQLSchema",
+    "payload": "cross-env PAYLOAD_CONFIG_PATH=src/configs/payload.config.ts payload",
+    "serve:normal": "cross-env PAYLOAD_CONFIG_PATH=dist/admin/src/configs/payload.config.js NODE_ENV=production node dist/admin/src/server.js"
+  },
+  "dependencies": {
+    "@payloadcms/bundler-webpack": "^1.0.0",
+    "@payloadcms/db-mongodb": "^1.0.0",
+    "@payloadcms/richtext-slate": "^1.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "payload": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.9",
+    "@types/node": "^20.10.5",
+    "copyfiles": "^2.4.1",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.1.1",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^4.8.4",
+    "yarn": "^1.22.21"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  }
+}
