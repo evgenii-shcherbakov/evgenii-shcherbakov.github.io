@@ -2,6 +2,7 @@ import * as joi from 'joi';
 
 const COMMON_ENV_VALIDATION_SCHEMA = {
   PORT: joi.alternatives(joi.string(), joi.number()),
+  NODE_ENV: joi.string().valid('development', 'production').optional(),
 };
 
 export const ADMIN_ENV_VALIDATION_SCHEMA = {

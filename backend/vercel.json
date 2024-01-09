@@ -5,5 +5,11 @@
     "enabled": false
   },
   "builds": [{ "src": "dist/backend/src/main.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/dist/backend/src/main.js" }]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/backend/src/main.js",
+      "methods": ["GET", "POST", "PATCH", "PUT", "DELETE"]
+    }
+  ]
 }
