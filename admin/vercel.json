@@ -9,6 +9,6 @@
   ],
   "routes": [{ "src": "/(.*)", "dest": "/dist/admin/src/server.js" }],
   "env": {
-    "PAYLOAD_CONFIG_PATH": "var/task/dist/admin/src/configs/payload.config.js"
+    "PAYLOAD_CONFIG_PATH": "dist/admin/src/payload.config.js"
   }
 }
