@@ -35,7 +35,7 @@ jobs:
           projectName: '${{ env.VERCEL_BACKEND_APP_NAME }}'
           envVariableKeys: '${{ env.BACKEND_ENV_VARIABLES }}'
       - name: 'Merge package.json files'
-        run: 'npx merge-packages backend/package.json shared/package.json --output backend/package.json'
+        run: 'npm run prepare:backend'
       - name: 'Install dependencies'
         run: 'npm run init:backend && npm run init:shared'
       - name: 'Build'
