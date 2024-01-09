@@ -6,10 +6,10 @@
   },
   "builds": [
     { "src": "dist/admin/src/server.js", "use": "@vercel/node" },
-    { "src": "dist/admin/src/configs/payload.config.js", "use": "@vercel/node" }
+    { "src": "dist/admin/src/payload.config.js", "use": "@vercel/node" }
   ],
   "routes": [{ "src": "/(.*)", "dest": "/dist/admin/src/server.js" }],
   "env": {
-    "PAYLOAD_CONFIG_PATH": "dist/admin/src/configs/payload.config.js"
+    "PAYLOAD_CONFIG_PATH": "/dist/admin/src/configs/payload.config.js"
   }
 }
