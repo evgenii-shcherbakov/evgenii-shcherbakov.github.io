@@ -3,6 +3,7 @@ import payload from 'payload';
 import { PORT, PAYLOAD_SECRET } from '@admin/constants/environment';
 import { validateEnv } from '@shared/validation/env.validation';
 import { ADMIN_ENV_VALIDATION_SCHEMA } from '@shared/constants/env-validation';
+import { resolve } from 'path';
 
 const start = async () => {
   const app = express();
@@ -11,6 +12,9 @@ const start = async () => {
     console.error(errorMessage);
     process.exit(1);
   });
+
+  app.use(express.json());
+  app.use(express.static(resolve(__dirname, '../build')));
 
   app.get('/', (_, res) => {
     res.redirect('/admin');
