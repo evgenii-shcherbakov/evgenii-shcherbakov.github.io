@@ -4,18 +4,21 @@
   "github": {
     "enabled": false
   },
-  "installCommand": "npm run deploy:install:frontend",
-  "buildCommand": "npm run deploy:build:frontend",
-  "outputDirectory": "frontend/dist/frontend",
+  "builds": [
+    {
+      "src": "api/server/index.js",
+      "use": "@vercel/node"
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/server"
+      "destination": "/api"
     }
   ],
   "functions": {
-    "frontend/src/server/index.js": {
-      "includeFiles": "frontend/dist/frontend/browser/**"
+    "api/server/index.js": {
+      "includeFiles": "dist/frontend/browser/**"
     }
   }
 }
