@@ -10,7 +10,11 @@
   "functions": {
     "backend/src/main.ts": {
       "memory": 2048,
-      "maxDuration": 30
+      "maxDuration": 10
+    },
+    "backend/dist/backend/src/main.js": {
+      "memory": 2048,
+      "maxDuration": 10
     }
   },
   "routes": [
