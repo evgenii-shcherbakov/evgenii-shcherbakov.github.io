@@ -5,12 +5,6 @@
     "enabled": false
   },
   "outputDirectory": "dist/frontend",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
-  ],
   "builds": [
     {
       "src": "api/index.js",
