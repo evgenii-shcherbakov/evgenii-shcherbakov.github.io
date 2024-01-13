@@ -4,15 +4,18 @@
   "github": {
     "enabled": false
   },
+  "installCommand": "npm run deploy:install:frontend",
+  "buildCommand": "npm run deploy:build:frontend",
+  "outputDirectory": "frontend/dist/frontend",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/frontend/api"
     }
   ],
   "functions": {
-    "api/index.js": {
-      "includeFiles": "dist/frontend/browser/**"
+    "frontend/api/index.js": {
+      "includeFiles": "frontend/dist/frontend/browser/**"
     }
   }
 }
