@@ -4,5 +4,8 @@
   "github": {
     "enabled": false
   },
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "installCommand": "npx merge-packages admin/package.json shared/package.json --output package.json && npm install",
+  "buildCommand": "cd admin && NODE_ENV=production npm run build",
+  "outputDirectory": "admin/.next"
 }
