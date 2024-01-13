@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "alias": "node scripts/paths/generate-path-configs.js",
-    "prepare:admin": "npx merge-packages admin/package.json shared/package.json --output admin/package.json",
-    "prepare:backend": "npx merge-packages backend/package.json shared/package.json --output backend/package.json",
+    "prepare:admin": "npx merge-packages admin/package.json shared/package.json package.json --output package.json",
+    "prepare:backend": "npx merge-packages backend/package.json shared/package.json package.json --output package.json",
     "prepare:frontend": "npx merge-packages frontend/package.json shared/package.json --output frontend/package.json",
     "init:admin": "cd admin && npm install && cd ..",
     "init:backend": "cd backend && npm install && cd ..",
@@ -26,8 +26,8 @@
     "start:admin": "cd admin && npm run start",
     "start:backend": "cd backend && npm run start:prod",
     "start:frontend": "cd frontend && npm run ssr",
-    "deploy:install:admin": "npx merge-packages admin/package.json shared/package.json package.json --output package.json && npm install",
-    "deploy:install:backend": "npx merge-packages backend/package.json shared/package.json package.json --output package.json && npm install",
+    "deploy:install:admin": "npm run prepare:admin && npm install",
+    "deploy:install:backend": "npm run prepare:backend && npm install && mv package.json backend/package.json",
     "deploy:build:admin": "cd admin && NODE_ENV=production npm run build",
     "deploy:build:backend": "cd backend && NODE_ENV=production npm run build"
   },
