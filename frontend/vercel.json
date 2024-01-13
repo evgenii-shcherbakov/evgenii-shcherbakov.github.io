@@ -4,12 +4,6 @@
   "github": {
     "enabled": false
   },
-  "builds": [
-    {
-      "src": "api/server/index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
