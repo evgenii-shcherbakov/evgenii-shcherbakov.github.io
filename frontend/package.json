@@ -1,6 +1,8 @@
 {
   "name": "frontend",
-  "version": "0.0.0",
+  "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,9 +11,6 @@
     "test": "ng test",
     "ssr": "node dist/frontend/server/server.mjs"
   },
-  "private": true,
-  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "@angular/animations": "^17.0.0",
     "@angular/common": "^17.0.0",

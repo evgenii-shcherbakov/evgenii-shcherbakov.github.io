@@ -4,6 +4,17 @@
   "github": {
     "enabled": false
   },
-  "builds": [{ "src": "dist/frontend/server/server.mjs", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/dist/frontend/server/server.mjs" }]
+  "builds": [
+    {
+      "src": "frontend/dist/frontend/server/server.mjs",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/frontend/server/server.mjs",
+      "methods": ["GET", "POST", "PATCH", "PUT", "DELETE"]
+    }
+  ]
 }
