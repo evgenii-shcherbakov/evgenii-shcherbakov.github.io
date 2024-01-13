@@ -42,6 +42,8 @@ jobs:
         run: 'npm run deploy:install:backend'
       - name: 'Build'
         run: 'npm run deploy:build:backend'
+      - name: 'Fucking vercel'
+        run: 'mv package.json backend/package.json'
 #      - name: 'Omit dev dependencies'
 #        run: 'npm run omit:backend'
       - name: 'Deploy'
