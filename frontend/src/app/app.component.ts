@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { onStart } from '@shared/index';
+import { onStart } from '@shared';
 
 @Component({
   selector: 'app-root',
