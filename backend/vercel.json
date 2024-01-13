@@ -7,6 +7,12 @@
   "installCommand": "npm run deploy:install:backend",
   "buildCommand": "npm run deploy:build:backend",
   "outputDirectory": "backend/dist",
+  "functions": {
+    "backend/src/main.ts": {
+      "memory": 2048,
+      "maxDuration": 30
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
