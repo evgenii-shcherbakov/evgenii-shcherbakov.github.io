@@ -46,6 +46,7 @@ export function app(): express.Express {
       .catch((err) => next(err));
   });
 
+  server.use(express.static(serverDistFolder));
   return server;
 }
 

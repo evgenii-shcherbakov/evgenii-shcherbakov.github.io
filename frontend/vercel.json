@@ -4,17 +4,18 @@
   "github": {
     "enabled": false
   },
-  "builds": [
+  "installCommand": "npm run deploy:install:frontend",
+  "buildCommand": "npm run deploy:build:frontend",
+  "outputDirectory": "frontend/dist/frontend",
+  "rewrites": [
     {
-      "src": "frontend/dist/frontend/server/server.mjs",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/server"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/frontend/server/server.mjs",
-      "methods": ["GET", "POST", "PATCH", "PUT", "DELETE"]
+  "functions": {
+    "frontend/src/server/index.js": {
+      "includeFiles": "frontend/dist/frontend/browser/**"
     }
-  ]
+  }
 }
