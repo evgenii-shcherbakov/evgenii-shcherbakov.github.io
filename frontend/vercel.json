@@ -4,9 +4,10 @@
   "github": {
     "enabled": false
   },
+  "framework": "angular",
   "installCommand": "npm run deploy:install:frontend",
   "buildCommand": "npm run deploy:build:frontend",
-  "outputDirectory": "frontend",
+  "outputDirectory": "frontend/dist/frontend",
   "rewrites": [
     {
       "source": "/(.*)",
