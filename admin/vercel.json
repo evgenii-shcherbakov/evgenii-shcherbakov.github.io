@@ -5,7 +5,7 @@
     "enabled": false
   },
   "framework": "nextjs",
-  "installCommand": "npx merge-packages admin/package.json shared/package.json --output package.json && npm install",
-  "buildCommand": "cd admin && NODE_ENV=production npm run build",
+  "installCommand": "npm run deploy:install:admin",
+  "buildCommand": "npm run deploy:build:admin",
   "outputDirectory": "admin/.next"
 }

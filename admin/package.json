@@ -1,7 +1,8 @@
 {
   "name": "admin",
-  "version": "0.0.0",
   "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

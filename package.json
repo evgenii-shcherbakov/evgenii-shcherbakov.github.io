@@ -1,6 +1,8 @@
 {
-  "name": "platform-ng",
-  "version": "0.0.0",
+  "name": "evgenii-shcherbakov.github.io",
+  "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "alias": "node scripts/paths/generate-path-configs.js",
     "prepare:admin": "npx merge-packages admin/package.json shared/package.json --output admin/package.json",
@@ -10,10 +12,10 @@
     "init:backend": "cd backend && npm install && cd ..",
     "init:frontend": "cd frontend && npm install && cd ..",
     "init:shared": "cd shared && npm install && cd ..",
+    "init": "npm install && npm run init:admin && npm run init:backend && npm run init:frontend && npm run init:shared",
     "omit:admin": "cd admin && npm install --omit=dev && cd ..",
     "omit:backend": "cd backend && npm install --omit=dev && cd ..",
     "omit:frontend": "cd frontend && npm install --omit=dev && cd ..",
-    "prepare": "npm run init:admin && npm run init:backend && npm run init:frontend && npm run init:shared",
     "dev:admin": "cd admin && npm run dev",
     "dev:backend": "cd backend && npm run start:dev",
     "dev:frontend": "cd frontend && npm run start",
@@ -23,11 +25,12 @@
     "build": "npm run build:admin && npm run build:backend && npm run build:frontend",
     "start:admin": "cd admin && npm run start",
     "start:backend": "cd backend && npm run start:prod",
-    "start:frontend": "cd frontend && npm run ssr"
+    "start:frontend": "cd frontend && npm run ssr",
+    "deploy:install:admin": "npx merge-packages admin/package.json shared/package.json package.json --output package.json && npm install",
+    "deploy:install:backend": "npx merge-packages backend/package.json shared/package.json package.json --output package.json && npm install",
+    "deploy:build:admin": "cd admin && NODE_ENV=production npm run build",
+    "deploy:build:backend": "cd backend && NODE_ENV=production npm run build"
   },
-  "private": true,
-  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "prettier": "^3.1.0"
   }
