@@ -13,8 +13,6 @@ import { onStart } from '@shared';
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  //
-
   ngOnInit(): void {
     onStart();
   }
