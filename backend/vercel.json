@@ -7,12 +7,6 @@
   "installCommand": "npm run deploy:install:backend",
   "buildCommand": "npm run deploy:build:backend",
   "outputDirectory": "backend/dist",
-  "builds": [
-    {
-      "src": "backend/dist/backend/src/main.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
