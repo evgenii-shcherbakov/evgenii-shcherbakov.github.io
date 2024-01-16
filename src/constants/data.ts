@@ -101,22 +101,22 @@ export const FULLSTACK_DATA: Data = {
                 values: ['Nest.js', 'Next.js', 'React', 'Express'],
               },
               {
-                values: ['MongoDB', 'PostgreSQL', 'Firebase'],
+                values: ['MongoDB', 'PostgreSQL', 'Mongoose', 'TypeORM'],
               },
               {
-                values: ['TypeORM'],
+                values: ['Payload CMS'],
               },
               {
                 values: ['Material UI', 'Bootstrap', 'Styled components', 'Tailwind'],
               },
               {
-                values: ['MobX', 'RTK Query', 'RxJs'],
+                values: ['MobX', 'React Query', 'RxJs'],
               },
               {
-                values: ['AWS', 'Github Actions', 'Docker', 'Bash'],
+                values: ['AWS Lambda', 'AWS CloudWatch', 'AWS Pipeline', 'AWS Cognito', 'AWS SQS'],
               },
               {
-                values: ['OOP', 'MVC', 'SOLID'],
+                values: ['Docker', 'Bash'],
               },
               {
                 values: ['Jest'],
@@ -159,63 +159,42 @@ export const FULLSTACK_DATA: Data = {
       content: {
         experienceBlocks: [
           {
+            company: 'Plan9',
+            position: 'Node.js developer',
+            projects: [
+              {
+                summary: 'Worked as Node.js developer on web3 gaming platform',
+                stack: ['TypeScript', 'Nest.js', 'Next.js', 'Payload CMS', 'MongoDB', 'Mongoose'],
+              },
+            ],
+            dates: 'Sep 2023 - current',
+          },
+          {
             company: 'yumasoft inc.',
             position: 'Node.js developer',
             projects: [
               {
                 summary:
-                  'Worked as Node.js developer on web application for managing business-clients online conversations (US Startup)',
+                  'Worked as Node.js developer on web platform for managing business-clients online conversations (US Startup)',
                 stack: [
                   'TypeScript',
                   'Node.js',
+                  'Express',
                   'MongoDB',
+                  'Mongoose',
                   'PostgreSQL',
-                  'Vue.js',
-                  'Python',
-                  'Boto3',
-                  'AWS',
+                  'AWS Lambda',
+                  'AWS CloudWatch',
+                  'AWS Pipeline',
+                  'AWS Cognito',
+                  'AWS SQS',
                   'Websocket',
                   'OpenSearch',
                   'Jest',
                 ],
               },
-              {
-                summary:
-                  'Worked as Full-Stack (Node.js) developer on social network web application',
-                stack: [
-                  'TypeScript',
-                  'Nest.js',
-                  'React.js',
-                  'PostgreSQL',
-                  'RTK Query',
-                  'Websocket',
-                ],
-              },
             ],
-            dates: 'Fed 2022 - current',
-          },
-          {
-            company: 'freelance',
-            position: 'Full-Stack developer',
-            projects: [
-              {
-                summary: 'Worked as Full-Stack developer on hotel domain web application',
-                stack: [
-                  'TypeScript',
-                  'Next.js',
-                  'Material UI',
-                  'Kotlin',
-                  'Spring Boot',
-                  'Hibernate',
-                ],
-              },
-              {
-                summary:
-                  'Worked as Full-Stack (Node.js) developer on computer club web application',
-                stack: ['TypeScript', 'Nest.js', 'Next.js', 'Bootstrap', 'TypeORM', 'PostgreSQL'],
-              },
-            ],
-            dates: 'Aug 2021 - Fed 2022',
+            dates: 'Fed 2022 - Jun 2023',
           },
         ],
       },
