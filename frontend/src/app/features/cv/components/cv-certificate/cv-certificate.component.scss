@@ -1,0 +1,11 @@
+@import '../../styles/vars';
+
+.cv-certificate {
+  &__organization {
+    color: $accent;
+  }
+
+  &__date {
+    color: $secondary;
+  }
+}

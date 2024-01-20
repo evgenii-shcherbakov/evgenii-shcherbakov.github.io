@@ -1,0 +1,7 @@
+<li class="cv-project px-2" *appCvLink="project.link">
+  @if (project.name) {
+    <p class="uppercase text-sm">{{ project.name }}</p>
+  }
+  <p class="pb-2">{{ project.summary }}</p>
+  <p class="cv-project__stack italic">{{ stack }}</p>
+</li>

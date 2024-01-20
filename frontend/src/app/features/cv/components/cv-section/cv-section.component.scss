@@ -1,0 +1,18 @@
+@import '../../styles/lib';
+@import '../../styles/vars';
+@import '../../styles/shared';
+
+.cv-section {
+  &:first-child {
+    margin-top: 1rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__header {
+    color: $secondary;
+    border-color: $divider;
+  }
+}

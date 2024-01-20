@@ -1,0 +1,25 @@
+@import '../../styles/lib';
+@import '../../styles/vars';
+
+.cv-experience {
+  &__info {
+    @include flex(row, space-between, flex-start);
+
+    @media (max-width: $paperHalfWidth) {
+      flex-direction: column;
+    }
+  }
+
+  &__company {
+    color: $accent;
+  }
+
+  &__date {
+    color: $secondary;
+
+    @media (max-width: $paperHalfWidth) {
+      margin-top: 0.5rem;
+      align-items: flex-start;
+    }
+  }
+}

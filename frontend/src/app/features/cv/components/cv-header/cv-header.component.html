@@ -1,0 +1,14 @@
+<header class="cv-header flex flex-row justify-between items-center">
+  <div class="cv-header__info">
+    <h2 class="my-1 text-3xl font-medium uppercase">{{ title }}</h2>
+    <h5 class="cv-header__job my-1 text-2xl font-medium">{{ job }}</h5>
+  </div>
+  <img
+    class="cv-header__photo rounded-full bg-center bg-no-repeat"
+    [ngSrc]="photoUrl"
+    alt="photo"
+    loading="lazy"
+    height="10"
+    width="10"
+  />
+</header>

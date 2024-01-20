@@ -1,0 +1,10 @@
+@import '../../styles/lib';
+@import '../../styles/vars';
+
+.cv-project {
+  border-left: 1px solid $divider;
+
+  &__stack {
+    color: $secondary;
+  }
+}

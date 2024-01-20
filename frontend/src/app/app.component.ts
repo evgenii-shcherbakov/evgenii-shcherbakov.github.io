@@ -11,7 +11,7 @@ import { onStart } from '@shared';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
+  readonly title = 'frontend';
 
   ngOnInit(): void {
     onStart();

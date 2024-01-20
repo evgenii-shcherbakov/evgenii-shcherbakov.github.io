@@ -1,0 +1,6 @@
+<div class="flex flex-row items-center h-8" *appCvLink="contact.link">
+  <app-cv-svg [type]="contact.name" className="mr-1.5 size-3 text-center accent-color" />
+  <div class="w-[calc(100%-1.25rem)] break-words">
+    <p class="m-0">{{ contact.value }}</p>
+  </div>
+</div>

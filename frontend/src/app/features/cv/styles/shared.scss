@@ -1,0 +1,23 @@
+@import './vars';
+
+* {
+  box-sizing: border-box;
+  transition: 0.3s ease-out;
+}
+
+input {
+  border: 0;
+  outline: none;
+}
+
+ul {
+  list-style: circle;
+}
+
+.accent-color {
+  color: $accent;
+}
+
+.hidden {
+  display: none;
+}

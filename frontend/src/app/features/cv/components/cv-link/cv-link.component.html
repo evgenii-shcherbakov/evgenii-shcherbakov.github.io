@@ -1,0 +1,5 @@
+<a [href]="url" target="_blank" *ngIf="url">
+  <ng-container [ngTemplateOutlet]="template"></ng-container>
+</a>
+
+<ng-template *ngIf="!url" [ngTemplateOutlet]="template"></ng-template>

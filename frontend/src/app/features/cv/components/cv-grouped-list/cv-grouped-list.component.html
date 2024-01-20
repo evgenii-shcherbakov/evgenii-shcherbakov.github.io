@@ -1,0 +1,7 @@
+<div class="m-0 flex flex-wrap">
+  <ul class="list-disc ml-0 pl-3 font-medium">
+    @for (group of groups; track group) {
+      <li class="py-1">{{ group.join(', ') }}</li>
+    }
+  </ul>
+</div>
