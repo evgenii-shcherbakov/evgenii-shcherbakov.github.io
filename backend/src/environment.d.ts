@@ -1,4 +1,4 @@
-import { BackendEnvironment } from '@shared/types/env-validation';
+import { BackendEnvironment } from '@shared/environment/types/env-validation';
 
 declare global {
   namespace NodeJS {

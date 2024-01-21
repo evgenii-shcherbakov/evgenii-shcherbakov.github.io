@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { Logger } from '@nestjs/common';
-import { BackendEnvironment } from '@shared/types/env-validation';
-import { configureSwagger } from '@backend/configs/swagger.config';
+import { BackendEnvironment } from '@shared/environment/types/env-validation';
+import { configureSwagger } from '@backend/app/configs/swagger.config';
 import { AppModule } from './app.module';
 
 async function bootstrap() {

@@ -7,7 +7,7 @@ import {
   CvLanguage,
   CvProject,
 } from '@shared/cv/models/cv.model';
-import { DEFAULT_LINK, DEFAULT_PLACEHOLDER } from '@shared/constants/common';
+import { DEFAULT_LINK, DEFAULT_PLACEHOLDER } from '@shared/core/constants/common';
 
 export const DEFAULT_CV_CONTACT: CvContact = {
   name: DEFAULT_PLACEHOLDER,

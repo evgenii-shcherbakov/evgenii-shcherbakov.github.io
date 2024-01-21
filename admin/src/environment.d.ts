@@ -1,4 +1,4 @@
-import { AdminEnvironment } from '@shared/types/env-validation';
+import { AdminEnvironment } from '@shared/environment/types/env-validation';
 
 declare global {
   namespace NodeJS {

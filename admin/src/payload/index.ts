@@ -1,7 +1,7 @@
 import { Payload, getPayload } from 'payload/dist/payload';
 import config from './configs/payload.config';
-import { validateEnv } from '@shared/validation/env.validation';
-import { ADMIN_ENV_VALIDATION_SCHEMA } from '@shared/constants/env-validation';
+import { validateEnv } from '@shared/environment/validation/env.validation';
+import { ADMIN_ENV_VALIDATION_SCHEMA } from '@shared/environment/constants/env-validation';
 
 validateEnv(ADMIN_ENV_VALIDATION_SCHEMA, (errorMessage: string) => {
   console.error(errorMessage);

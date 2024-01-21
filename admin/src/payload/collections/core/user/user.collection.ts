@@ -1,10 +1,13 @@
 import { CollectionConfig } from 'payload/types';
+import { AdminGroupsEnum } from '@admin/payload/enums/admin-groups.enum';
 
 export const UserCollection: CollectionConfig = {
   slug: 'users',
   auth: true,
+  timestamps: true,
   admin: {
     useAsTitle: 'email',
+    group: AdminGroupsEnum.CORE,
   },
   fields: [
     // Email added by default

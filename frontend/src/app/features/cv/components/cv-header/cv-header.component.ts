@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { DEFAULT_PLACEHOLDER } from '@shared/constants/common';
+import { DEFAULT_PLACEHOLDER } from '@shared/core/constants/common';
 
 @Component({
   selector: 'app-cv-header',
