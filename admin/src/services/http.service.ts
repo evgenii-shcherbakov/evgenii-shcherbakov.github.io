@@ -1,4 +1,5 @@
 import { AUTH_TOKEN } from '@admin/constants/environment';
+import { HttpHeadersEnum } from '@shared/core/enums/http-headers.enum';
 
 type RequestParams<Body = Record<string, any>> = Omit<RequestInit, 'body'> & {
   body?: Body;
@@ -11,7 +12,7 @@ export class HttpService {
   private get headers(): HeadersInit {
     return {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${AUTH_TOKEN}`,
+      [HttpHeadersEnum.AUTHORIZATION]: `Bearer ${AUTH_TOKEN}`,
     };
   }
 

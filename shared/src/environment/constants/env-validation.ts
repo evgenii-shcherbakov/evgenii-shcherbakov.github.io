@@ -19,6 +19,9 @@ export const BACKEND_ENV_VALIDATION_SCHEMA = {
   ...COMMON_ENV_VALIDATION_SCHEMA,
   DATABASE_URL: joi.string().required(),
   JWT_SECRET: joi.string().required(),
+  ADMIN_URL: joi.string().required(),
+  FRONTEND_URL: joi.string().required(),
+  BACKEND_URL: joi.string().required(),
 };
 
 export const BACKEND_ENV_VALIDATOR = joi.object(BACKEND_ENV_VALIDATION_SCHEMA);

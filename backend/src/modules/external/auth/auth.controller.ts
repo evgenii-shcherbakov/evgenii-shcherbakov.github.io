@@ -4,6 +4,8 @@ import { GenerateTokenRequestDto } from '@backend/modules/external/auth/dto/gene
 import { Public } from '@backend/modules/external/auth/decorators/public.decorator';
 import { GenerateTokenResponseDto } from '@backend/modules/external/auth/dto/generate-token-response.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AllowedOrigins } from '@backend/modules/external/cors/decorators/allowed-origins.decorator';
+import { RequestOriginEnum } from '@backend/modules/external/cors/enums/request-origin.enum';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -11,6 +13,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Public()
+  @AllowedOrigins(RequestOriginEnum.ADMIN)
   @ApiOperation({ summary: 'Generate new JWT token' })
   @ApiResponse({ type: GenerateTokenResponseDto, status: HttpStatus.OK })
   @Post('generate-token')

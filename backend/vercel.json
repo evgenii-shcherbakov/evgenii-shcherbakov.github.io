@@ -16,5 +16,8 @@
       "dest": "/backend/dist/backend/src/main.js",
       "methods": ["GET", "POST", "PATCH", "PUT", "DELETE"]
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
