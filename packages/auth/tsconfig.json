@@ -1,0 +1,7 @@
+{
+  "extends": "@shared/configs/base.tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+  },
+  "exclude": ["node_modules", "dist"]
+}

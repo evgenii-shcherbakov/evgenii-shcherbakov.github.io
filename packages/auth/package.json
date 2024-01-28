@@ -1,0 +1,23 @@
+{
+  "name": "@shared/auth",
+  "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@shared/configs": "*",
+    "typescript": "latest"
+  }
+}

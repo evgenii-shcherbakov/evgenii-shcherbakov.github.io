@@ -45,6 +45,7 @@ build
 dist
 *.env
 package-lock.json
+.turbo
 
 # temporary
 previous

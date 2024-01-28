@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "paths": {
-      "@backend": [
+      "@admin": [
         "src"
       ],
-      "@backend/*": [
+      "@admin/*": [
         "src/*"
+      ],
+      "payload/generated-types": [
+        "src/payload/types/payload-types.ts"
       ]
     }
   },

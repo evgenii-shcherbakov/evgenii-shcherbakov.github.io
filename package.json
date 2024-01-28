@@ -3,6 +3,7 @@
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
+  "workspaces": ["packages/*", "apps/*"],
   "scripts": {
     "alias": "node scripts/paths/generate-path-configs.js",
     "prepare:admin": "npx merge-packages admin/package.json shared/package.json package.json --output package.json",
@@ -30,9 +31,14 @@
     "deploy:install:frontend": "npm run prepare:frontend && npm install && cp package.json frontend/package.json",
     "deploy:build:admin": "cd admin && NODE_ENV=production npm run build",
     "deploy:build:backend": "cd backend && NODE_ENV=production npm run build",
-    "deploy:build:frontend": "cd frontend && NODE_ENV=production npm run build"
+    "deploy:build:frontend": "cd frontend && NODE_ENV=production npm run build",
+
+    "turbo:dev": "turbo run dev",
+    "turbo:build": "turbo run build",
+    "turbo:deploy": "turbo run deploy"
   },
   "devDependencies": {
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "turbo": "^1.11.3"
   }
 }
