@@ -6,7 +6,7 @@ on:
       # - 'main'
       - 'feature/turborepo-migration'
     paths:
-      - 'apps/admin-express/**'
+      - 'apps/admin-next/**'
       - 'packages/**'
 
 env:
@@ -42,13 +42,13 @@ jobs:
 #      - name: 'Move vercel.json file'
 #        run: 'mv admin/vercel.json vercel.json'
       - name: 'Move vercel.json file'
-        run: 'mv apps/admin-express/vercel.json vercel.json'
-      - name: 'Install dependencies'
-        run: 'npm install'
-      - name: 'Build'
-        run: 'npm run build:admin'
-      - name: 'Move admin entrypoint'
-        run: 'mv apps/admin-express/api api'
+        run: 'mv apps/admin-next/vercel.json vercel.json'
+#      - name: 'Install dependencies'
+#        run: 'npm install'
+#      - name: 'Build'
+#        run: 'npm run build:admin'
+#      - name: 'Move admin entrypoint'
+#        run: 'mv apps/admin-express/api api'
       - name: 'Deploy'
         uses: 'amondnet/vercel-action@v20'
         with:

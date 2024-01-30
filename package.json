@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "turbo run dev",
-    "build:admin": "turbo run build --filter=admin-express",
+    "build:admin:express": "turbo run build --filter=admin-express",
+    "build:admin:next": "turbo run build --filter=admin-next",
     "build:backend": "turbo run build --filter=backend",
     "build": "turbo run build"
   },
