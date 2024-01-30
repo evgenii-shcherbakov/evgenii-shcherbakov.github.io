@@ -4,6 +4,8 @@ import { resolve } from 'path';
 import { ADMIN_ENV_VALIDATION_SCHEMA, validateEnv } from '@shared/environment';
 import { PAYLOAD_SECRET, PORT } from '@admin/constants/environment';
 
+//
+
 const lambda = async () => {
   const app = express();
 
