@@ -5,7 +5,6 @@ import { webpackBundler } from '@payloadcms/bundler-webpack';
 import { slateEditor } from '@payloadcms/richtext-slate';
 import { buildConfig } from 'payload/config';
 import { DATABASE_URL } from '@admin/constants/environment';
-import pathsConfig from '../../tsconfig.paths.json';
 import { UserCollection } from '@admin/collections/core/user/user.collection';
 import { CORE_COLLECTIONS } from '@admin/collections/core';
 
@@ -16,7 +15,11 @@ const payloadConfig = buildConfig({
     user: UserCollection.slug,
     bundler: webpackBundler(),
     webpack: (config) => {
-      const aliasObject: TSPathsObject = pathsConfig.compilerOptions.paths;
+      const aliasObject: TSPathsObject = {
+        '@admin': ['src'],
+        '@admin/*': ['src/*'],
+        'payload/generated-types': ['src/types/payload-types.ts'],
+      };
 
       config.resolve = {
         ...(config.resolve ?? {}),
