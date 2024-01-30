@@ -4,10 +4,10 @@ on:
   push:
     branches:
       # - 'main'
-      - 'feature/ng-migration'
+      - 'feature/turborepo-migration'
     paths:
-      - 'backend/**'
-      - 'shared/**'
+      - 'apps/backend/**'
+      - 'packages/**'
 
 env:
   VERCEL_TOKEN: '${{ secrets.VERCEL_TOKEN }}'
@@ -39,11 +39,11 @@ jobs:
           projectName: '${{ env.VERCEL_BACKEND_APP_NAME }}'
           envVariableKeys: '${{ env.BACKEND_ENV_VARIABLES }}'
       - name: 'Move vercel.json file'
-        run: 'mv backend/vercel.json vercel.json'
+        run: 'mv apps/backend/vercel.json vercel.json'
       - name: 'Install dependencies'
-        run: 'npm run deploy:install:backend'
+        run: 'npm install'
       - name: 'Build'
-        run: 'npm run deploy:build:backend'
+        run: 'npm run build:backend'
       - name: 'Deploy'
         uses: 'amondnet/vercel-action@v20'
         with:
