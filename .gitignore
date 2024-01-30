@@ -46,6 +46,7 @@ dist
 *.env
 package-lock.json
 .turbo
+.vercel
 
 # temporary
 previous

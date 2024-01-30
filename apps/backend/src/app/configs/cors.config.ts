@@ -44,5 +44,5 @@ export const corsOptionsFactory = (
 export const corsOptions: CorsOptions = {
   origin: '*',
   credentials: true,
-  allowedHeaders: [HttpHeadersEnum.AUTHORIZATION],
+  allowedHeaders: [HttpHeadersEnum.AUTHORIZATION, HttpHeadersEnum.CONTENT_TYPE],
 };

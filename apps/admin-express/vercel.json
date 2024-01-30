@@ -1,0 +1,32 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "public": false,
+  "github": {
+    "enabled": false
+  },
+  "builds": [
+    {
+      "src": "apps/admin-express/dist/main.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "apps/admin-express/build/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "apps/admin-express/public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/apps/admin-express/dist/main.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PAYLOAD_CONFIG_PATH": "dist/configs/payload.config.js"
+  }
+}

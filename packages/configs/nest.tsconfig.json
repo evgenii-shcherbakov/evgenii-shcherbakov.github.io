@@ -1,5 +1,6 @@
 {
   "extends": "./base.tsconfig.json",
+  "display": "Nest.js",
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@admin": [
+        "src"
+      ],
+      "@admin/*": [
+        "src/*"
+      ],
+      "payload/generated-types": [
+        "src/types/payload-types.ts"
+      ]
+    }
+  },
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  }
+}

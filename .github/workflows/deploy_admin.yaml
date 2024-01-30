@@ -4,10 +4,10 @@ on:
   push:
     branches:
       # - 'main'
-      - 'feature/ng-migration'
+      - 'feature/turborepo-migration'
     paths:
-      - 'admin/**'
-      - 'shared/**'
+      - 'apps/admin-express/**'
+      - 'packages/**'
 
 env:
   VERCEL_TOKEN: '${{ secrets.VERCEL_TOKEN }}'
@@ -39,8 +39,14 @@ jobs:
           token: '${{ env.VERCEL_TOKEN }}'
           projectName: '${{ env.VERCEL_ADMIN_APP_NAME }}'
           envVariableKeys: '${{ env.ADMIN_ENV_VARIABLES }}'
+#      - name: 'Move vercel.json file'
+#        run: 'mv admin/vercel.json vercel.json'
       - name: 'Move vercel.json file'
-        run: 'mv admin/vercel.json vercel.json'
+        run: 'mv apps/admin-express/vercel.json vercel.json'
+      - name: 'Install dependencies'
+        run: 'npm install'
+      - name: 'Build'
+        run: 'npm run build:admin'
       - name: 'Deploy'
         uses: 'amondnet/vercel-action@v20'
         with:
