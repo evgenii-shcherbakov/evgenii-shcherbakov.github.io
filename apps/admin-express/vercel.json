@@ -5,6 +5,7 @@
   "github": {
     "enabled": false
   },
+  "framework": null,
   "builds": [
     {
       "src": "apps/admin-express/dist/main.js",
