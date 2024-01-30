@@ -6,26 +6,20 @@
     "enabled": false
   },
   "framework": null,
-  "builds": [
+  "installCommand": "npm install",
+  "buildCommand": "npm run build:admin",
+  "outputDirectory": "apps/admin-express",
+  "rewrites": [
     {
-      "src": "apps/admin-express/dist/main.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "apps/admin-express/build/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "apps/admin-express/public/**",
-      "use": "@vercel/static"
+      "source": "/(.*)",
+      "destination": "/api"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/apps/admin-express/dist/main.js"
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "apps/admin-express/build/**"
     }
-  ],
+  },
   "env": {
     "NODE_ENV": "production",
     "PAYLOAD_CONFIG_PATH": "dist/configs/payload.config.js"

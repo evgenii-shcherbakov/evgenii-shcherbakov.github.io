@@ -47,8 +47,8 @@ jobs:
         run: 'npm install'
       - name: 'Build'
         run: 'npm run build:admin'
-      - name: 'Merge package.json files'
-        run: 'npx merge-packages apps/admin-express/package.json package.json --output package.json'
+      - name: 'Move admin entrypoint'
+        run: 'mv apps/admin-express/api api'
       - name: 'Deploy'
         uses: 'amondnet/vercel-action@v20'
         with:
