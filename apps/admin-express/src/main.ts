@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { ADMIN_ENV_VALIDATION_SCHEMA, validateEnv } from '@shared/environment';
 import { PAYLOAD_SECRET, PORT } from '@admin/constants/environment';
 
-const lambda = () => {
+const lambda = async () => {
   const app = express();
 
   validateEnv(ADMIN_ENV_VALIDATION_SCHEMA, (errorMessage: string) => {
@@ -19,26 +19,26 @@ const lambda = () => {
     res.redirect('/admin');
   });
 
-  // await payload.init({
-  //   secret: PAYLOAD_SECRET,
-  //   express: app,
-  //   onInit: async () => {
-  //     payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-  //   },
-  // });
+  await payload.init({
+    secret: PAYLOAD_SECRET,
+    express: app,
+    onInit: async () => {
+      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+    },
+  });
 
   app.listen(PORT, () => {
-    payload
-      .init({
-        secret: PAYLOAD_SECRET,
-        express: app,
-        onInit: async () => {
-          payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-        },
-      })
-      .then(() => {
-        payload.logger.info(`Admin app started...`);
-      });
+    // payload
+    //   .init({
+    //     secret: PAYLOAD_SECRET,
+    //     express: app,
+    //     onInit: async () => {
+    //       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+    //     },
+    //   })
+    //   .then(() => {
+    payload.logger.info(`Admin app started...`);
+    // });
   });
 
   return app;
