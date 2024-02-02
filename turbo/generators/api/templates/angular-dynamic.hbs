@@ -1,5 +1,9 @@
 const server = import('{{ path }}');
 
+export const config = {
+  runtime: 'nodejs',
+};
+
 try {
   console.log(server);
   console.log(server.app);
@@ -7,4 +11,4 @@ try {
   console.log(`Can't check`);
 }
 
-module.exports = server.app();
+export default server.app;
