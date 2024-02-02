@@ -5,7 +5,7 @@
   "github": {
     "enabled": false
   },
-  "framework": null,
+  "framework": "angular",
   "installCommand": "npm install",
   "buildCommand": "npm run build:frontend",
   "outputDirectory": "apps/frontend/dist/frontend",
