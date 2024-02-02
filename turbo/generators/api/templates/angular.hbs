@@ -1,9 +1,3 @@
-const { app } = import('{{ path }}');
-
-try {
-  console.log(app);
-} catch (e) {
-  console.log(`Can't check`);
-}
-
-module.exports = app;
+module.exports = (async () => {
+  return (await import('{{ path }}')).app;
+})();
