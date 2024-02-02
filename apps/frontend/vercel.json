@@ -16,7 +16,7 @@
     }
   ],
   "functions": {
-    "api/index.js": {
+    "api/index.mjs": {
       "includeFiles": "apps/frontend/dist/frontend/**"
     }
   }
