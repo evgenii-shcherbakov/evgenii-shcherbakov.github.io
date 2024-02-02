@@ -11,7 +11,7 @@
   "outputDirectory": "apps/frontend/dist/frontend",
   "rewrites": [
     {
-      "source": "/",
+      "source": "/(.*)",
       "destination": "/api"
     }
   ],
