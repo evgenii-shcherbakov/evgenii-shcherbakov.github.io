@@ -1,4 +1,4 @@
-const server = await import('{{ path }}');
+const server = import('../apps/frontend/dist/frontend/server/server.mjs');
 
 try {
   console.log(server);
@@ -7,4 +7,4 @@ try {
   console.log(`Can't check`);
 }
 
-export default server.app;
+module.exports = server.app;

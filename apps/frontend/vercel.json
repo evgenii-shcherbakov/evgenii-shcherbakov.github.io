@@ -11,12 +11,19 @@
   "outputDirectory": "apps/frontend/dist/frontend",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/",
       "destination": "/api"
+    },
+    {
+      "source": "/module",
+      "destination": "/api/module"
     }
   ],
   "functions": {
     "api/index.js": {
+      "includeFiles": "apps/frontend/dist/frontend/**"
+    },
+    "api/module/index.mjs": {
       "includeFiles": "apps/frontend/dist/frontend/**"
     }
   }

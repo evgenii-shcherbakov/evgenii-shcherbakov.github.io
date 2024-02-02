@@ -1,4 +1,4 @@
-const server = await import('{{ path }}');
+const server = await import('../../apps/frontend/dist/frontend/server/server.mjs');
 
 try {
   console.log(server);
