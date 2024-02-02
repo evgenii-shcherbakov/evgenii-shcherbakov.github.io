@@ -1,4 +1,4 @@
-const { app } = import('frontend/dist/frontend/server/server.mjs');
+const { app } = import('../apps/frontend/dist/frontend/server/server.mjs');
 
 try {
   console.log(app, typeof app);
