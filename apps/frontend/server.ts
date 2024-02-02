@@ -14,7 +14,7 @@ export function app(): express.Express {
 
   const commonEngine = new CommonEngine();
 
-  // 2
+  // 3
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
