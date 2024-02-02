@@ -75,6 +75,7 @@ jobs:
         uses: 'dorny/paths-filter@v3'
         id: 'changes-filter'
         with:
+          base: '${{ github.ref }}'
           filters: |
             backend:
               - 'apps/backend/**'
