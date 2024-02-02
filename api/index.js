@@ -6,4 +6,4 @@ try {
   console.log(`Shit`);
 }
 
-module.exports = app;
+export default app;
