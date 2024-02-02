@@ -6,25 +6,23 @@
     "enabled": false
   },
   "framework": "angular",
-  "installCommand": "npm install",
-  "buildCommand": "npm run build:frontend",
-  "outputDirectory": "apps/frontend/dist/frontend",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/",
-      "destination": "/api"
+      "src": "apps/frontend/dist/frontend/server/server.mjs",
+      "use": "@vercel/node"
     },
     {
-      "source": "/module",
-      "destination": "/api/module"
+      "src": "apps/frontend/dist/frontend/**",
+      "use": "@vercel/static"
     }
   ],
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "apps/frontend/dist/frontend/**"
-    },
-    "api/module/index.mjs": {
-      "includeFiles": "apps/frontend/dist/frontend/**"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/apps/frontend/dist/frontend/server/server.mjs"
     }
+  ],
+  "env": {
+    "NODE_ENV": "production"
   }
 }
