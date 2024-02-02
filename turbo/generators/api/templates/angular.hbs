@@ -1,4 +1,4 @@
-const server = import('{{ path }}');
+const { app } = import('{{ path }}');
 
 try {
   console.log(app);
@@ -6,4 +6,4 @@ try {
   console.log(`Can't check`);
 }
 
-export default app;
+module.exports = app;

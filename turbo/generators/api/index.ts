@@ -33,7 +33,7 @@ export const apiGenerator = (plop: PlopTypes.NodePlopAPI) => {
     actions: [
       {
         type: 'add',
-        path: '{{ turbo.paths.root }}/api/index.mjs',
+        path: '{{ turbo.paths.root }}/api/index.js',
         templateFile: join(__dirname, 'templates/{{ preset }}.hbs'),
       },
     ],
