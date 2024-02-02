@@ -2,6 +2,8 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts"],
       "outputs": ["dist/frontend/**"]
     }
   }

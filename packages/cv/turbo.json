@@ -1,7 +1,12 @@
 {
   "extends": ["//"],
   "pipeline": {
+    "dev": {
+      "inputs": ["src/**/*.ts"],
+      "outputs": ["dist/**"]
+    },
     "build": {
+      "inputs": ["src/**/*.ts"],
       "outputs": ["dist/**"]
     }
   }

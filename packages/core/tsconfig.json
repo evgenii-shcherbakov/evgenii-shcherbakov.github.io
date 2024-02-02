@@ -1,7 +1,7 @@
 {
-  "extends": "@shared/configs/base.tsconfig.json",
+  "extends": "@shared/ts-configs/package/esm.tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist/mjs"
   },
   "exclude": ["node_modules", "dist"]
 }

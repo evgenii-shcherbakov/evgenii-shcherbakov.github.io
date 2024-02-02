@@ -26,7 +26,9 @@ export type CvLanguage = {
 export type CvProject = {
   link?: string;
   name?: string;
-  summary: string;
+  domain: string;
+  role: string;
+  responsibilities: string[];
   stack: string[];
 };
 

@@ -46,7 +46,9 @@ export const DEFAULT_CV_PROJECT: CvProject = {
   link: DEFAULT_LINK,
   name: DEFAULT_PLACEHOLDER,
   stack: [],
-  summary: DEFAULT_PLACEHOLDER,
+  domain: DEFAULT_PLACEHOLDER,
+  responsibilities: [],
+  role: DEFAULT_PLACEHOLDER,
 };
 
 export const DEFAULT_CV: Cv = {

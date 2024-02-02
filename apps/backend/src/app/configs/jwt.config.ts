@@ -1,7 +1,7 @@
 import { JwtModuleOptions, JwtModuleAsyncOptions } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { BackendEnvironment } from '@shared/environment';
-import { JWT_EXPIRE_TIME, JWT_IGNORE_EXPIRATION } from '@backend/app/constants/configuration';
+import { JWT_EXPIRE_TIME, JWT_IGNORE_EXPIRATION } from '@app/constants/configuration';
 
 const jwtModuleOptionsFactory = (
   configService: ConfigService<BackendEnvironment>,

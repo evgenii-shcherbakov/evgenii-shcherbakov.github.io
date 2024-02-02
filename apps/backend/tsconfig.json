@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -18,6 +17,16 @@
     "noFallthroughCasesInSwitch": false,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@app": ["src/app"],
+      "@app/*": ["src/app/*"],
+      "@domains": ["src/domains"],
+      "@domains/*": ["src/domains/*"],
+      "@modules": ["src/modules"],
+      "@modules/*": ["src/modules/*"]
+    },
   },
-  "include": ["src"]
+  "include": ["src"],
 }

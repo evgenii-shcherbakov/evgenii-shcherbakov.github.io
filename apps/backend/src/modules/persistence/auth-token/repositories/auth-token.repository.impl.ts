@@ -1,9 +1,9 @@
-import { AuthTokenRepository } from '@backend/domains/auth/repositories/auth-token.repository';
+import { AuthTokenRepository } from '@domains/auth/repositories/auth-token.repository';
 import { InjectModel } from '@nestjs/mongoose';
 import {
   AuthTokenDocument,
   AuthTokenSymbol,
-} from '@backend/modules/persistence/auth-token/schemas/auth-token.schema';
+} from '@modules/persistence/auth-token/schemas/auth-token.schema';
 import { Model } from 'mongoose';
 
 export class AuthTokenRepositoryImpl implements AuthTokenRepository {

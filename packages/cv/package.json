@@ -3,25 +3,32 @@
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**"
-  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "types": "src/index.ts",
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js"
+    }
   },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "typecheck": "tsc --noEmit"
+    "dev": "nodemon",
+    "build:esm": "tsc --project tsconfig.json",
+    "build:cjs": "tsc --project tsconfig-cjs.json",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run patch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist/*",
+    "patch": "npm run --workspace=@shared/scripts patch-package cv"
   },
   "dependencies": {
     "@shared/core": "*"
   },
   "devDependencies": {
-    "@shared/configs": "*",
+    "@shared/scripts": "*",
+    "@shared/ts-configs": "*",
     "@types/node": "^20.11.8",
+    "nodemon": "^3.0.3",
     "typescript": "latest"
   }
 }

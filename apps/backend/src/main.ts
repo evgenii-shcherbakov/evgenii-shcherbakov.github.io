@@ -2,9 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { BackendEnvironment } from '@shared/environment';
-import { configureSwagger } from '@backend/app/configs/swagger.config';
-import { AppModule } from './app.module';
-import { corsOptions } from '@backend/app/configs/cors.config';
+import { configureSwagger } from '@app/configs/swagger.config';
+import { AppModule } from '@/app.module';
+import { corsOptions } from '@app/configs/cors.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -18,4 +18,5 @@ async function bootstrap() {
 
   await app.listen(port, () => logger.log(`Backend started at port ${port}...`));
 }
+
 bootstrap();
