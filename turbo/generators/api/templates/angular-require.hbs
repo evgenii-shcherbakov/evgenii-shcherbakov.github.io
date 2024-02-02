@@ -1,3 +1,10 @@
 const server = require('{{ path }}');
 
-module.exports = server.app;
+try {
+  console.log(server);
+  console.log(server.app);
+} catch (e) {
+  console.log(`Can't check`);
+}
+
+module.exports = server.app();
