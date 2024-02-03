@@ -8,10 +8,9 @@ describe('CvGroupedListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvGroupedListComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvGroupedListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvGroupedListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -2,7 +2,15 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "inputs": ["src/**/*.ts"],
+      "inputs": [
+        "public/**",
+        "src/**",
+        ".eslintrc.js",
+        "index.html",
+        "package.json",
+        "tsconfig*.json",
+        "vite.config.ts"
+      ],
       "outputs": ["dist/**"]
     }
   }

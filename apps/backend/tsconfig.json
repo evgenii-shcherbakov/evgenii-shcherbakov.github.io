@@ -26,7 +26,7 @@
       "@domains/*": ["src/domains/*"],
       "@modules": ["src/modules"],
       "@modules/*": ["src/modules/*"]
-    },
+    }
   },
-  "include": ["src"],
+  "include": ["src"]
 }

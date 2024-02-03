@@ -8,10 +8,9 @@ describe('CvHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvHeaderComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvHeaderComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

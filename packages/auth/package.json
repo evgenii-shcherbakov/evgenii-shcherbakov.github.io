@@ -4,27 +4,28 @@
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
   "main": "dist/cjs/index.js",
-  "module": "dist/mjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "exports": {
     ".": {
-      "import": "./dist/mjs/index.js",
+      "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     }
   },
   "scripts": {
+    "format": "prettier src --write --config ../../.prettierrc",
     "dev": "nodemon",
     "build:esm": "tsc --project tsconfig.json",
     "build:cjs": "tsc --project tsconfig-cjs.json",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run patch",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist/*",
-    "patch": "npm run --workspace=@shared/scripts patch-package auth"
+    "patch": "npm run --workspace=@shared/scripts patch-package auth",
+    "clean": "rm -rf dist/*"
   },
   "devDependencies": {
     "@shared/scripts": "*",
     "@shared/ts-configs": "*",
     "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
     "typescript": "latest"
   }
 }

@@ -10,7 +10,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "ssr": "node dist/frontend/server/server.mjs",
-    "dev": "npm run start"
+    "dev": "npm run start",
+    "format": "prettier src --write --config ../../.prettierrc"
   },
   "dependencies": {
     "@angular/animations": "^17.1.2",
@@ -45,6 +46,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.4.33",
+    "prettier": "^3.2.4",
     "tailwindcss": "^3.4.1",
     "typescript": "~5.2.2"
   }

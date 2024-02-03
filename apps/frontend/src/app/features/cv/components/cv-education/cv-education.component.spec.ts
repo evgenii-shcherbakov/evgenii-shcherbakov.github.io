@@ -8,10 +8,9 @@ describe('CvEducationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvEducationComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvEducationComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvEducationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

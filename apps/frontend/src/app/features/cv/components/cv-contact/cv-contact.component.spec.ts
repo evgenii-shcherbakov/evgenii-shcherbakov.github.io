@@ -8,10 +8,9 @@ describe('CvContactComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvContactComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvContactComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvContactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

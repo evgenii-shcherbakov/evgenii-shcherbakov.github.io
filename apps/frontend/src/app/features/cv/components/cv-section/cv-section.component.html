@@ -3,7 +3,9 @@
 </section>
 
 <ng-template #contentProvided>
-  <h3 class="cv-section__header uppercase text-xl font-medium border-b-2 border-solid mb-1">{{ section?.type }}</h3>
+  <h3 class="cv-section__header uppercase text-xl font-medium border-b-2 border-solid mb-1">
+    {{ section?.type }}
+  </h3>
   <div class="my-1 font-medium text-xs" [ngSwitch]="section?.type">
     <ng-container *ngSwitchCase="CvSectionTypeEnum.CONTACTS">
       @for (contact of contacts; track contact) {

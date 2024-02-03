@@ -8,10 +8,9 @@ describe('CvParagraphComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvParagraphComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvParagraphComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvParagraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

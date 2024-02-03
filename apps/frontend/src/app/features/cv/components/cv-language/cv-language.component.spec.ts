@@ -8,10 +8,9 @@ describe('CvLanguageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvLanguageComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvLanguageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvLanguageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

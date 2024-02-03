@@ -36,6 +36,9 @@ env:
 
   #  Frontend
 
+  #  Github
+  GITHUB_BASE_URL: 'https://${{ github.repository_owner }}.github.io'
+
 jobs:
   Deploy:
     runs-on: 'ubuntu-latest'
@@ -160,3 +163,15 @@ jobs:
       - name: 'Check frontend build status'
         if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
         run: '[[ ${{ steps.frontend-build-state.outputs.status }} == "READY" ]] && echo Success build! || exit 1'
+
+        # GITHUB
+
+#      - name: 'Prepare frontend github version'
+#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
+#        run: 'chmod +x scripts/pipeline/github/prepare.sh && scripts/pipeline/github/prepare.sh'
+#      - name: 'Deploy frontend github version'
+#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
+#        uses: 'peaceiris/actions-gh-pages@v3'
+#        with:
+#          github_token: '${{ secrets.GITHUB_TOKEN }}'
+#          publish_dir: './apps/frontend/dist/frontend/browser'

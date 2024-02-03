@@ -8,10 +8,9 @@ describe('CvWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvWrapperComponent]
-    })
-    .compileComponents();
-    
+      imports: [CvWrapperComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CvWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

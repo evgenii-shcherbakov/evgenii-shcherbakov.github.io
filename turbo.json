@@ -9,10 +9,6 @@
     "build": {
       "dependsOn": ["^build"]
     },
-    "format": {
-      "dependsOn": ["^format"]
-    },
-    "start": {},
-    "typecheck": {}
+    "format": {}
   }
 }

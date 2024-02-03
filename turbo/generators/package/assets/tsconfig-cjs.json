@@ -1,7 +1,7 @@
 {
   "extends": "@shared/ts-configs/package/cjs.tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist/cjs"
   },
   "exclude": ["node_modules", "dist"]
 }
