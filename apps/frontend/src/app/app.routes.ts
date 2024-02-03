@@ -10,8 +10,8 @@ export const routes: Routes = [
   },
   {
     path: 'cv',
-    title: 'Evgenii Shcherbakov CV',
-    redirectTo: 'cv/default',
+    loadComponent: () =>
+      import('./features/cv/pages/cv-page/cv-page.component').then((mod) => mod.CvPageComponent),
   },
   {
     path: 'cv/:cvAlias',

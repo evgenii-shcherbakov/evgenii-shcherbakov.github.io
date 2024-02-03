@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CvProject } from '@shared/cv';
-import { CvProjectComponent } from '@frontend/app/features/cv/components/cv-project/cv-project.component';
+import { CvProjectComponent } from '@/app/features/cv/components/cv-project/cv-project.component';
 
 @Component({
   selector: 'app-cv-project-list',

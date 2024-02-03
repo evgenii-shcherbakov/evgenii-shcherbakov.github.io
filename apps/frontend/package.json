@@ -5,12 +5,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npx ng serve",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "ssr": "node dist/frontend/server/server.mjs",
-    "dev": "ng serve"
+    "dev": "npm run start"
   },
   "dependencies": {
     "@angular/animations": "^17.1.2",

@@ -2,8 +2,14 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["src/**/*.ts"],
+      "inputs": [
+        "src/**",
+        "angular.json",
+        "package.json",
+        "server.ts",
+        "tailwind.config.js",
+        "tsconfig*.json"
+      ],
       "outputs": ["dist/frontend/**"]
     }
   }

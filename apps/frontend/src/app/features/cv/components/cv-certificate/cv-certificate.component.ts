@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CvCertificate, DEFAULT_CV_CERTIFICATE } from '@shared/cv';
-import { CvLinkDirective } from '@frontend/app/features/cv/directives/cv-link.directive';
+import { CvLinkDirective } from '@/app/features/cv/directives/cv-link.directive';
 
 @Component({
   selector: 'app-cv-certificate',

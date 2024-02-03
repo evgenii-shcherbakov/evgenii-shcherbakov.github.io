@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CvLinkDirective } from '@frontend/app/features/cv/directives/cv-link.directive';
+import { CvLinkDirective } from '@/app/features/cv/directives/cv-link.directive';
 import { CvProject, DEFAULT_CV_PROJECT } from '@shared/cv';
 
 @Component({

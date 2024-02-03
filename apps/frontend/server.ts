@@ -13,8 +13,12 @@ export function app(): express.Express {
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
   const commonEngine = new CommonEngine();
+  const isProduction = process.env['NODE_ENV'] === 'production';
 
-  // 10
+  server.get('/robots.txt', (_, res) => {
+    res.type('text/plain');
+    res.send(isProduction ? 'User-agent: *\nDisallow:' : 'User-agent: *\nDisallow: /');
+  });
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);

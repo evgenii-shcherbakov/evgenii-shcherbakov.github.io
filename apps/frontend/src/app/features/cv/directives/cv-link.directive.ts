@@ -1,5 +1,5 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
-import { CvLinkComponent } from '@frontend/app/features/cv/components/cv-link/cv-link.component';
+import { CvLinkComponent } from '@/app/features/cv/components/cv-link/cv-link.component';
 
 @Directive({
   selector: '[appCvLink]',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
-import { Metadata } from '@frontend/app/shared/seo/models/metadata.model';
+import { Metadata } from '@/app/shared/seo/models/metadata.model';
 
 @Injectable()
 export class MetadataService {

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CvHeaderComponent } from '@frontend/app/features/cv/components/cv-header/cv-header.component';
-import { GetCvService } from '@frontend/app/features/cv/services/get-cv.service';
-import { CvSectionComponent } from '@frontend/app/features/cv/components/cv-section/cv-section.component';
-import { CvWrapperComponent } from '@frontend/app/features/cv/components/cv-wrapper/cv-wrapper.component';
+import { CvHeaderComponent } from '@/app/features/cv/components/cv-header/cv-header.component';
+import { GetCvService } from '@/app/features/cv/services/get-cv.service';
+import { CvSectionComponent } from '@/app/features/cv/components/cv-section/cv-section.component';
+import { CvWrapperComponent } from '@/app/features/cv/components/cv-wrapper/cv-wrapper.component';
 import { Cv, DEFAULT_CV } from '@shared/cv';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { MetadataService } from '@frontend/app/shared/seo/services/metadata.service';
-import { SeoModule } from '@frontend/app/shared/seo/seo.module';
+import { MetadataService } from '@/app/shared/seo/services/metadata.service';
+import { SeoModule } from '@/app/shared/seo/seo.module';
 
 @Component({
   selector: 'app-cv',

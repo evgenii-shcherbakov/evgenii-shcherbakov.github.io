@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SeoModule } from '@frontend/app/shared/seo/seo.module';
-import { MetadataService } from '@frontend/app/shared/seo/services/metadata.service';
+import { SeoModule } from '@/app/shared/seo/seo.module';
+import { MetadataService } from '@/app/shared/seo/services/metadata.service';
 
 @Component({
   selector: 'app-home-page',

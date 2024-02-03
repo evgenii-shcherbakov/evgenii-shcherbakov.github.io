@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
-import { CvContactComponent } from '@frontend/app/features/cv/components/cv-contact/cv-contact.component';
-import { CvGroupedListComponent } from '@frontend/app/features/cv/components/cv-grouped-list/cv-grouped-list.component';
-import { CvCertificateComponent } from '@frontend/app/features/cv/components/cv-certificate/cv-certificate.component';
-import { CvLanguageComponent } from '@frontend/app/features/cv/components/cv-language/cv-language.component';
-import { CvParagraphComponent } from '@frontend/app/features/cv/components/cv-paragraph/cv-paragraph.component';
-import { CvProjectListComponent } from '@frontend/app/features/cv/components/cv-project-list/cv-project-list.component';
-import { CvExperienceComponent } from '@frontend/app/features/cv/components/cv-experience/cv-experience.component';
-import { CvEducationComponent } from '@frontend/app/features/cv/components/cv-education/cv-education.component';
+import { CvContactComponent } from '@/app/features/cv/components/cv-contact/cv-contact.component';
+import { CvGroupedListComponent } from '@/app/features/cv/components/cv-grouped-list/cv-grouped-list.component';
+import { CvCertificateComponent } from '@/app/features/cv/components/cv-certificate/cv-certificate.component';
+import { CvLanguageComponent } from '@/app/features/cv/components/cv-language/cv-language.component';
+import { CvParagraphComponent } from '@/app/features/cv/components/cv-paragraph/cv-paragraph.component';
+import { CvProjectListComponent } from '@/app/features/cv/components/cv-project-list/cv-project-list.component';
+import { CvExperienceComponent } from '@/app/features/cv/components/cv-experience/cv-experience.component';
+import { CvEducationComponent } from '@/app/features/cv/components/cv-education/cv-education.component';
 import {
   CvCertificate,
   CvCertificationsSection,
