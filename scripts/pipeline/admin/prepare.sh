@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo Move vercel.json...
-mv apps/admin-next/vercel.json vercel.json
+mv apps/admin/vercel.json vercel.json

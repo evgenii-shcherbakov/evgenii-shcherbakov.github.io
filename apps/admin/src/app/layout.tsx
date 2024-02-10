@@ -10,8 +10,6 @@ export const metadata: Metadata = {
   description: 'Admin panel for platform project',
 };
 
-//
-
 export default function RootLayout({
   children,
 }: Readonly<{

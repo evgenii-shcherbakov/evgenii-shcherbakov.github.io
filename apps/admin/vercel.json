@@ -5,8 +5,11 @@
   "github": {
     "enabled": false
   },
-  "framework": "vite",
+  "framework": "nextjs",
   "installCommand": "npm install",
   "buildCommand": "npm run build:admin",
-  "outputDirectory": "apps/admin/dist"
+  "outputDirectory": "apps/admin/.next",
+  "env": {
+    "NODE_ENV": "production"
+  }
 }

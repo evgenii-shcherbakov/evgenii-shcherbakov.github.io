@@ -31,9 +31,6 @@ env:
   BCRYPT_SALT: '${{ secrets.BCRYPT_SALT }}'
 
   #  Admin
-#  VITE_DATABASE_URL: '${{ secrets.DATABASE_URL }}'
-#  VITE_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
-#  VITE_AUTH_TOKEN: '${{ secrets.AUTH_TOKEN }}'
   NEXT_PUBLIC_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
 
   #  Frontend
@@ -88,7 +85,7 @@ jobs:
             backend:
               - 'apps/backend/**'
             admin:
-              - 'apps/admin-next/**'
+              - 'apps/admin/**'
             frontend:
               - 'apps/frontend/**'
             packages:

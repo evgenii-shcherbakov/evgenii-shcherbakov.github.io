@@ -4,14 +4,17 @@
     "build": {
       "inputs": [
         "public/**",
-        "src/**",
-        ".eslintrc.js",
-        "index.html",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        ".eslintrc.json",
+        "next.config.mjs",
+        "next-env.d.ts",
         "package.json",
-        "tsconfig*.json",
-        "vite.config.ts"
+        "postcss.config.js",
+        "tailwind.config.ts",
+        "tsconfig*.json"
       ],
-      "outputs": ["dist/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     }
   }
 }
