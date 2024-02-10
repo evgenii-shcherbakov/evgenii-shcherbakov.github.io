@@ -30,9 +30,10 @@ env:
   BACKEND_URL: '${{ secrets.BACKEND_URL }}'
 
   #  Admin
-  VITE_DATABASE_URL: '${{ secrets.DATABASE_URL }}'
-  VITE_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
-  VITE_AUTH_TOKEN: '${{ secrets.AUTH_TOKEN }}'
+#  VITE_DATABASE_URL: '${{ secrets.DATABASE_URL }}'
+#  VITE_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
+#  VITE_AUTH_TOKEN: '${{ secrets.AUTH_TOKEN }}'
+  NEXT_PUBLIC_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
 
   #  Frontend
 

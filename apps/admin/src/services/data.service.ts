@@ -27,7 +27,7 @@ import { BACKEND_URL } from '@/constants/environment';
 // interface Provider extends DataProvider {}
 
 export class DataService {
-  private readonly httpClient = new HttpService(`${BACKEND_URL}/internal`);
+  private readonly httpClient = new HttpService(`${BACKEND_URL}`);
   private readonly DEFAULT_PAGE = 1;
   private readonly DEFAULT_ITEMS = 10;
 
@@ -65,7 +65,7 @@ export class DataService {
     params: GetManyParams
   ): Promise<GetManyResult<RecordType>> {
     const query = {
-      filter: JSON.stringify({ id: params.ids }),
+      ids: JSON.stringify(params.ids),
     };
 
     return this.httpClient.get(resource, { query });

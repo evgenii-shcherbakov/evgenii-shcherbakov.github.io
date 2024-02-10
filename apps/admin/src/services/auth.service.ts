@@ -6,26 +6,30 @@ import { AuthTokenResponse } from '@shared/auth';
 type AuthData = {
   email: string;
   password: string;
+  isRegister: boolean;
 };
 
 export class AuthService {
-  private readonly httpClient = new HttpService(`${BACKEND_URL}/internal/auth`);
+  private readonly httpClient = new HttpService(`${BACKEND_URL}/auth`);
   private readonly TOKEN_KEY = 'auth-token';
 
   private static cachedInstance: AuthService | undefined;
 
   async login(data: AuthData) {
     try {
-      const { token } = await this.httpClient.post<AuthTokenResponse>('login', { body: data });
+      const { token } = await this.httpClient.post<AuthTokenResponse>(
+        data.isRegister ? 'register' : 'login',
+        { body: data }
+      );
 
       if (!token) {
-        return Promise.reject();
+        return Promise.reject(new Error('No jwt token in server response'));
       }
 
       localStorage.setItem(this.TOKEN_KEY, token);
       return Promise.resolve();
-    } catch (e) {
-      return Promise.reject();
+    } catch (exception) {
+      return Promise.reject(exception);
     }
   }
 
@@ -35,7 +39,9 @@ export class AuthService {
   }
 
   async checkAuth() {
-    return localStorage.getItem(this.TOKEN_KEY) ? Promise.resolve() : Promise.reject();
+    return localStorage.getItem(this.TOKEN_KEY)
+      ? Promise.resolve()
+      : Promise.reject(new Error('JWT token is missing'));
   }
 
   async checkError(error: any) {
@@ -51,10 +57,9 @@ export class AuthService {
 
   async getIdentity(): Promise<UserIdentity> {
     try {
-      const user: UserIdentity = await this.httpClient.get('me');
-      return Promise.resolve(user);
-    } catch (e) {
-      return Promise.reject();
+      return this.httpClient.get('me');
+    } catch (exception) {
+      return Promise.reject(exception);
     }
   }
 

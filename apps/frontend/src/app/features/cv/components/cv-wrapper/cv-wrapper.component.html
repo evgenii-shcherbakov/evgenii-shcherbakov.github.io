@@ -1,13 +1,13 @@
 <main class="cv-wrapper w-full overflow-y-auto h-screen">
-  <div class="cv-wrapper__content font-medium my-0 mx-auto flex flex-col align-middle">
+  <div class="cv-wrapper__content font-medium mx-auto flex flex-col align-middle">
     <app-cv-header [title]="data.title" [job]="data.job" />
     <div class="cv-wrapper__container flex flex-row justify-between">
-      <aside class="cv-wrapper__row py-4 cv-wrapper__aside">
+      <aside class="cv-wrapper__row cv-wrapper__aside">
         @for (asideSection of data.aside; track asideSection) {
           <app-cv-section [section]="asideSection" />
         }
       </aside>
-      <article class="cv-wrapper__row py-4 cv-wrapper__article">
+      <article class="cv-wrapper__row cv-wrapper__article">
         @for (contentSection of data.content; track contentSection) {
           <app-cv-section [section]="contentSection" />
         }

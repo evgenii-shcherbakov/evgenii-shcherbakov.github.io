@@ -54,7 +54,7 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI) => {
       {
         type: 'add',
         path: `${packagePath}/src/index.ts`,
-        templateFile: join(__dirname, 'templates/index.ts.hbs'),
+        templateFile: join(__dirname, 'assets/index.ts'),
       },
     ],
   });

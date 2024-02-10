@@ -20,12 +20,12 @@
     "paths": {
       "@": ["src"],
       "@/*": ["src/*"],
-      "@app": ["src/app"],
-      "@app/*": ["src/app/*"],
-      "@domains": ["src/domains"],
-      "@domains/*": ["src/domains/*"],
-      "@modules": ["src/modules"],
-      "@modules/*": ["src/modules/*"]
+      "@domain": ["src/layers/domain"],
+      "@domain/*": ["src/layers/domain/*"],
+      "@application": ["src/layers/application"],
+      "@application/*": ["src/layers/application/*"],
+      "@infrastructure": ["src/layers/infrastructure"],
+      "@infrastructure/*": ["src/layers/infrastructure/*"],
     }
   },
   "include": ["src"]

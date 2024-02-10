@@ -8,6 +8,7 @@ export const BACKEND_ENV_VALIDATION_SCHEMA = {
   ADMIN_URL: joi.string().required(),
   FRONTEND_URL: joi.string().required(),
   BACKEND_URL: joi.string().required(),
+  BCRYPT_SALT: joi.number().required(),
 };
 
 export type BackendEnvironment = {

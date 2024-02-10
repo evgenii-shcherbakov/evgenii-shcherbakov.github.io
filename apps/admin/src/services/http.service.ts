@@ -1,5 +1,5 @@
 import { HttpHeadersEnum } from '@shared/core';
-import { AUTH_TOKEN } from '@/constants/environment';
+// import { AUTH_TOKEN } from '@/constants/environment';
 
 type RequestParams<Body = Record<string, any>> = Omit<RequestInit, 'body'> & {
   body?: Body;
@@ -10,9 +10,11 @@ export class HttpService {
   constructor(private readonly baseUrl = '') {}
 
   private get headers(): HeadersInit {
+    const token = localStorage.getItem('auth-token');
+
     return {
       [HttpHeadersEnum.CONTENT_TYPE]: 'application/json',
-      [HttpHeadersEnum.AUTHORIZATION]: `Bearer ${AUTH_TOKEN}`,
+      [HttpHeadersEnum.AUTHORIZATION]: `Bearer ${token}`,
     };
   }
 
@@ -42,6 +44,19 @@ export class HttpService {
         ...(params.headers ?? {}),
       },
     });
+
+    if (response.status >= 400) {
+      let errorMessage: string;
+
+      try {
+        const errorBody = await response.json();
+        errorMessage = errorBody.message;
+      } catch (exception) {
+        errorMessage = 'Unknown exception';
+      }
+
+      throw new Error(errorMessage);
+    }
 
     return response.json();
   }

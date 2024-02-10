@@ -2,10 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { backendEnvValidator } from '@shared/environment';
 import { MongooseModule } from '@nestjs/mongoose';
-import { mongooseModuleAsyncOptions } from '@app/configs/database.config';
-import { CoreModule } from '@modules/core/core.module';
-import { AdminModule } from '@modules/admin/admin.module';
-import { PersistenceModule } from '@modules/persistence/persistence.module';
+import { mongooseModuleAsyncOptions } from '@/configs/database.config';
+import { ApiModule } from '@infrastructure/api/api.module';
+import { PersistenceModule } from '@infrastructure/persistence/persistence.module';
 
 @Module({
   imports: [
@@ -14,8 +13,7 @@ import { PersistenceModule } from '@modules/persistence/persistence.module';
       validationSchema: backendEnvValidator.nest,
     }),
     MongooseModule.forRootAsync(mongooseModuleAsyncOptions),
-    CoreModule,
-    AdminModule,
+    ApiModule,
     PersistenceModule,
   ],
   controllers: [],

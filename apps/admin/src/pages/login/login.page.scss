@@ -1,0 +1,30 @@
+.content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__label {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    width: 100%;
+    height: 2rem;
+  }
+}
+
+.actions {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__btn {
+    width: 40%;
+  }
+}
