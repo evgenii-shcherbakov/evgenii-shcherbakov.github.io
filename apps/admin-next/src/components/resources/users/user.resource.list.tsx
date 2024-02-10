@@ -22,9 +22,19 @@ const Actions = () => (
 );
 
 const filters = [
-  <SearchFilter alwaysOn source="email" />,
-  <DateFilter label="Created after" strategy="biggerOrEqualFilter" source="createdAt" />,
-  <DateFilter label="Created before" strategy="smallerOrEqualFilter" source="createdAt" />,
+  <SearchFilter key="filter-1" alwaysOn source="email" />,
+  <DateFilter
+    key="filter-2"
+    label="Created after"
+    strategy="biggerOrEqualFilter"
+    source="createdAt"
+  />,
+  <DateFilter
+    key="filter-3"
+    label="Created before"
+    strategy="smallerOrEqualFilter"
+    source="createdAt"
+  />,
 ];
 
 export const UserResourceList: FC = () => (

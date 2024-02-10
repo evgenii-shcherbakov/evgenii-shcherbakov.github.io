@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button, Login, Notification } from 'react-admin';
 import { useLoginPage } from '@/components/pages/login/use-login-page';
 
-export const LoginPage: FC = () => {
+const LoginPage: FC = () => {
   const {
     email,
     password,
@@ -62,3 +62,5 @@ export const LoginPage: FC = () => {
     </Login>
   );
 };
+
+export default LoginPage;

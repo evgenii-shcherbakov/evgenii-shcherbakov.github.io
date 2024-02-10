@@ -7,11 +7,11 @@ import {
   UserResourceCreate,
   UserResourceShow,
 } from '@components/resources/users';
-import { LoginPage } from '@components/pages/login/login.page';
+import LoginPage from '@components/pages/login/login.page';
 import { authProvider, dataProvider } from '@features/http';
 import { darkTheme, lightTheme } from '@features/theme';
 
-export const AdminPage: FC = () => {
+const AdminPage: FC = () => {
   return (
     <Admin
       dataProvider={dataProvider}
@@ -32,3 +32,5 @@ export const AdminPage: FC = () => {
     </Admin>
   );
 };
+
+export default AdminPage;
