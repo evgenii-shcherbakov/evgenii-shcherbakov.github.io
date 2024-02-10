@@ -87,7 +87,7 @@ jobs:
             backend:
               - 'apps/backend/**'
             admin:
-              - 'apps/admin/**'
+              - 'apps/admin-next/**'
             frontend:
               - 'apps/frontend/**'
             packages:
