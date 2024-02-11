@@ -1,6 +1,6 @@
-import * as joi from 'joi';
+import Joi from 'joi';
 
 export const COMMON_ENV_VALIDATION_SCHEMA = {
-  PORT: joi.alternatives(joi.string(), joi.number()),
-  NODE_ENV: joi.string().valid('development', 'production').optional(),
+  PORT: Joi.alternatives(Joi.string(), Joi.number()).optional(),
+  NODE_ENV: Joi.string().valid('development', 'production').optional(),
 };

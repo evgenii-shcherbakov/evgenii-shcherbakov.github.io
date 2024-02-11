@@ -1,0 +1,17 @@
+{
+  "name": "deploy",
+  "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy:environment": "ts-node src/environment/index.ts"
+  },
+  "dependencies": {
+    "@shared/environment": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}

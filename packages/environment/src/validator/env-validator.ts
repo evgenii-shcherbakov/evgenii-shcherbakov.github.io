@@ -1,5 +1,5 @@
 import { EnvValidationErrorHandler, EnvValidationHandler } from './types';
-import * as joi from 'joi';
+import Joi from 'joi';
 
 export class EnvValidator {
   private readonly errorHandlers: EnvValidationErrorHandler[] = [];
@@ -18,7 +18,7 @@ export class EnvValidator {
   }
 
   validate() {
-    const result = joi.object(this.schema).validate(process.env, { allowUnknown: true });
+    const result = Joi.object(this.schema).validate(process.env, { allowUnknown: true });
 
     if (!result.error) {
       this.successHandlers.forEach((handler) => handler());
@@ -35,7 +35,11 @@ export class EnvValidator {
     this.errorHandlers.forEach((handler) => handler(errorMessage));
   }
 
-  get nest(): joi.ObjectSchema {
-    return joi.object(this.schema);
+  toJoiValidator(): Joi.ObjectSchema {
+    return Joi.object(this.schema);
+  }
+
+  toSchema() {
+    return this.schema;
   }
 }

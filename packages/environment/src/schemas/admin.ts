@@ -1,4 +1,4 @@
-import * as joi from 'joi';
+import Joi from 'joi';
 import { COMMON_ENV_VALIDATION_SCHEMA } from './common';
 
 export const ADMIN_ENV_VALIDATION_SCHEMA = {
@@ -9,8 +9,8 @@ export const ADMIN_ENV_VALIDATION_SCHEMA = {
   // NEXT_PUBLIC_BACKEND_URL: joi.string(),
   // VITE_AUTH_TOKEN: joi.string().required(),
   // NEXT_PUBLIC_AUTH_TOKEN: joi.string(),
-  NEXT_PUBLIC_BACKEND_URL: joi.string().required(),
-  DATABASE_URL: joi.string().required(),
+  NEXT_PUBLIC_BACKEND_URL: Joi.string().required(),
+  DATABASE_URL: Joi.string().required(),
 };
 
 export type AdminEnvironment = {

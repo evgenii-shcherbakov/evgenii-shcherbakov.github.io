@@ -10,7 +10,7 @@ import { PersistenceModule } from '@infrastructure/persistence/persistence.modul
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      validationSchema: backendEnvValidator.nest,
+      validationSchema: backendEnvValidator.toJoiValidator(),
     }),
     MongooseModule.forRootAsync(mongooseModuleAsyncOptions),
     ApiModule,
