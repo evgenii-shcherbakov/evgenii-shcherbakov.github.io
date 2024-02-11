@@ -15,7 +15,8 @@
     "build": "turbo run build",
     "gen:package": "turbo gen package && npm install",
     "gen:api": "turbo gen api",
-    "deploy:environment": "turbo run deploy:environment --filter=deploy"
+    "deploy:environment": "turbo run deploy:environment --filter=deploy",
+    "deploy:project": "turbo run deploy:project --filter=deploy --"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.9",

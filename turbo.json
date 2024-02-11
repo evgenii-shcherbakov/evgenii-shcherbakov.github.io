@@ -12,6 +12,9 @@
     "format": {},
     "deploy:environment": {
       "dependsOn": ["^build"]
+    },
+    "deploy:project": {
+      "dependsOn": ["^build"]
     }
   }
 }

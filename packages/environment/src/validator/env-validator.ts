@@ -30,7 +30,7 @@ export class EnvValidator {
       '',
     );
 
-    const errorMessage = `Environment validation failed: ${errorsList}`;
+    const errorMessage = `environment validation failed: ${errorsList}`;
 
     this.errorHandlers.forEach((handler) => handler(errorMessage));
   }

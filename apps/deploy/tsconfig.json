@@ -1,8 +1,23 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@constants": ["src/constants"],
+      "@constants/*": ["src/constants/*"],
+      "@modules": ["src/modules"],
+      "@modules/*": ["src/modules/*"],
+      "@shared": ["src/shared"],
+      "@shared/*": ["src/shared/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"]
+    }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }
