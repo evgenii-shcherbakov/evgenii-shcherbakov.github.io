@@ -9,11 +9,6 @@ for TARGET in $TARGETS
     VALUE=$(echo "$DEPLOYMENT_TARGETS" | jq -r --arg key "$TARGET" '.[$key]')
 
     if [ "$VALUE" = "true" ]; then
-      echo "$TARGET prebuild..."
-      PREBUILD_SCRIPT="scripts/vercel/$TARGET/prepare.sh"
-      chmod +x $PREBUILD_SCRIPT
-      $PREBUILD_SCRIPT
-
       echo "$TARGET deployment..."
       npm run deploy:project $TARGET
     fi

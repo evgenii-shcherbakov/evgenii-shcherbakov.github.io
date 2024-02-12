@@ -6,5 +6,6 @@ export type DeployProject = {
   path: string;
   appName: string;
   includes: string[];
+  prepareCommand?: string;
   validator: EnvValidator;
 };

@@ -37,6 +37,10 @@ export const PROJECTS: DeployProject[] = [
     includes: [`${APPS_ROOT}/backend/dist`],
     appName: process.env.VERCEL_BACKEND_APP_NAME ?? '',
     validator: backendEnvValidator,
+    prepareCommand: `
+      echo Build...
+      npm run build:backend
+    `,
   },
   {
     id: process.env.VERCEL_FRONTEND_PROJECT_ID ?? '',
@@ -45,6 +49,10 @@ export const PROJECTS: DeployProject[] = [
     includes: [],
     appName: process.env.VERCEL_FRONTEND_APP_NAME ?? '',
     validator: frontendEnvValidator,
+    prepareCommand: `
+      echo Generate frontend serverless function entrypoint...
+      npx turbo gen api --args angular ../apps/frontend/dist/frontend/server/server.mjs
+    `,
   },
 ];
 
