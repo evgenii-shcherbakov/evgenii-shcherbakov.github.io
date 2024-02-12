@@ -55,6 +55,8 @@ jobs:
           node-version: 18
       - name: 'Install dependencies'
         run: 'npm install'
+      - name: 'Check'
+        run: 'echo ${{ github.event }}'
 
       # UPDATE DEPLOY ENVIRONMENT
 
