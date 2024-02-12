@@ -4,9 +4,8 @@
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "deploy:environment": "ts-node src/modules/environment/index.ts",
-    "deploy:project": "ts-node src/modules/deployment/index.ts",
-    "deploy": "ts-node src/index.ts"
+    "deploy": "ts-node src/index.ts",
+    "format": "prettier src --write --config ../../.prettierrc"
   },
   "dependencies": {
     "@shared/core": "*",
@@ -19,6 +18,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5"

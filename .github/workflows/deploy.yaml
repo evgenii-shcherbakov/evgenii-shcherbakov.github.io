@@ -57,32 +57,6 @@ jobs:
           node-version: 18
       - name: 'Install dependencies'
         run: 'npm install'
-
-      # CHECK CHANGED FILES
-
-#      - name: 'Check changed files'
-#        uses: 'dorny/paths-filter@v3'
-#        id: 'changes-filter'
-#        with:
-#          base: '${{ github.ref }}'
-#          filters: |
-#            backend:
-#              - 'apps/backend/**'
-#            admin:
-#              - 'apps/admin/**'
-#            frontend:
-#              - 'apps/frontend/**'
-#            packages:
-#              - 'packages/**'
-
-      # VERCEL DEPLOYMENT
-
-#      - name: 'Vercel deployment'
-#        run: |
-#          chmod +x scripts/vercel/deploy.sh
-#          scripts/vercel/deploy.sh
-#        env:
-#          DEPLOYMENT_TARGETS: '${{ toJson(steps.changes-filter.outputs) }}'
       - name: 'Vercel deployment'
         run: 'npm run deploy'
 

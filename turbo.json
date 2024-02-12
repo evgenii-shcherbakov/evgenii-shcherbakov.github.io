@@ -10,12 +10,6 @@
       "dependsOn": ["^build"]
     },
     "format": {},
-    "deploy:environment": {
-      "dependsOn": ["^build"]
-    },
-    "deploy:project": {
-      "dependsOn": ["^build"]
-    },
     "deploy": {
       "dependsOn": ["^build"]
     }

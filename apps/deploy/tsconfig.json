@@ -17,13 +17,7 @@
       "@di": ["src/di"],
       "@di/*": ["src/di/*"],
       "@modules": ["src/modules"],
-      "@modules/*": ["src/modules/*"],
-      "@services": ["src/services"],
-      "@services/*": ["src/services/*"],
-      "@shared": ["src/shared"],
-      "@shared/*": ["src/shared/*"],
-      "@types": ["src/types"],
-      "@types/*": ["src/types/*"]
+      "@modules/*": ["src/modules/*"]
     }
   },
   "include": ["src"],
