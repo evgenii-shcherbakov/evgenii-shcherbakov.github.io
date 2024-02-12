@@ -5,7 +5,6 @@ import { COMMAND_SERVICE, CommandService } from '@modules/command/services/comma
 import { CommandServiceImpl } from '@modules/command/services/impl/command.service.impl';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
 import { ConfigServiceImpl } from '@modules/config/services/impl/config.service.impl';
-import { DeploymentEnvironment } from '@/deploy-environment';
 import { DEPLOY_SERVICE, DeployService } from '@modules/deploy/service/deploy.service';
 import { DeployServiceImpl } from '@modules/deploy/service/impl/deploy.service.impl';
 import {
@@ -21,6 +20,7 @@ import { MAIN_SERVICE, MainService } from '@modules/main/services/main.service';
 import { MainServiceImpl } from '@modules/main/services/impl/main.service.impl';
 import { PROJECT_SERVICE, ProjectService } from '@modules/project/services/project.service';
 import { ProjectServiceImpl } from '@modules/project/services/impl/project.service.impl';
+import { DeployEnvironment } from '@shared/environment';
 
 export class AppModule {
   private static readonly container = this.createContainer();
@@ -30,7 +30,7 @@ export class AppModule {
 
     container.bind<ApiService>(API_SERVICE).to(ApiServiceImpl);
     container.bind<CommandService>(COMMAND_SERVICE).to(CommandServiceImpl);
-    container.bind<ConfigService<DeploymentEnvironment>>(CONFIG_SERVICE).to(ConfigServiceImpl);
+    container.bind<ConfigService<DeployEnvironment>>(CONFIG_SERVICE).to(ConfigServiceImpl);
     container.bind<DeployService>(DEPLOY_SERVICE).to(DeployServiceImpl);
     container.bind<EnvironmentService>(ENVIRONMENT_SERVICE).to(EnvironmentServiceImpl);
     container.bind<GitService>(GIT_SERVICE).to(GitServiceImpl);

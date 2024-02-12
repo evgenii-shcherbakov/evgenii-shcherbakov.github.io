@@ -13,14 +13,14 @@ import { REPOSITORY_ROOT } from '@constants/paths';
 import { VercelConfig } from '@vercel/client/dist/types';
 import { join } from 'node:path';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
-import { DeploymentEnvironment } from '@/deploy-environment';
+import { DeployEnvironment } from '@shared/environment';
 
 @injectable()
 export class DeployServiceImpl implements DeployService {
   constructor(
     @inject(GIT_SERVICE) private readonly gitService: GitService,
     @inject(LOG_SERVICE) private readonly logService: LogService,
-    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeploymentEnvironment>,
+    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeployEnvironment>,
   ) {}
 
   async deployProject(project: DeployProjectEntity): Promise<void> {

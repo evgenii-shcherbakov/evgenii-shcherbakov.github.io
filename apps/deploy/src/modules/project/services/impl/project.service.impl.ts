@@ -1,16 +1,20 @@
 import { ProjectService } from '@modules/project/services/project.service';
 import { inject, injectable } from 'inversify';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
-import { DeploymentEnvironment } from '@/deploy-environment';
 import { DeployProjectEntity } from '@modules/project/entities/deploy-project.entity';
 import { join, resolve } from 'node:path';
 import { APPS_ROOT } from '@constants/paths';
-import { adminEnvValidator, backendEnvValidator, frontendEnvValidator } from '@shared/environment';
+import {
+  adminEnvValidator,
+  backendEnvValidator,
+  DeployEnvironment,
+  frontendEnvValidator,
+} from '@shared/environment';
 
 @injectable()
 export class ProjectServiceImpl implements ProjectService {
   constructor(
-    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeploymentEnvironment>,
+    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeployEnvironment>,
   ) {}
 
   getProjects(): DeployProjectEntity[] {

@@ -4,13 +4,13 @@ import { GitEntity } from '@modules/git/entity/git.entity';
 import getRepoInfo from 'git-repo-info';
 import { REPOSITORY_ROOT } from '@constants/paths';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
-import { DeploymentEnvironment } from '@/deploy-environment';
 import { COMMAND_SERVICE, CommandService } from '@modules/command/services/command.service';
+import { DeployEnvironment } from '@shared/environment';
 
 @injectable()
 export class GitServiceImpl implements GitService {
   constructor(
-    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeploymentEnvironment>,
+    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeployEnvironment>,
     @inject(COMMAND_SERVICE) private readonly commandService: CommandService,
   ) {}
 
