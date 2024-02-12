@@ -15,6 +15,9 @@
     },
     "deploy:project": {
       "dependsOn": ["^build"]
+    },
+    "deploy": {
+      "dependsOn": ["^build"]
     }
   }
 }

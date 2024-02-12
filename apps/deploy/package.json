@@ -5,14 +5,17 @@
   "license": "MIT",
   "scripts": {
     "deploy:environment": "ts-node src/modules/environment/index.ts",
-    "deploy:project": "ts-node src/modules/deployment/index.ts"
+    "deploy:project": "ts-node src/modules/deployment/index.ts",
+    "deploy": "ts-node src/index.ts"
   },
   "dependencies": {
     "@shared/core": "*",
     "@shared/environment": "*",
     "@vercel/client": "^13.1.2",
     "dotenv": "^16.4.2",
-    "git-repo-info": "^2.1.1"
+    "git-repo-info": "^2.1.1",
+    "inversify": "^6.0.2",
+    "reflect-metadata": "^0.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
