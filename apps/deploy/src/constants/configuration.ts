@@ -23,18 +23,9 @@ apiService.interceptors.request.use((config) => {
 
 export const PROJECTS: DeployProject[] = [
   {
-    id: process.env.VERCEL_ADMIN_PROJECT_ID ?? '',
-    name: 'admin',
-    path: `${APPS_ROOT}/admin`,
-    includes: [],
-    appName: process.env.VERCEL_ADMIN_APP_NAME ?? '',
-    validator: adminEnvValidator,
-  },
-  {
     id: process.env.VERCEL_BACKEND_PROJECT_ID ?? '',
     name: 'backend',
     path: `${APPS_ROOT}/backend`,
-    includes: [`${APPS_ROOT}/backend/dist`],
     appName: process.env.VERCEL_BACKEND_APP_NAME ?? '',
     validator: backendEnvValidator,
     prepareCommand: `
@@ -43,10 +34,16 @@ export const PROJECTS: DeployProject[] = [
     `,
   },
   {
+    id: process.env.VERCEL_ADMIN_PROJECT_ID ?? '',
+    name: 'admin',
+    path: `${APPS_ROOT}/admin`,
+    appName: process.env.VERCEL_ADMIN_APP_NAME ?? '',
+    validator: adminEnvValidator,
+  },
+  {
     id: process.env.VERCEL_FRONTEND_PROJECT_ID ?? '',
     name: 'frontend',
     path: `${APPS_ROOT}/frontend`,
-    includes: [],
     appName: process.env.VERCEL_FRONTEND_APP_NAME ?? '',
     validator: frontendEnvValidator,
     prepareCommand: `

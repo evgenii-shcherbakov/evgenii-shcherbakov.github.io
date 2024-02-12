@@ -8,8 +8,6 @@ on:
     paths:
       - 'apps/**'
       - 'packages/**'
-      - 'scripts/**'
-      - '.github/workflows/deploy.yaml'
 
 env:
   #  Vercel
@@ -56,11 +54,6 @@ jobs:
       - name: 'Install dependencies'
         run: 'npm install'
 
-      # UPDATE DEPLOY ENVIRONMENT
-
-#      - name: 'Update deploy environment'
-#        run: 'npm run deploy:environment'
-
       # CHECK CHANGED FILES
 
       - name: 'Check changed files'
@@ -87,83 +80,11 @@ jobs:
         env:
           DEPLOYMENT_TARGETS: '${{ toJson(steps.changes-filter.outputs) }}'
 
-      # BACKEND
-
-#      - name: 'Prepare backend'
-#        if: steps.changes-filter.outputs.backend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: 'chmod +x scripts/pipeline/backend/prepare.sh && scripts/pipeline/backend/prepare.sh'
-#      - name: 'Deploy backend'
-#        if: steps.changes-filter.outputs.backend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        uses: 'amondnet/vercel-action@v20'
-#        with:
-#          vercel-token: '${{ env.VERCEL_TOKEN }}'
-#          vercel-args: '--prod --yes'
-#          vercel-org-id: '${{ env.VERCEL_BACKEND_ORGANIZATION_ID }}'
-#          vercel-project-id: '${{ env.VERCEL_BACKEND_PROJECT_ID }}'
-#      - name: 'Get backend deploy info'
-#        if: steps.changes-filter.outputs.backend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        id: 'backend-build-state'
-#        uses: 'justincase-jp/vercel-preview-url-alias@0.2.1'
-#        with:
-#          vercel_access_token: '${{ env.VERCEL_TOKEN }}'
-#          vercel_project_id: '${{ env.VERCEL_BACKEND_PROJECT_ID }}'
-#      - name: 'Check backend build status'
-#        if: steps.changes-filter.outputs.backend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: '[[ ${{ steps.backend-build-state.outputs.status }} == "READY" ]] && echo Success build! || exit 1'
-
-      # ADMIN
-
-#      - name: 'Prepare admin'
-#        if: steps.changes-filter.outputs.admin == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: 'chmod +x scripts/pipeline/admin/prepare.sh && scripts/pipeline/admin/prepare.sh'
-#      - name: 'Deploy admin'
-#        if: steps.changes-filter.outputs.admin == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        uses: 'amondnet/vercel-action@v20'
-#        with:
-#          vercel-token: '${{ env.VERCEL_TOKEN }}'
-#          vercel-args: '--prod --yes'
-#          vercel-org-id: '${{ env.VERCEL_ADMIN_ORGANIZATION_ID }}'
-#          vercel-project-id: '${{ env.VERCEL_ADMIN_PROJECT_ID }}'
-#      - name: 'Get admin deploy info'
-#        if: steps.changes-filter.outputs.admin == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        id: 'admin-build-state'
-#        uses: 'justincase-jp/vercel-preview-url-alias@0.2.1'
-#        with:
-#          vercel_access_token: '${{ env.VERCEL_TOKEN }}'
-#          vercel_project_id: '${{ env.VERCEL_ADMIN_PROJECT_ID }}'
-#      - name: 'Check admin build status'
-#        if: steps.changes-filter.outputs.admin == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: '[[ ${{ steps.admin-build-state.outputs.status }} == "READY" ]] && echo Success build! || exit 1'
-
-      # FRONTEND
-
-#      - name: 'Prepare frontend'
-#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: 'chmod +x scripts/pipeline/frontend/prepare.sh && scripts/pipeline/frontend/prepare.sh'
-#      - name: 'Deploy frontend'
-#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        uses: 'amondnet/vercel-action@v20'
-#        with:
-#          vercel-token: '${{ env.VERCEL_TOKEN }}'
-#          vercel-args: '--prod --yes'
-#          vercel-org-id: '${{ env.VERCEL_FRONTEND_ORGANIZATION_ID }}'
-#          vercel-project-id: '${{ env.VERCEL_FRONTEND_PROJECT_ID }}'
-#      - name: 'Get frontend deploy info'
-#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        id: 'frontend-build-state'
-#        uses: 'justincase-jp/vercel-preview-url-alias@0.2.1'
-#        with:
-#          vercel_access_token: '${{ env.VERCEL_TOKEN }}'
-#          vercel_project_id: '${{ env.VERCEL_FRONTEND_PROJECT_ID }}'
-#      - name: 'Check frontend build status'
-#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: '[[ ${{ steps.frontend-build-state.outputs.status }} == "READY" ]] && echo Success build! || exit 1'
-
         # GITHUB
 
 #      - name: 'Prepare frontend github version'
 #        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
-#        run: 'chmod +x scripts/pipeline/github/prepare.sh && scripts/pipeline/github/prepare.sh'
+#        run: 'chmod +x scripts/github/prepare.sh && scripts/github/prepare.sh'
 #      - name: 'Deploy frontend github version'
 #        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
 #        uses: 'peaceiris/actions-gh-pages@v3'
