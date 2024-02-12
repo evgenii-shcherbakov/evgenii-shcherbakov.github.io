@@ -1,4 +1,5 @@
 import { config } from 'dotenv';
+import { join, resolve } from 'node:path';
 import { adminEnvValidator, backendEnvValidator, frontendEnvValidator } from '@shared/environment';
 import { HttpService } from '@shared/core';
 import { DeployProject } from '@types';
@@ -25,7 +26,8 @@ export const PROJECTS: DeployProject[] = [
   {
     id: process.env.VERCEL_BACKEND_PROJECT_ID ?? '',
     name: 'backend',
-    path: `${APPS_ROOT}/backend`,
+    path: resolve(APPS_ROOT, 'backend'),
+    watch: [join('apps', 'backend'), 'packages'],
     appName: process.env.VERCEL_BACKEND_APP_NAME ?? '',
     validator: backendEnvValidator,
     prepareCommand: `
@@ -36,14 +38,16 @@ export const PROJECTS: DeployProject[] = [
   {
     id: process.env.VERCEL_ADMIN_PROJECT_ID ?? '',
     name: 'admin',
-    path: `${APPS_ROOT}/admin`,
+    path: resolve(APPS_ROOT, 'admin'),
+    watch: [join('apps', 'admin'), 'packages'],
     appName: process.env.VERCEL_ADMIN_APP_NAME ?? '',
     validator: adminEnvValidator,
   },
   {
     id: process.env.VERCEL_FRONTEND_PROJECT_ID ?? '',
     name: 'frontend',
-    path: `${APPS_ROOT}/frontend`,
+    path: resolve(APPS_ROOT, 'frontend'),
+    watch: [join('apps', 'frontend'), 'packages'],
     appName: process.env.VERCEL_FRONTEND_APP_NAME ?? '',
     validator: frontendEnvValidator,
     prepareCommand: `

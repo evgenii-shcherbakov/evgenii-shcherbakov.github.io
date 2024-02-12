@@ -15,7 +15,9 @@ import { REPOSITORY_ROOT } from '@constants/paths';
     deploymentLogger.info(`start ${project.name} deployment...`);
 
     if (project.prepareCommand) {
+      deploymentLogger.info(`run ${project.name} prepareCommand...`);
       await runCommand(project.prepareCommand, { cwd: REPOSITORY_ROOT });
+      deploymentLogger.info(`${project.name} prepareCommand finished`);
     }
 
     await deployVercelProject(project);
