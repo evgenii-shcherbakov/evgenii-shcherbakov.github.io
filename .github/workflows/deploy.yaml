@@ -41,7 +41,7 @@ env:
   GITHUB_BASE_URL: 'https://${{ github.repository_owner }}.github.io'
   GITHUB_REPOSITORY_URL: 'https://github.com/${{ github.repository }}'
   GITHUB_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
-  GITHUB_COMMITTER: '${{ github.event.head.user.login }}'
+  GITHUB_COMMITTER: '${{ github.actor }}'
 
 jobs:
   Deploy:
@@ -55,8 +55,6 @@ jobs:
           node-version: 18
       - name: 'Install dependencies'
         run: 'npm install'
-      - name: 'Check'
-        run: 'echo ${{ github.event }}'
 
       # UPDATE DEPLOY ENVIRONMENT
 
