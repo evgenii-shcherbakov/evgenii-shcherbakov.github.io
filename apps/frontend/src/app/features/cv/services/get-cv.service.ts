@@ -135,7 +135,7 @@ export const FULLSTACK_DATA: Cv = {
           position: 'Node.js developer',
           projects: [
             {
-              domain: 'Web3 gaming platform',
+              domain: 'gamedev platform',
               role: 'Full-Stack developer',
               responsibilities: [
                 'Nest.js backend feature development (mostly CRUD-related logic)',
@@ -154,7 +154,7 @@ export const FULLSTACK_DATA: Cv = {
           projects: [
             {
               domain:
-                'Web platform for managing business-clients online conversations (US Startup)',
+                'web platform for managing business-clients online conversations (US Startup)',
               role: 'Backend developer',
               responsibilities: [
                 'Express-based backend feature development (mostly CRUD-based logic)',

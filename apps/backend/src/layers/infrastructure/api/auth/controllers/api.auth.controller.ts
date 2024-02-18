@@ -1,7 +1,5 @@
 import { Body, HttpStatus } from '@nestjs/common';
 import { ApiAuthService } from '@infrastructure/api/auth/services/api.auth.service';
-import { AllowedOrigins } from '@infrastructure/api/cors/decorators/allowed-origins.decorator';
-import { RequestOriginEnum } from '@infrastructure/api/cors/enums/request-origin.enum';
 import { AuthResponseDto } from '@infrastructure/api/auth/dto/response/auth-response.dto';
 import { UserEntity } from '@domain/user/entities/user.entity';
 import { User } from '@infrastructure/api/auth/decorators/user.decorator';
@@ -14,13 +12,15 @@ import {
 import { JwtAuth } from '@infrastructure/api/auth/decorators/jwt-auth.decorator';
 import { UserIdentityResponseDto } from '@infrastructure/api/auth/dto/response/user-identity.response.dto';
 import { AuthRequestBodyDto } from '@infrastructure/api/auth/dto/request/auth-request-body.dto';
+import { AllowedApps } from '@infrastructure/api/request/decorators/allowed-apps.decorator';
+import { DeploymentAppEnum } from '@domain/deployment/enums/deployment-app.enum';
 
 @ApiController('auth')
+@AllowedApps(DeploymentAppEnum.ADMIN)
 export class ApiAuthController {
   constructor(private readonly apiAuthService: ApiAuthService) {}
 
   @JwtAuth()
-  @AllowedOrigins(RequestOriginEnum.ADMIN)
   @ApiGetEndpoint({
     path: 'me',
     summary: 'Get user info',
@@ -33,7 +33,6 @@ export class ApiAuthController {
   }
 
   @JwtAuth()
-  @AllowedOrigins(RequestOriginEnum.ADMIN)
   @ApiPostEndpoint({
     path: 'refresh-token',
     summary: 'Refresh jwt token',
@@ -46,7 +45,6 @@ export class ApiAuthController {
     return { token: this.apiAuthService.generateToken(user) };
   }
 
-  @AllowedOrigins(RequestOriginEnum.ADMIN)
   @ApiPostEndpoint({
     path: 'register',
     summary: 'Register new user',
@@ -59,7 +57,6 @@ export class ApiAuthController {
   }
 
   @LocalAuth()
-  @AllowedOrigins(RequestOriginEnum.ADMIN)
   @ApiPostEndpoint({
     path: 'login',
     summary: 'Login',

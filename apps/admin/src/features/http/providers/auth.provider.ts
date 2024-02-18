@@ -1,16 +1,19 @@
-import { HttpService } from '@features/http/services/http.service';
 import { BACKEND_URL } from '@constants/environment';
 import { AuthProvider, type UserIdentity } from 'react-admin';
 import { AuthData } from '@features/http/types';
 import { AuthTokenResponse } from '@shared/auth';
+import { HttpClient } from '@shared/core';
+import { authInterceptor } from '@features/http/interceptors/auth.interceptor';
 
 export const authProvider = ((): AuthProvider => {
-  const httpService = new HttpService(`${BACKEND_URL}/auth`);
+  const httpClient = new HttpClient(`${BACKEND_URL}/auth`);
   const TOKEN_KEY = 'auth-token';
+
+  httpClient.interceptors.request.use(authInterceptor);
 
   const login = async (data: AuthData) => {
     try {
-      const { token } = await httpService.post<AuthTokenResponse>(
+      const { token } = await httpClient.post<AuthTokenResponse>(
         data.isRegister ? 'register' : 'login',
         { body: data },
       );
@@ -50,7 +53,7 @@ export const authProvider = ((): AuthProvider => {
 
   const getIdentity = async (): Promise<UserIdentity> => {
     try {
-      return httpService.get('me');
+      return httpClient.get('me');
     } catch (exception) {
       return Promise.reject(exception);
     }

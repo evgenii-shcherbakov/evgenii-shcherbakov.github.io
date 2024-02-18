@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { mongooseModuleAsyncOptions } from '@/configs/database.config';
 import { ApiModule } from '@infrastructure/api/api.module';
 import { PersistenceModule } from '@infrastructure/persistence/persistence.module';
+import { CacheModule } from '@nestjs/cache-manager';
+import { ExternalModule } from '@infrastructure/external/external.module';
 
 @Module({
   imports: [
@@ -13,8 +15,10 @@ import { PersistenceModule } from '@infrastructure/persistence/persistence.modul
       validationSchema: backendEnvValidator.toJoiValidator(),
     }),
     MongooseModule.forRootAsync(mongooseModuleAsyncOptions),
+    CacheModule.register({ isGlobal: true }),
     ApiModule,
     PersistenceModule,
+    ExternalModule,
   ],
   controllers: [],
   providers: [],

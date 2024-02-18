@@ -21,10 +21,10 @@ import {
   DeleteParams,
   DeleteResult,
 } from 'react-admin';
-import { HttpService } from '@features/http/services/http.service';
+import { HttpClient } from '@shared/core';
 
 export const dataProvider = ((): DataProvider => {
-  const httpService = new HttpService(`/api/resources`);
+  const httpClient = new HttpClient(`/api/resources`);
   const DEFAULT_PAGE = 1;
   const DEFAULT_ITEMS = 10;
 
@@ -47,7 +47,7 @@ export const dataProvider = ((): DataProvider => {
         filter: params.filter ? JSON.stringify(params.filter) : '',
       };
 
-      return httpService.get(resource, { query });
+      return httpClient.get(resource, { query });
     } catch (e) {
       return Promise.reject(e);
     }
@@ -57,7 +57,7 @@ export const dataProvider = ((): DataProvider => {
     resource: string,
     params: GetOneParams<RecordType>,
   ): Promise<GetOneResult<RecordType>> => {
-    return httpService.get(`${resource}/${params.id}`);
+    return httpClient.get(`${resource}/${params.id}`);
   };
 
   const getMany = async <RecordType extends RaRecord<Identifier> = any>(
@@ -68,7 +68,7 @@ export const dataProvider = ((): DataProvider => {
       ids: JSON.stringify(params.ids),
     };
 
-    return httpService.get(resource, { query });
+    return httpClient.get(resource, { query });
   };
 
   const getManyReference = async <RecordType extends RaRecord<Identifier> = any>(
@@ -83,21 +83,21 @@ export const dataProvider = ((): DataProvider => {
       }),
     };
 
-    return httpService.get(resource, { query });
+    return httpClient.get(resource, { query });
   };
 
   const update = async <RecordType extends RaRecord<Identifier> = any>(
     resource: string,
     params: UpdateParams<any>,
   ): Promise<UpdateResult<RecordType>> => {
-    return httpService.put(`${resource}/${params.id}`, { body: params.data });
+    return httpClient.put(`${resource}/${params.id}`, { body: params.data });
   };
 
   const updateMany = async <RecordType extends RaRecord<Identifier> = any>(
     resource: string,
     params: UpdateManyParams<any>,
   ): Promise<UpdateManyResult<RecordType>> => {
-    return httpService.put(resource, { body: { ids: params.ids, update: params.data } });
+    return httpClient.put(resource, { body: { ids: params.ids, update: params.data } });
   };
 
   const create = async <
@@ -107,21 +107,21 @@ export const dataProvider = ((): DataProvider => {
     resource: string,
     params: CreateParams,
   ): Promise<CreateResult<ResultRecordType>> => {
-    return httpService.post(resource, { body: params.data });
+    return httpClient.post(resource, { body: params.data });
   };
 
   const deleteHandler = async <RecordType extends RaRecord<Identifier> = any>(
     resource: string,
     params: DeleteParams<RecordType>,
   ): Promise<DeleteResult<RecordType>> => {
-    return httpService.delete(`${resource}/${params.id}`);
+    return httpClient.delete(`${resource}/${params.id}`);
   };
 
   const deleteMany = async <RecordType extends RaRecord<Identifier> = any>(
     resource: string,
     params: DeleteManyParams<RecordType>,
   ): Promise<DeleteManyResult<RecordType>> => {
-    return httpService.delete(resource, { body: { ids: params.ids } });
+    return httpClient.delete(resource, { body: { ids: params.ids } });
   };
 
   return {

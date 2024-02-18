@@ -7,7 +7,7 @@ import {
   ResponseErrorInterceptor,
 } from '../types';
 
-export class HttpService {
+export class HttpClient {
   private requestInterceptor: RequestInterceptor = (config) => config;
   private responseInterceptor: ResponseInterceptor = (data) => data;
 
@@ -72,15 +72,20 @@ export class HttpService {
       ? fullUrl + '?' + new URLSearchParams(this.convertQuery(params.query)).toString()
       : fullUrl;
 
-    const requestInit = this.requestInterceptor({
+    const initConfig: Omit<RequestInit, 'body'> & { body?: any } = {
       ...params,
       method,
-      body: params.body ? JSON.stringify(params.body) : undefined,
       headers: {
         ...this.headers,
         ...(params.headers ?? {}),
       },
-    });
+    };
+
+    if (params.body) {
+      initConfig.body = JSON.stringify(params.body);
+    }
+
+    const requestInit = this.requestInterceptor(initConfig);
 
     let response: Response;
 
@@ -103,7 +108,7 @@ export class HttpService {
       this.responseErrorInterceptor(new Error(errorMessage));
     }
 
-    return this.responseInterceptor(response.json());
+    return this.responseInterceptor(await response.json());
   }
 
   async get<Data>(url: string, params?: Omit<RequestParams, 'body'>): Promise<Data> {

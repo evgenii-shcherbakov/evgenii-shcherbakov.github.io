@@ -1,11 +1,13 @@
-import { HttpService } from '@shared/core';
+import { HttpClient } from '@shared/core';
 import { inject, injectable } from 'inversify';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
 import { ApiService } from '@modules/api/services/api.service';
 import { DeployEnvironment } from '@shared/environment';
 
+// TODO: migrate deployment repository logic to separate package for use both in backend and deploy apps
+
 @injectable()
-export class ApiServiceImpl extends HttpService implements ApiService {
+export class ApiServiceImpl extends HttpClient implements ApiService {
   constructor(
     @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeployEnvironment>,
   ) {

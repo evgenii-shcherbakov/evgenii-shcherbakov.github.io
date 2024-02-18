@@ -26,9 +26,6 @@ env:
   #  Backend
   DATABASE_URL: '${{ secrets.DATABASE_URL }}'
   JWT_SECRET: '${{ secrets.JWT_SECRET }}'
-  ADMIN_URL: '${{ secrets.ADMIN_URL }}'
-  FRONTEND_URL: '${{ secrets.FRONTEND_URL }}'
-  BACKEND_URL: '${{ secrets.BACKEND_URL }}'
   BCRYPT_SALT: '${{ secrets.BCRYPT_SALT }}'
 
   #  Admin
