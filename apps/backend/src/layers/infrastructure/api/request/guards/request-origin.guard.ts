@@ -16,6 +16,7 @@ import {
   DeploymentApiService,
 } from '@domain/deployment/services/deployment-api.service';
 import { DeploymentAppEnum } from '@domain/deployment/enums/deployment-app.enum';
+import { ONE } from '@/constants/numbers';
 
 @Injectable()
 export class RequestOriginGuard implements CanActivate {
@@ -49,8 +50,10 @@ export class RequestOriginGuard implements CanActivate {
       return true;
     }
 
+    const requestDomain = requestOrigin.split('://')[ONE];
+
     for (const app of allowedApps) {
-      if (await this.deploymentApiService.isExistsAppOrigin(app, requestOrigin)) {
+      if (await this.deploymentApiService.isExistsAppDomain(app, requestDomain)) {
         this.logger.debug(`request origin check passed`);
         return true;
       }

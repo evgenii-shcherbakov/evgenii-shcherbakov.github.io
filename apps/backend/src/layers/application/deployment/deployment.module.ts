@@ -22,6 +22,6 @@ export class DeploymentModule implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    await this.deploymentApiService.loadAllAppsOrigins();
+    await this.deploymentApiService.loadAllAppsDomains();
   }
 }
