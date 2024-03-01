@@ -3,7 +3,7 @@ import { CvHeaderComponent } from '@/app/features/cv/components/cv-header/cv-hea
 import { GetCvService } from '@/app/features/cv/services/get-cv.service';
 import { CvSectionComponent } from '@/app/features/cv/components/cv-section/cv-section.component';
 import { CvWrapperComponent } from '@/app/features/cv/components/cv-wrapper/cv-wrapper.component';
-import { Cv, DEFAULT_CV } from '@shared/cv';
+import { Cv, DEFAULT_CV } from '@packages/common';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MetadataService } from '@/app/shared/seo/services/metadata.service';
 import { SeoModule } from '@/app/shared/seo/seo.module';

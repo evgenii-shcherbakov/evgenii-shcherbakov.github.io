@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { BackendEnvironment } from '@shared/environment';
+import { BackendEnvironment } from '@packages/environment';
 import { AppModule } from '@/app.module';
 import { corsOptions } from '@/configs/cors.config';
 import { configureSwagger } from '@/configs/swagger.config';

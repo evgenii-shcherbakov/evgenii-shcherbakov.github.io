@@ -8,8 +8,8 @@ const saveJson = async (path, obj) => {
 (async () => {
   const name = process.argv[2] ?? '';
   const root = resolve(__dirname, '../..', name);
-  console.log(`Patching package @shared/${name} placed at ${root}...`);
+  console.log(`Patching package @packages/${name} placed at ${root}...`);
   await saveJson(join(root, 'dist/esm/package.json'), { type: 'module' });
   await saveJson(join(root, 'dist/cjs/package.json'), { type: 'commonjs' });
-  console.log(`Patching package @shared/${name} completed`);
+  console.log(`Patching package @packages/${name} completed`);
 })();

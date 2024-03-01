@@ -1,11 +1,11 @@
 {
-  "name": "@shared/{{ dashCase name }}",
+  "name": "@packages/{{ dashCase name }}",
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "src/vercel.ts",
+  "types": "src/index.ts",
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
@@ -18,12 +18,13 @@
     "build:esm": "tsc --project tsconfig.json",
     "build:cjs": "tsc --project tsconfig-cjs.json",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run patch",
-    "patch": "npm run --workspace=@shared/scripts patch-package {{ dashCase name }}",
-    "clean": "rm -rf dist/*"
+    "patch": "npm run --workspace=@packages/scripts patch-package {{ dashCase name }}",
+    "clean": "rm -rf dist/*",
+    "reset": "rm -rf .turbo dist"
   },
   "devDependencies": {
-    "@shared/scripts": "*",
-    "@shared/ts-configs": "*",
+    "@packages/scripts": "*",
+    "@packages/ts-configs": "*",
     "nodemon": "^3.0.3",
     "prettier": "^3.2.4",
     "typescript": "latest"

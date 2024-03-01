@@ -1,4 +1,4 @@
-import { BackendEnvironment } from '@shared/environment';
+import { BackendEnvironment } from '@packages/environment';
 
 declare global {
   namespace NodeJS {

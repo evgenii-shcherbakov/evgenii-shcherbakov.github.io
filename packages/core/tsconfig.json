@@ -1,8 +1,0 @@
-{
-  "extends": "@shared/ts-configs/package/esm.tsconfig.json",
-  "compilerOptions": {
-    "outDir": "dist/esm",
-  },
-  "exclude": ["node_modules", "dist"],
-}
-

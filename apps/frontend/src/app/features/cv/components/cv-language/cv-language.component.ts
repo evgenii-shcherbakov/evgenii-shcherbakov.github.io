@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CvLanguage, DEFAULT_CV_LANGUAGE } from '@shared/cv';
+import { CvLanguage, DEFAULT_CV_LANGUAGE } from '@packages/common';
 
 @Component({
   selector: 'app-cv-language',

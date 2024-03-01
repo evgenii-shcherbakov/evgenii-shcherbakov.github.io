@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CvCertificate, DEFAULT_CV_CERTIFICATE } from '@shared/cv';
+import { CvCertificate, DEFAULT_CV_CERTIFICATE } from '@packages/common';
 import { CvLinkDirective } from '@/app/features/cv/directives/cv-link.directive';
 
 @Component({

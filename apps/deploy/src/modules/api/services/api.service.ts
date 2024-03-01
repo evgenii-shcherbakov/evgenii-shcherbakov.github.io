@@ -1,4 +1,4 @@
-import { HttpClient } from '@shared/core';
+import { HttpClient } from '../../../../../../packages/common';
 
 export const API_SERVICE = Symbol('ApiService');
 

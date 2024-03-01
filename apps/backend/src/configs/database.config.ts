@@ -1,6 +1,6 @@
 import { MongooseModuleAsyncOptions } from '@nestjs/mongoose';
 import { ConfigService } from '@nestjs/config';
-import { BackendEnvironment } from '@shared/environment';
+import { BackendEnvironment } from '@packages/environment';
 
 const mongooseConnectionFactory = (configService: ConfigService<BackendEnvironment>) => {
   return {

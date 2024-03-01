@@ -15,7 +15,11 @@
     "build": "turbo run build",
     "gen:package": "turbo gen package && npm install",
     "gen:api": "turbo gen api",
-    "deploy": "turbo run deploy --filter=deploy"
+    "deploy": "turbo run deploy --filter=deploy",
+    "reset:admin": "turbo run reset --filter=admin",
+    "reset:backend": "turbo run reset --filter=backend",
+    "reset:frontend": "turbo run reset --filter=frontend",
+    "reset": "rm -rf .turbo && turbo run reset"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.9",

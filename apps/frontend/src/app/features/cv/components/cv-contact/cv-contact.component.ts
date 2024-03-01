@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CvSvgComponent } from '@/app/features/cv/components/cv-svg/cv-svg.component';
 import { CvLinkDirective } from '@/app/features/cv/directives/cv-link.directive';
-import { CvContact, DEFAULT_CV_CONTACT } from '@shared/cv';
+import { CvContact, DEFAULT_CV_CONTACT } from '@packages/common';
 
 @Component({
   selector: 'app-cv-contact',

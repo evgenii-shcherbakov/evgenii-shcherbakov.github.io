@@ -1,4 +1,4 @@
-import { AdminEnvironment } from '@shared/environment';
+import { AdminEnvironment } from '@packages/environment';
 
 declare global {
   namespace NodeJS {

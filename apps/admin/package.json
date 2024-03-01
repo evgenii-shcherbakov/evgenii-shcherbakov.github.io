@@ -8,12 +8,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier src --write --config ../../.prettierrc"
+    "format": "prettier src --write --config ../../.prettierrc",
+    "reset": "rm -rf .next .turbo dist"
   },
   "dependencies": {
-    "@shared/auth": "*",
-    "@shared/core": "*",
-    "@shared/environment": "*",
+    "@packages/common": "*",
+    "@packages/cryptography": "*",
+    "@packages/environment": "*",
     "mongodb": "^6.3.0",
     "next": "14.1.0",
     "react": "^18",

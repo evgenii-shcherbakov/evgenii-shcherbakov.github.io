@@ -1,5 +1,5 @@
 {
-  "extends": "@shared/ts-configs/package/cjs.tsconfig.json",
+  "extends": "@packages/ts-configs/package/cjs.tsconfig.json",
   "compilerOptions": {
     "outDir": "dist/cjs"
   },

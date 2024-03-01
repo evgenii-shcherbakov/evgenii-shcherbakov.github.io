@@ -1,4 +1,4 @@
-import { DeployEnvironment } from '@shared/environment';
+import { DeployEnvironment } from '@packages/environment';
 
 declare global {
   namespace NodeJS {

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { DateInput, Edit, required, SimpleForm, TextInput, useEditController } from 'react-admin';
 import { FieldValues } from 'react-hook-form';
-import { useBackend } from '@features/http';
+import { useApi } from '@features/http';
 
 export const UserResourceEdit: FC = () => {
   const { save } = useEditController();
-  const { hash } = useBackend();
+  const { hash } = useApi();
 
   const submit = async (values: FieldValues) => {
     save?.({ ...values, password: await hash(values['password']) });

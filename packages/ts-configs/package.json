@@ -1,5 +1,5 @@
 {
-  "name": "@shared/ts-configs",
+  "name": "@packages/ts-configs",
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT"

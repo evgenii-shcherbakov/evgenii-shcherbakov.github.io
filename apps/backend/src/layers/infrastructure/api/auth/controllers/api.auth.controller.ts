@@ -1,6 +1,5 @@
 import { Body, HttpStatus } from '@nestjs/common';
 import { ApiAuthService } from '@infrastructure/api/auth/services/api.auth.service';
-import { AuthResponseDto } from '@infrastructure/api/auth/dto/response/auth-response.dto';
 import { UserEntity } from '@domain/user/entities/user.entity';
 import { User } from '@infrastructure/api/auth/decorators/user.decorator';
 import { LocalAuth } from '@infrastructure/api/auth/decorators/local-auth.decorator';
@@ -10,10 +9,13 @@ import {
   ApiPostEndpoint,
 } from '@infrastructure/api/swagger/decorators/api-endpoint.decorator';
 import { JwtAuth } from '@infrastructure/api/auth/decorators/jwt-auth.decorator';
-import { UserIdentityResponseDto } from '@infrastructure/api/auth/dto/response/user-identity.response.dto';
-import { AuthRequestBodyDto } from '@infrastructure/api/auth/dto/request/auth-request-body.dto';
 import { AllowedApps } from '@infrastructure/api/request/decorators/allowed-apps.decorator';
 import { DeploymentAppEnum } from '@domain/deployment/enums/deployment-app.enum';
+import {
+  BackendAuthResponseDto,
+  BackendAuthRequestDto,
+  BackendAuthUserIdentityResponseDto,
+} from '@packages/common';
 
 @ApiController('auth')
 @AllowedApps(DeploymentAppEnum.ADMIN)
@@ -25,10 +27,10 @@ export class ApiAuthController {
     path: 'me',
     summary: 'Get user info',
     response: {
-      type: UserIdentityResponseDto,
+      type: BackendAuthUserIdentityResponseDto,
     },
   })
-  async me(@User() user: UserEntity): Promise<UserIdentityResponseDto> {
+  async me(@User() user: UserEntity): Promise<BackendAuthUserIdentityResponseDto> {
     return { id: user.id.toString() };
   }
 
@@ -37,7 +39,7 @@ export class ApiAuthController {
     path: 'refresh-token',
     summary: 'Refresh jwt token',
     response: {
-      type: AuthResponseDto,
+      type: BackendAuthResponseDto,
     },
     status: HttpStatus.OK,
   })
@@ -49,10 +51,10 @@ export class ApiAuthController {
     path: 'register',
     summary: 'Register new user',
     response: {
-      type: AuthResponseDto,
+      type: BackendAuthResponseDto,
     },
   })
-  async register(@Body() dto: AuthRequestBodyDto): Promise<AuthResponseDto> {
+  async register(@Body() dto: BackendAuthRequestDto): Promise<BackendAuthResponseDto> {
     return this.apiAuthService.register(dto);
   }
 
@@ -61,11 +63,11 @@ export class ApiAuthController {
     path: 'login',
     summary: 'Login',
     response: {
-      type: AuthResponseDto,
+      type: BackendAuthResponseDto,
     },
     status: HttpStatus.OK,
   })
-  async login(@User() user: UserEntity): Promise<AuthResponseDto> {
+  async login(@User() user: UserEntity): Promise<BackendAuthResponseDto> {
     return { token: this.apiAuthService.generateToken(user) };
   }
 }

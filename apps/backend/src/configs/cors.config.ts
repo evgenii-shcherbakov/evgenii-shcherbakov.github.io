@@ -1,7 +1,7 @@
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
-import { HttpHeadersEnum } from '@shared/core';
+import { HttpHeadersEnum } from '@packages/common';
 // import { ConfigService } from '@nestjs/config';
-// import { BackendEnvironment } from '@shared/environment';
+// import { BackendEnvironment } from '@packages/environment';
 
 // type StaticOrigin = boolean | string | RegExp | (string | RegExp)[];
 //

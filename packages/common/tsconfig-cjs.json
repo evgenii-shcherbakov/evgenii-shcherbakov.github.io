@@ -1,0 +1,7 @@
+{
+  "extends": ["@packages/ts-configs/package/cjs.tsconfig.json", "./tsconfig.base.json"],
+  "compilerOptions": {
+    "outDir": "dist/cjs"
+  },
+  "exclude": ["node_modules", "dist"]
+}

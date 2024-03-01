@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CvProject } from '@shared/cv';
+import { CvProject } from '@packages/common';
 import { CvProjectComponent } from '@/app/features/cv/components/cv-project/cv-project.component';
 
 @Component({

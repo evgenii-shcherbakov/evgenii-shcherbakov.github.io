@@ -1,30 +1,13 @@
 @import '../../styles/lib';
 @import '../../styles/vars';
+@import '../../styles/shared';
 
 .cv-education {
-  @media (max-width: $paperHalfWidth) {
-    @include flex(column-reverse);
-  }
-
-  &__info {
-    width: 60%;
-
-    @media (max-width: $paperHalfWidth) {
-      width: 100%;
-    }
-  }
-
   &__title {
     color: $accent;
   }
 
   &__date {
     color: $secondary;
-    width: 40%;
-
-    @media (max-width: $paperHalfWidth) {
-      justify-content: flex-start;
-      width: 100%;
-    }
   }
 }

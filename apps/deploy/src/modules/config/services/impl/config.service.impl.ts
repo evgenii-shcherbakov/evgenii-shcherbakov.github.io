@@ -2,7 +2,7 @@ import { ConfigService } from '@modules/config/services/config.service';
 import { config, DotenvParseOutput } from 'dotenv';
 import { inject, injectable } from 'inversify';
 import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
-import { deployEnvValidator } from '@shared/environment';
+import { deployEnvValidator } from '@packages/environment';
 
 @injectable()
 export class ConfigServiceImpl<Environment = Record<string, string>>

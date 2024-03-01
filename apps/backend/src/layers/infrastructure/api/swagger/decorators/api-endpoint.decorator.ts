@@ -16,7 +16,7 @@ import {
   ApiEndpointParams,
   ApiMethodEndpointParams,
 } from '@infrastructure/api/swagger/types/decorator.types';
-import { HttpMethodEnum } from '@infrastructure/api/swagger/enums/http-method.enum';
+import { HttpMethodEnum } from '@packages/common';
 
 const getMethodDecorator = (method?: HttpMethodEnum) => {
   switch (method) {

@@ -1,20 +1,19 @@
 import { BACKEND_URL } from '@constants/environment';
 import { AuthProvider, type UserIdentity } from 'react-admin';
 import { AuthData } from '@features/http/types';
-import { AuthTokenResponse } from '@shared/auth';
-import { HttpClient } from '@shared/core';
 import { authInterceptor } from '@features/http/interceptors/auth.interceptor';
+import { RestApiClient, BackendRestApiSchema } from '@packages/common';
 
 export const authProvider = ((): AuthProvider => {
-  const httpClient = new HttpClient(`${BACKEND_URL}/auth`);
+  const restApiClient = new RestApiClient<BackendRestApiSchema>(BACKEND_URL);
   const TOKEN_KEY = 'auth-token';
 
-  httpClient.interceptors.request.use(authInterceptor);
+  restApiClient.interceptors.request.use(authInterceptor);
 
   const login = async (data: AuthData) => {
     try {
-      const { token } = await httpClient.post<AuthTokenResponse>(
-        data.isRegister ? 'register' : 'login',
+      const { token } = await restApiClient.typed.post(
+        data.isRegister ? 'auth/register' : 'auth/login',
         { body: data },
       );
 
@@ -53,7 +52,7 @@ export const authProvider = ((): AuthProvider => {
 
   const getIdentity = async (): Promise<UserIdentity> => {
     try {
-      return httpClient.get('me');
+      return restApiClient.typed.get('auth/me', {});
     } catch (exception) {
       return Promise.reject(exception);
     }

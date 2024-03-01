@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DEFAULT_PLACEHOLDER } from '@shared/core';
+import { DEFAULT_PLACEHOLDER } from '@packages/common';
 
 @Component({
   selector: 'app-cv-svg',

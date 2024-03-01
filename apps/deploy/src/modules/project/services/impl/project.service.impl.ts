@@ -9,7 +9,7 @@ import {
   backendEnvValidator,
   DeployEnvironment,
   frontendEnvValidator,
-} from '@shared/environment';
+} from '@packages/environment';
 
 @injectable()
 export class ProjectServiceImpl implements ProjectService {

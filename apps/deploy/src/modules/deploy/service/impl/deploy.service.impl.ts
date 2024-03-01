@@ -13,7 +13,7 @@ import { REPOSITORY_ROOT } from '@constants/paths';
 import { VercelConfig } from '@vercel/client/dist/types';
 import { join } from 'node:path';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
-import { DeployEnvironment } from '@shared/environment';
+import { DeployEnvironment } from '@packages/environment';
 
 @injectable()
 export class DeployServiceImpl implements DeployService {
@@ -73,7 +73,7 @@ export class DeployServiceImpl implements DeployService {
       const earnedPhases: string[] = [];
 
       for await (const { type, payload } of deployStream) {
-        if (type === 'warning') {
+        if (type === 'warning' && typeof payload === 'string') {
           this.logService.warn(payload);
           continue;
         }

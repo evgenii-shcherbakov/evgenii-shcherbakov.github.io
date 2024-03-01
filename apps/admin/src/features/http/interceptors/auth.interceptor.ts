@@ -1,4 +1,4 @@
-import { HttpHeadersEnum, RequestInterceptor } from '@shared/core';
+import { HttpHeadersEnum, RequestInterceptor } from '@packages/common';
 
 export const authInterceptor: RequestInterceptor = (config) => {
   return {

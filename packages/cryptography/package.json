@@ -1,0 +1,36 @@
+{
+  "name": "@packages/cryptography",
+  "private": true,
+  "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "format": "prettier src --write --config ../../.prettierrc",
+    "dev": "nodemon",
+    "build:esm": "tsc --project tsconfig.json",
+    "build:cjs": "tsc --project tsconfig-cjs.json",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run patch",
+    "patch": "npm run --workspace=@packages/scripts patch-package cryptography",
+    "clean": "rm -rf dist/*",
+    "reset": "rm -rf .turbo dist"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "@packages/scripts": "*",
+    "@packages/ts-configs": "*",
+    "@types/bcryptjs": "^2.4.6",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
+    "typescript": "latest"
+  }
+}

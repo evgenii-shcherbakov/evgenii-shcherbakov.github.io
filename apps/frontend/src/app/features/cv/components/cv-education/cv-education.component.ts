@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CvSvgComponent } from '@/app/features/cv/components/cv-svg/cv-svg.component';
-import { CvEducation, DEFAULT_CV_EDUCATION } from '@shared/cv';
+import { CvEducation, DEFAULT_CV_EDUCATION } from '@packages/common';
 
 @Component({
   selector: 'app-cv-education',

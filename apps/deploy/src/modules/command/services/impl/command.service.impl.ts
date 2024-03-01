@@ -1,10 +1,13 @@
 import { CommandService } from '@modules/command/services/command.service';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
 import { exec } from 'node:child_process';
 import { CommandParams } from '@modules/command/types';
+import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
 
 @injectable()
 export class CommandServiceImpl implements CommandService {
+  constructor(@inject(LOG_SERVICE) private readonly logService: LogService) {}
+
   async run(command: string, params: CommandParams = {}): Promise<string> {
     return new Promise((resolve, reject) => {
       const childProcess = exec(command, params);
@@ -13,11 +16,11 @@ export class CommandServiceImpl implements CommandService {
 
       childProcess.stdout.on('data', (data) => {
         commandOutput += data;
-        console.log(data.toString());
+        this.logService.raw(data.toString());
       });
 
       childProcess.stderr.on('data', (data) => {
-        console.error(data.toString());
+        this.logService.raw(data.toString());
       });
 
       childProcess.on('error', (error) => {

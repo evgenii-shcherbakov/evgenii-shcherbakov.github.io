@@ -1,8 +1,9 @@
 {
-  "name": "@shared/environment",
+  "name": "@packages/environment",
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
+  "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "exports": {
@@ -17,15 +18,16 @@
     "build:esm": "tsc --project tsconfig.json",
     "build:cjs": "tsc --project tsconfig-cjs.json",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run patch",
-    "patch": "npm run --workspace=@shared/scripts patch-package environment",
-    "clean": "rm -rf dist/*"
+    "patch": "npm run --workspace=@packages/scripts patch-package environment",
+    "clean": "rm -rf dist/*",
+    "reset": "rm -rf .turbo dist"
   },
   "dependencies": {
     "joi": "^17.12.0"
   },
   "devDependencies": {
-    "@shared/scripts": "*",
-    "@shared/ts-configs": "*",
+    "@packages/scripts": "*",
+    "@packages/ts-configs": "*",
     "nodemon": "^3.0.3",
     "prettier": "^3.2.5",
     "typescript": "latest"

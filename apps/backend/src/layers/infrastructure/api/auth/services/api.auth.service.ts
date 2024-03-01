@@ -4,9 +4,8 @@ import {
   REGISTER_USER_SERVICE,
   RegisterUserService,
 } from '@domain/auth/services/register-user.service';
-import { AuthResponseDto } from '@infrastructure/api/auth/dto/response/auth-response.dto';
 import { UserEntity } from '@domain/user/entities/user.entity';
-import { AuthRequestBodyDto } from '@infrastructure/api/auth/dto/request/auth-request-body.dto';
+import { BackendAuthRequestDto, BackendAuthResponseDto } from '@packages/common';
 
 @Injectable()
 export class ApiAuthService {
@@ -20,7 +19,7 @@ export class ApiAuthService {
     return this.jwtService.sign({ id: user.id.toString(), email: user.email });
   }
 
-  async register(dto: AuthRequestBodyDto): Promise<AuthResponseDto> {
+  async register(dto: BackendAuthRequestDto): Promise<BackendAuthResponseDto> {
     const io = await this.registerUserService.register(dto.email, dto.password);
 
     if (io.isLeft()) {

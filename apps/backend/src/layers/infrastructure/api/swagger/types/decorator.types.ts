@@ -1,6 +1,6 @@
 import { ApiResponseMetadata } from '@nestjs/swagger/dist/decorators/api-response.decorator';
 import { HttpStatus } from '@nestjs/common';
-import { HttpMethodEnum } from '@infrastructure/api/swagger/enums/http-method.enum';
+import { HttpMethodEnum } from '@packages/common';
 
 type Body = {
   type?: ApiResponseMetadata['type'];

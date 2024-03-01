@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { backendEnvValidator } from '@shared/environment';
+import { backendEnvValidator } from '@packages/environment';
 import { MongooseModule } from '@nestjs/mongoose';
 import { mongooseModuleAsyncOptions } from '@/configs/database.config';
 import { ApiModule } from '@infrastructure/api/api.module';

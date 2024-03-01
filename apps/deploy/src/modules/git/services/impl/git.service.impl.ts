@@ -5,7 +5,7 @@ import getRepoInfo from 'git-repo-info';
 import { REPOSITORY_ROOT } from '@constants/paths';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
 import { COMMAND_SERVICE, CommandService } from '@modules/command/services/command.service';
-import { DeployEnvironment } from '@shared/environment';
+import { DeployEnvironment } from '@packages/environment';
 
 @injectable()
 export class GitServiceImpl implements GitService {

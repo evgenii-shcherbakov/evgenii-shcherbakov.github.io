@@ -1,21 +1,60 @@
 import { LogService } from '@modules/log/services/log.service';
 import { injectable } from 'inversify';
+import { info, error, warning } from '@actions/core';
 
 @injectable()
 export class LogServiceImpl implements LogService {
-  log(...args: any[]) {
-    console.log(`[DEPLOY] LOG`, ...args);
+  // private parseArguments(args: any[]): string {
+  //   return args.reduce((acc: string, argument: any) => {
+  //     const startOfLine = acc ? `${acc} ` : '';
+  //
+  //     if (argument === null) {
+  //       return startOfLine + 'null';
+  //     }
+  //
+  //     if (argument === undefined) {
+  //       return startOfLine + 'undefined';
+  //     }
+  //
+  //     if (argument instanceof Error) {
+  //       return startOfLine + `Error:\n${argument.message}\n${argument.stack}`;
+  //     }
+  //
+  //     if (typeof argument === 'object') {
+  //       return startOfLine + JSON.stringify(argument, null, 2);
+  //     }
+  //
+  //     return startOfLine + String(argument).trim();
+  //   }, '');
+  // }
+
+  log(message: string) {
+    // console.log(`[DEPLOY] LOG`, ...args);
+    info(message);
   }
 
-  info(...args: any[]) {
-    console.info(`[DEPLOY] INFO`, ...args);
+  info(message: string) {
+    // console.info(`[DEPLOY] INFO`, ...args);
+    info(message);
   }
 
-  warn(...args: any[]) {
-    console.warn(`[DEPLOY] WARNING`, ...args);
+  warn(message: string) {
+    // console.warn(`[DEPLOY] WARNING`, ...args);
+    warning(` ${message}`);
   }
 
-  error(...args: any[]) {
-    console.error(`[DEPLOY] ERROR`, ...args);
+  error(input: Error | string) {
+    // console.error(`[DEPLOY] ERROR`, ...args);
+
+    if (input instanceof Error) {
+      return error(` ${input.message} ${input.stack}`);
+    }
+
+    error(` ${input}`);
+  }
+
+  raw(message: string): void {
+    // console.log(...args);
+    info(message);
   }
 }

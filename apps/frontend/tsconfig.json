@@ -22,13 +22,14 @@
     "baseUrl": "./",
     "paths": {
       "@": ["src"],
-      "@/*": ["src/*"],
-    }
+      "@/*": ["src/*"]
+    },
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
+    "strictTemplates": true
   }
 }

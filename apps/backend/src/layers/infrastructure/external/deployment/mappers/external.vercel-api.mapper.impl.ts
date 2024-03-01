@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DeploymentAppEnum } from '@domain/deployment/enums/deployment-app.enum';
-import { BackendEnvironment } from '@shared/environment';
+import { BackendEnvironment } from '@packages/environment';
 
 @Injectable()
 export class ExternalVercelApiMapperImpl {

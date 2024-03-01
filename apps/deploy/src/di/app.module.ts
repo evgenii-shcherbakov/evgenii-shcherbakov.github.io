@@ -20,7 +20,7 @@ import { MAIN_SERVICE, MainService } from '@modules/main/services/main.service';
 import { MainServiceImpl } from '@modules/main/services/impl/main.service.impl';
 import { PROJECT_SERVICE, ProjectService } from '@modules/project/services/project.service';
 import { ProjectServiceImpl } from '@modules/project/services/impl/project.service.impl';
-import { DeployEnvironment } from '@shared/environment';
+import { DeployEnvironment } from '@packages/environment';
 
 export class AppModule {
   private static readonly container = this.createContainer();

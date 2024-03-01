@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CvLinkDirective } from '@/app/features/cv/directives/cv-link.directive';
-import { CvProject, DEFAULT_CV_PROJECT } from '@shared/cv';
+import { CvProject, DEFAULT_CV_PROJECT } from '@packages/common';
 
 @Component({
   selector: 'app-cv-project',

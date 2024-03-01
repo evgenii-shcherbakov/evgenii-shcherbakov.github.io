@@ -1,4 +1,4 @@
-<li class="cv-project pl-2" *appCvLink="project.link">
+<li class="cv-project" *appCvLink="project.link">
   @if (project.name) {
     <p class="uppercase text-sm">{{ project.name }}</p>
   }
@@ -6,7 +6,6 @@
   <p class="pb-2"><span class="font-bold">Role:</span> {{ project.role }}</p>
   @if (project.responsibilities.length) {
     <ul class="pb-2">
-      <span class="font-bold">Responsibilities:</span>
       @for (responsibility of project.responsibilities; track responsibility) {
         <li class="list-disc mr-1 ml-3">{{ responsibility }}</li>
       }

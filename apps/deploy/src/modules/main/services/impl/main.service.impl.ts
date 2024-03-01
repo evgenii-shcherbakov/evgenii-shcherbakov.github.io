@@ -34,7 +34,7 @@ export class MainServiceImpl implements MainService {
         );
       });
 
-      this.logService.info(`${project.name} changed ->`, hasWatchedChanges);
+      this.logService.info(`${project.name} changed -> ${hasWatchedChanges}`);
 
       project.validator
         .onSuccess(() => {

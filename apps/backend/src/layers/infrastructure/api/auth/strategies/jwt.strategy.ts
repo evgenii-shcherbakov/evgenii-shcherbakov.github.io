@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { ConfigService } from '@nestjs/config';
-import { BackendEnvironment } from '@shared/environment';
+import { BackendEnvironment } from '@packages/environment';
 import { USER_REPOSITORY, UserRepository } from '@domain/user/repositories/user.repository';
 import { JWT_IGNORE_EXPIRATION } from '@/constants/configuration';
 import { UserEntity } from '@domain/user/entities/user.entity';

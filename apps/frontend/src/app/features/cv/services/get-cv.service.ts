@@ -5,7 +5,8 @@ import {
   CvEducationSection,
   CvLanguagesSection,
   CvSectionTypeEnum,
-} from '@shared/cv';
+} from '@packages/common';
+import { HttpClient } from '@angular/common/http';
 
 const LANGUAGES_SECTION: CvLanguagesSection = {
   type: CvSectionTypeEnum.LANGUAGES,
@@ -48,7 +49,7 @@ const CONTACTS_SECTION: CvContactsSection = {
     {
       name: 'linkedin',
       link: 'https://www.linkedin.com/in/iipekolict',
-      value: 'linkedin.com/in/iipekolict',
+      value: 'www.linkedin.com/in/iipekolict',
     },
     {
       name: 'gmail',
@@ -94,16 +95,16 @@ export const FULLSTACK_DATA: Cv = {
     {
       type: CvSectionTypeEnum.SKILLS,
       groups: [
-        ['Typescript', 'JavaScript', 'ES6+'],
+        ['Typescript', 'JavaScript'],
         ['Nest.js', 'Next.js', 'React', 'Express'],
         ['MongoDB', 'PostgreSQL', 'Mongoose', 'TypeORM'],
         ['Payload CMS'],
         ['Material UI', 'Bootstrap', 'Styled components', 'Tailwind'],
-        ['MobX', 'React Query', 'RxJs'],
+        ['MobX', 'RxJs'],
         ['AWS Lambda', 'AWS CloudWatch', 'AWS Pipeline', 'AWS Cognito', 'AWS SQS'],
         ['Docker', 'Bash'],
         ['Jest'],
-        ['OpenSearch', 'Websocket', 'Swagger'],
+        ['OpenSearch', 'Websocket'],
       ],
     },
     {
@@ -131,6 +132,21 @@ export const FULLSTACK_DATA: Cv = {
       type: CvSectionTypeEnum.EXPERIENCE,
       items: [
         {
+          company: 'Scrump LLC',
+          position: 'Node.js developer',
+          projects: [
+            {
+              domain: 'blockchain and fintech',
+              role: 'Node.js developer',
+              responsibilities: [
+                'Nest.js backend feature development (REST API, RPC, microservices, web3)',
+              ],
+              stack: ['TypeScript', 'Nest.js', 'MongoDB', 'Mongoose', 'Web3', 'Nats', 'Kafka'],
+            },
+          ],
+          dates: 'Fed 2024 - present',
+        },
+        {
           company: 'Plan9',
           position: 'Node.js developer',
           projects: [
@@ -138,33 +154,27 @@ export const FULLSTACK_DATA: Cv = {
               domain: 'gamedev platform',
               role: 'Full-Stack developer',
               responsibilities: [
-                'Nest.js backend feature development (mostly CRUD-related logic)',
-                'code refactoring',
-                'cooperation with frontend and gamedev teams',
-                'Next.js-based admin panel feature development',
+                'Nest.js backend feature development (REST API)',
+                'work with mongodb aggregations, indexes',
+                'Next.js-based admin panel feature development (Payload CMS)',
               ],
               stack: ['TypeScript', 'Nest.js', 'Next.js', 'Payload CMS', 'MongoDB', 'Mongoose'],
             },
           ],
-          dates: 'Sep 2023 - present',
+          dates: 'Sep 2023 - Dec 2023',
         },
         {
           company: 'yumasoft inc.',
           position: 'Node.js developer',
           projects: [
             {
-              domain:
-                'web platform for managing business-clients online conversations (US Startup)',
+              domain: 'web platform for managing business-clients online conversations',
               role: 'Backend developer',
               responsibilities: [
-                'Express-based backend feature development (mostly CRUD-based logic)',
-                'email notification templates development',
-                'endpoints and database requests optimizations',
+                'Express-based backend feature development (REST API, websockets, email notifications, Open Search)',
+                'work with mongodb aggregations and indexes, optimize database requests',
                 'work closely with project AWS infrastructure (AWS Lambda, AWS CloudWatch, AWS Pipeline, AWS Cognito, AWS SQS)',
-                'OpenSearch-related features implementation',
-                'mentoring',
-                'cooperation with frontend and data science teams',
-                'websockets-related features development',
+                'mentoring and cooperation with frontend and data science teams',
               ],
               stack: [
                 'TypeScript',
@@ -276,7 +286,9 @@ export const FULLSTACK_DATA: Cv = {
 export class GetCvService {
   private readonly cv: Cv = FULLSTACK_DATA;
 
-  constructor() {}
+  // constructor(private readonly httpClient: HttpClient) {}
+
+  async test() {}
 
   getCv(name?: string | null): Cv {
     return this.cv;

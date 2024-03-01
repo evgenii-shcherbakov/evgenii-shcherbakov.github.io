@@ -1,18 +1,16 @@
-import { EnvValidator } from './validator/env-validator';
-import { ADMIN_ENV_VALIDATION_SCHEMA, AdminEnvironment } from './schemas/admin';
-import { BACKEND_ENV_VALIDATION_SCHEMA, BackendEnvironment } from './schemas/backend';
-import { FRONTEND_ENV_VALIDATION_SCHEMA, FrontendEnvironment } from './schemas/frontend';
-import { DEPLOY_ENV_VALIDATION_SCHEMA, DeployEnvironment } from './schemas/deploy';
+import { EnvValidator } from './entities/env-validator';
+import { AdminSchema } from './schemas/admin.schema';
+import { BackendSchema } from './schemas/backend.schema';
+import { FrontendSchema } from './schemas/frontend.schema';
+import { DeploySchema } from './schemas/deploy.schema';
+import { EnvironmentOf } from './types/environment.types';
 
-export const adminEnvValidator = new EnvValidator(ADMIN_ENV_VALIDATION_SCHEMA);
-export const backendEnvValidator = new EnvValidator(BACKEND_ENV_VALIDATION_SCHEMA);
-export const frontendEnvValidator = new EnvValidator(FRONTEND_ENV_VALIDATION_SCHEMA);
-export const deployEnvValidator = new EnvValidator(DEPLOY_ENV_VALIDATION_SCHEMA);
+export const adminEnvValidator = new EnvValidator(AdminSchema);
+export const backendEnvValidator = new EnvValidator(BackendSchema);
+export const deployEnvValidator = new EnvValidator(DeploySchema);
+export const frontendEnvValidator = new EnvValidator(FrontendSchema);
 
-export type {
-  AdminEnvironment,
-  BackendEnvironment,
-  DeployEnvironment,
-  FrontendEnvironment,
-  EnvValidator,
-};
+export type AdminEnvironment = EnvironmentOf<typeof AdminSchema>;
+export type BackendEnvironment = EnvironmentOf<typeof BackendSchema>;
+export type DeployEnvironment = EnvironmentOf<typeof DeploySchema>;
+export type FrontendEnvironment = EnvironmentOf<typeof FrontendSchema>;

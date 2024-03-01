@@ -21,7 +21,7 @@ import {
   DeleteParams,
   DeleteResult,
 } from 'react-admin';
-import { HttpClient } from '@shared/core';
+import { HttpClient } from '@packages/common';
 
 export const dataProvider = ((): DataProvider => {
   const httpClient = new HttpClient(`/api/resources`);

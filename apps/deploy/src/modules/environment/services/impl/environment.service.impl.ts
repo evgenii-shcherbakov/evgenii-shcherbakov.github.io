@@ -37,7 +37,7 @@ export class EnvironmentServiceImpl implements EnvironmentService {
 
       this.logService.info(`${project.name} environment successfully updated`);
     } catch (exception) {
-      this.logService.error(`error during update ${project.name} environment`, exception);
+      this.logService.error(exception);
     }
   }
 }

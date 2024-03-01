@@ -25,7 +25,7 @@ import {
   CvEducationSection,
   CvProject,
   CvProjectsSection,
-} from '@shared/cv';
+} from '@packages/common';
 
 @Component({
   selector: 'app-cv-section',

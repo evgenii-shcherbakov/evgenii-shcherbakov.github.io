@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CvProjectListComponent } from '@/app/features/cv/components/cv-project-list/cv-project-list.component';
 import { CvSvgComponent } from '@/app/features/cv/components/cv-svg/cv-svg.component';
-import { CvExperience, DEFAULT_CV_EXPERIENCE } from '@shared/cv';
+import { CvExperience, DEFAULT_CV_EXPERIENCE } from '@packages/common';
 
 @Component({
   selector: 'app-cv-experience',

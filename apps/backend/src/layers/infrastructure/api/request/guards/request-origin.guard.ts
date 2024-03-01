@@ -7,7 +7,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { BackendEnvironment } from '@shared/environment';
+import { BackendEnvironment } from '@packages/environment';
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import { MetadataKeyEnum } from '@/enums/metadata-key.enum';

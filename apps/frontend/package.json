@@ -11,7 +11,8 @@
     "test": "ng test",
     "ssr": "node dist/frontend/server/server.mjs",
     "dev": "npm run start",
-    "format": "prettier src --write --config ../../.prettierrc"
+    "format": "prettier src --write --config ../../.prettierrc",
+    "reset": "rm -rf .angular .turbo dist"
   },
   "dependencies": {
     "@angular/animations": "^17.1.2",
@@ -24,8 +25,7 @@
     "@angular/platform-server": "^17.1.2",
     "@angular/router": "^17.1.2",
     "@angular/ssr": "^17.1.2",
-    "@shared/core": "*",
-    "@shared/cv": "*",
+    "@packages/common": "*",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

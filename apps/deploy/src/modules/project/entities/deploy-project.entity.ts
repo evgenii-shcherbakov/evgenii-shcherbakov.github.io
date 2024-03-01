@@ -1,4 +1,4 @@
-import type { EnvValidator } from '@shared/environment';
+import type { EnvValidator } from '@packages/environment';
 
 export type DeployProjectEntity = {
   id: string;
