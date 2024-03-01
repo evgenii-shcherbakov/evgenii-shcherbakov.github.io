@@ -1,3 +1,3 @@
-const { app } = import('{{ path }}');
+const server = import('{{ path }}');
 
-export default app;
+module.exports = server.app;
