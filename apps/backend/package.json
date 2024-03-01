@@ -3,6 +3,7 @@
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
+  "type": "commonjs",
   "scripts": {
     "dev": "npm run start:dev",
     "build": "nest build",

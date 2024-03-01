@@ -3,6 +3,7 @@
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
