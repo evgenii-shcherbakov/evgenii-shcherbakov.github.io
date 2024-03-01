@@ -17,3 +17,4 @@ export {
 // enums
 
 export { CvSectionTypeEnum } from './domains/backend/cv';
+export { VercelEnvVariableTypeEnum, VercelDeploymentTargetEnum } from './domains/vercel';

@@ -13,5 +13,4 @@ export * from './domains/backend/cv';
 
 // external
 
-export * from './domains/external';
-export * from './domains/external/vercel';
+export * from './domains/vercel';

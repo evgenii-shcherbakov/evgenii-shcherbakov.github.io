@@ -1,4 +1,4 @@
-import { ExternalVercelPaginationResponseDto } from './external.vercel.pagination.response.dto';
+import { VercelPaginationResponseDto } from './vercel.pagination.response.dto';
 
 class ExternalVercelDomain {
   readonly name: string;
@@ -9,6 +9,6 @@ class ExternalVercelDomain {
   readonly verified: boolean;
 }
 
-export class ExternalVercelGetProjectDomainsResponseDto extends ExternalVercelPaginationResponseDto {
+export class VercelGetProjectDomainsResponseDto extends VercelPaginationResponseDto {
   readonly domains: ExternalVercelDomain[];
 }

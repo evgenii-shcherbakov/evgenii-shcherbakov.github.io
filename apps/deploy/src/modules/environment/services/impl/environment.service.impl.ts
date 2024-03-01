@@ -3,6 +3,7 @@ import { inject, injectable } from 'inversify';
 import { API_SERVICE, ApiService } from '@modules/api/services/api.service';
 import { DeployProjectEntity } from '@modules/project/entities/deploy-project.entity';
 import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
+import { VercelDeploymentTargetEnum, VercelEnvVariableTypeEnum } from '@packages/common';
 
 @injectable()
 export class EnvironmentServiceImpl implements EnvironmentService {
@@ -24,13 +25,18 @@ export class EnvironmentServiceImpl implements EnvironmentService {
 
         this.logService.log(`update env variable ${variable} in ${project.name}...`);
 
-        await this.apiService.post(`v10/projects/${project.id}/env`, {
+        await this.apiService.typed.post('v10/projects/:projectId/env', {
           query: { upsert: true },
+          params: { projectId: project.id },
           body: {
             key: variable,
             value: String(value),
-            type: 'encrypted',
-            target: ['production', 'preview', 'development'],
+            type: VercelEnvVariableTypeEnum.ENCRYPTED,
+            target: [
+              VercelDeploymentTargetEnum.DEVELOPMENT,
+              VercelDeploymentTargetEnum.PREVIEW,
+              VercelDeploymentTargetEnum.PRODUCTION,
+            ],
           },
         });
       }

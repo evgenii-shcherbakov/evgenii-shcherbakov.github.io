@@ -35,9 +35,11 @@ export type {
 
 // external
 
-export type { ExternalVercelRestApiSchema } from './domains/external';
 export type {
-  ExternalVercelGetDeploymentsResponseDto,
-  ExternalVercelPaginationResponseDto,
-  ExternalVercelGetProjectDomainsResponseDto,
-} from './domains/external/vercel';
+  VercelRestApiSchema,
+  VercelGetProjectDomainsResponseDto,
+  VercelCreateEnvVariableResponseDto,
+  VercelCreateEnvVariableRequestDto,
+  VercelGetDeploymentsResponseDto,
+  VercelPaginationResponseDto,
+} from './domains/vercel';

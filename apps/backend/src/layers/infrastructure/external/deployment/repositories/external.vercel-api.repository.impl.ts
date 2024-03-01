@@ -6,18 +6,18 @@ import { DeploymentAppEnum } from '@domain/deployment/enums/deployment-app.enum'
 import { TEN } from '@/constants/numbers';
 import { SortOrderEnum } from '@domain/shared/enums/sort-order.enum';
 import { ExternalVercelApiMapperImpl } from '@infrastructure/external/deployment/mappers/external.vercel-api.mapper.impl';
-import { ExternalVercelRestApiSchema, RestApiClient, HttpHeadersEnum } from '@packages/common';
+import { VercelRestApiSchema, RestApiClient, HttpHeadersEnum } from '@packages/common';
 
 @Injectable()
 export class ExternalVercelApiRepositoryImpl implements DeploymentApiRepository {
   private readonly logger = new Logger(ExternalVercelApiRepositoryImpl.name, { timestamp: true });
-  private readonly restApiClient: RestApiClient<ExternalVercelRestApiSchema>;
+  private readonly restApiClient: RestApiClient<VercelRestApiSchema>;
 
   constructor(
     configService: ConfigService<BackendEnvironment>,
     private readonly mapper: ExternalVercelApiMapperImpl,
   ) {
-    this.restApiClient = new RestApiClient<ExternalVercelRestApiSchema>(
+    this.restApiClient = new RestApiClient<VercelRestApiSchema>(
       configService.get('VERCEL_API_URL'),
     );
 
