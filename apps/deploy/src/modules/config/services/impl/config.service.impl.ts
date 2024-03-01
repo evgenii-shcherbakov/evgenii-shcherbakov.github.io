@@ -29,6 +29,7 @@ export class ConfigServiceImpl<Environment = Record<string, string>>
 
     if (process.env.NODE_ENV === 'production') {
       this.validate();
+      return parsed ?? {};
     }
 
     if (error) {
