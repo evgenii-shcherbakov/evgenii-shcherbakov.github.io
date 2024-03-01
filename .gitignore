@@ -43,6 +43,5 @@ Thumbs.db
 
 build
 *.env
-package-lock.json
 .turbo
 .vercel
