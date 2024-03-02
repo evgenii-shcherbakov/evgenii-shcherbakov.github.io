@@ -27,7 +27,7 @@ export class ConfigServiceImpl<Environment = Record<string, string>>
   private getEnv(): DotenvParseOutput {
     const { error, parsed } = config();
 
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.CI === 'true') {
       this.validate();
       return parsed ?? {};
     }

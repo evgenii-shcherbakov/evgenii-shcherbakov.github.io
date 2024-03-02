@@ -33,7 +33,11 @@ export class AppModule {
 
     container.bind<ApiService>(API_SERVICE).to(ApiServiceImpl);
     container.bind<CommandService>(COMMAND_SERVICE).to(CommandServiceImpl);
-    container.bind<ConfigService<DeployEnvironment>>(CONFIG_SERVICE).to(ConfigServiceImpl);
+
+    container
+      .bind<ConfigService<DeployEnvironment>>(CONFIG_SERVICE)
+      .to(ConfigServiceImpl<DeployEnvironment>);
+
     container.bind<DeployService>(DEPLOY_SERVICE).to(DeployServiceImpl);
     container.bind<EnvironmentService>(ENVIRONMENT_SERVICE).to(EnvironmentServiceImpl);
     container.bind<FileService>(FILE_SERVICE).to(FileServiceImpl);

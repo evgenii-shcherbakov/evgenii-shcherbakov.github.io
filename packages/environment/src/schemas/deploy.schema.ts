@@ -3,7 +3,7 @@ import { CommonSchema } from './common.schema';
 
 export const DeploySchema = {
   ...CommonSchema,
-  CI: Joi.boolean().optional(),
+  CI: Joi.string<'true' | 'false'>().valid('true', 'false').optional(),
   VERCEL_TOKEN: Joi.string().required(),
   VERCEL_API_URL: Joi.string().required(),
   VERCEL_BACKEND_PROJECT_ID: Joi.string().required(),

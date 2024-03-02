@@ -40,13 +40,7 @@ export class FileServiceImpl implements FileService {
   async clearDeploymentUnnecessaryArtifacts(project: ProjectEntity): Promise<void> {
     const destinations: string[] = project.excludeFromBuild ?? [];
 
-    if (!this.configService.get('CI')) {
-      const ciValue = this.configService.get('CI');
-
-      this.logService.log(
-        `CI: ${ciValue}, ${typeof ciValue === 'boolean'}, ${typeof ciValue === 'string'}`,
-      );
-
+    if (this.configService.get('CI') !== 'true') {
       destinations.push('package-lock.json');
     }
 
