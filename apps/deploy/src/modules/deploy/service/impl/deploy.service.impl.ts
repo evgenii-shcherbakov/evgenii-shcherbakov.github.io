@@ -2,16 +2,15 @@ import { DeployService } from '@modules/deploy/service/deploy.service';
 import { inject, injectable } from 'inversify';
 import { GIT_SERVICE, GitService } from '@modules/git/services/git.service';
 import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
-import { DeployProjectEntity } from '@modules/project/entities/deploy-project.entity';
+import { ProjectEntity } from '@modules/project/entities/project.entity';
 import {
   createDeployment,
   Deployment,
   DeploymentOptions,
   VercelClientOptions,
 } from '@vercel/client';
-import { REPOSITORY_ROOT } from '@constants/paths';
+import { BUILD_ROOT } from '@constants/paths';
 import { VercelConfig } from '@vercel/client/dist/types';
-import { join } from 'node:path';
 import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
 import { DeployEnvironment } from '@packages/environment';
 
@@ -23,17 +22,17 @@ export class DeployServiceImpl implements DeployService {
     @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeployEnvironment>,
   ) {}
 
-  async deployProject(project: DeployProjectEntity): Promise<void> {
+  async deployProject(project: ProjectEntity): Promise<void> {
     try {
       const gitData = this.gitService.getData();
 
       const clientOptions: VercelClientOptions = {
-        path: REPOSITORY_ROOT,
+        path: BUILD_ROOT,
         token: this.configService.get('VERCEL_TOKEN'),
         apiUrl: this.configService.get('VERCEL_API_URL'),
       };
 
-      const config: VercelConfig = await import(join(project.path, 'vercel.json'));
+      const config: VercelConfig = await import(project.configPath);
 
       const deploymentOptions: DeploymentOptions = {
         version: config.version,
@@ -90,7 +89,7 @@ export class DeployServiceImpl implements DeployService {
 
         if (!earnedPhases.includes(type)) {
           earnedPhases.push(type);
-          this.logService.log(`${type}...`);
+          this.logService.log(`${project.name} deployment phase: ${type}`);
         }
       }
 

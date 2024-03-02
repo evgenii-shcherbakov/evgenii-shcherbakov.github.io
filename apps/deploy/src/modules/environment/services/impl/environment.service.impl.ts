@@ -1,7 +1,7 @@
 import { EnvironmentService } from '@modules/environment/services/environment.service';
 import { inject, injectable } from 'inversify';
 import { API_SERVICE, ApiService } from '@modules/api/services/api.service';
-import { DeployProjectEntity } from '@modules/project/entities/deploy-project.entity';
+import { ProjectEntity } from '@modules/project/entities/project.entity';
 import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
 import { VercelDeploymentTargetEnum, VercelEnvVariableTypeEnum } from '@packages/common';
 
@@ -12,7 +12,7 @@ export class EnvironmentServiceImpl implements EnvironmentService {
     @inject(LOG_SERVICE) private readonly logService: LogService,
   ) {}
 
-  async updateProjectEnvironment(project: DeployProjectEntity): Promise<void> {
+  async updateProjectEnvironment(project: ProjectEntity): Promise<void> {
     try {
       this.logService.info(`${project.name} environment update started...`);
 

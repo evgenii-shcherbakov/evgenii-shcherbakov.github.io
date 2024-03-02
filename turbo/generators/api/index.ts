@@ -4,7 +4,6 @@ import { readdirSync } from 'fs';
 
 export const apiGenerator = (plop: PlopTypes.NodePlopAPI) => {
   const templates = readdirSync(resolve(__dirname, 'templates'));
-  const options = templates.map((template) => template.replace('.hbs', ''));
 
   plop.setGenerator('api', {
     description: 'Creates api adapter (serverless adapter for Vercel)',
@@ -13,7 +12,7 @@ export const apiGenerator = (plop: PlopTypes.NodePlopAPI) => {
         type: 'list',
         name: 'preset',
         message: 'What preset should be used?',
-        choices: options,
+        choices: templates,
       },
       {
         type: 'input',
@@ -34,7 +33,13 @@ export const apiGenerator = (plop: PlopTypes.NodePlopAPI) => {
       {
         type: 'add',
         path: '{{ turbo.paths.root }}/api/index.js',
-        templateFile: join(__dirname, 'templates/{{ preset }}.hbs'),
+        templateFile: join(__dirname, 'templates/{{ preset }}/index.js.hbs'),
+        force: true,
+      },
+      {
+        type: 'add',
+        path: '{{ turbo.paths.root }}/api/package.json',
+        templateFile: join(__dirname, 'templates/{{ preset }}/package.json'),
         force: true,
       },
     ],

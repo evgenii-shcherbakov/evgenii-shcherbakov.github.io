@@ -5,6 +5,8 @@ import { FrontendSchema } from './schemas/frontend.schema';
 import { DeploySchema } from './schemas/deploy.schema';
 import { EnvironmentOf } from './types/environment.types';
 
+export type { EnvValidator };
+
 export const adminEnvValidator = new EnvValidator(AdminSchema);
 export const backendEnvValidator = new EnvValidator(BackendSchema);
 export const deployEnvValidator = new EnvValidator(DeploySchema);

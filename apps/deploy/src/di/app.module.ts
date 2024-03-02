@@ -18,9 +18,12 @@ import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
 import { LogServiceImpl } from '@modules/log/services/impl/log.service.impl';
 import { MAIN_SERVICE, MainService } from '@modules/main/services/main.service';
 import { MainServiceImpl } from '@modules/main/services/impl/main.service.impl';
-import { PROJECT_SERVICE, ProjectService } from '@modules/project/services/project.service';
-import { ProjectServiceImpl } from '@modules/project/services/impl/project.service.impl';
 import { DeployEnvironment } from '@packages/environment';
+import { FILE_SERVICE, FileService } from '@modules/file/services/file.service';
+import { FileServiceImpl } from '@modules/file/services/impl/file.service.impl';
+import { ProjectEntity } from '@modules/project/entities/project.entity';
+import { PROJECTS } from '@modules/project/constants/project.constants';
+import projects from '@/projects';
 
 export class AppModule {
   private static readonly container = this.createContainer();
@@ -33,10 +36,14 @@ export class AppModule {
     container.bind<ConfigService<DeployEnvironment>>(CONFIG_SERVICE).to(ConfigServiceImpl);
     container.bind<DeployService>(DEPLOY_SERVICE).to(DeployServiceImpl);
     container.bind<EnvironmentService>(ENVIRONMENT_SERVICE).to(EnvironmentServiceImpl);
+    container.bind<FileService>(FILE_SERVICE).to(FileServiceImpl);
     container.bind<GitService>(GIT_SERVICE).to(GitServiceImpl);
     container.bind<LogService>(LOG_SERVICE).to(LogServiceImpl);
     container.bind<MainService>(MAIN_SERVICE).to(MainServiceImpl);
-    container.bind<ProjectService>(PROJECT_SERVICE).to(ProjectServiceImpl);
+
+    container
+      .bind<ProjectEntity[]>(PROJECTS)
+      .toConstantValue(projects(container.get(CONFIG_SERVICE)));
 
     return container;
   }
