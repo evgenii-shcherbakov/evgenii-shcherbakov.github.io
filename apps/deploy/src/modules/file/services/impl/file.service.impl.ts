@@ -5,10 +5,15 @@ import { LOG_SERVICE, LogService } from '@modules/log/services/log.service';
 import { join, relative, resolve } from 'node:path';
 import { BUILD_ROOT, REPOSITORY_ROOT } from '@constants/paths';
 import { cp, rm } from 'node:fs/promises';
+import { CONFIG_SERVICE, ConfigService } from '@modules/config/services/config.service';
+import { DeployEnvironment } from '@packages/environment';
 
 @injectable()
 export class FileServiceImpl implements FileService {
-  constructor(@inject(LOG_SERVICE) private readonly logService: LogService) {}
+  constructor(
+    @inject(LOG_SERVICE) private readonly logService: LogService,
+    @inject(CONFIG_SERVICE) private readonly configServices: ConfigService<DeployEnvironment>,
+  ) {}
 
   private readonly DEFAULT_COPIED_ITEMS: string[] = [
     resolve(REPOSITORY_ROOT, 'packages'),
@@ -33,7 +38,20 @@ export class FileServiceImpl implements FileService {
   }
 
   async clearDeploymentUnnecessaryArtifacts(project: ProjectEntity): Promise<void> {
+    const destinations: string[] = project.excludeFromBuild ?? [];
+
+    if (this.configServices.get('NODE_ENV') !== 'production') {
+      destinations.push('package-lock.json');
+    }
+
+    if (!destinations.length) {
+      return;
+    }
+
     this.logService.info(`clear ${project.name} deployment unnecessary artifacts...`);
-    await rm(join(BUILD_ROOT, 'package-lock.json'), { recursive: true, force: true });
+
+    for (const destination of destinations) {
+      await rm(join(BUILD_ROOT, destination), { recursive: true, force: true });
+    }
   }
 }

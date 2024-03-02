@@ -8,5 +8,6 @@ export type ProjectEntity = {
   appName: string;
   configPath: string;
   prepareCommands?: string[];
+  excludeFromBuild?: string[];
   validator: EnvValidator;
 };
