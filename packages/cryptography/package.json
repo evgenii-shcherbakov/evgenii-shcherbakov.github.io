@@ -29,8 +29,8 @@
     "@packages/scripts": "*",
     "@packages/ts-configs": "*",
     "@types/bcryptjs": "^2.4.6",
-    "nodemon": "^3.0.3",
-    "prettier": "^3.2.4",
-    "typescript": "latest"
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
   }
 }
