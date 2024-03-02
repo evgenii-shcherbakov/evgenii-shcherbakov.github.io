@@ -12,7 +12,7 @@ import { DeployEnvironment } from '@packages/environment';
 export class FileServiceImpl implements FileService {
   constructor(
     @inject(LOG_SERVICE) private readonly logService: LogService,
-    @inject(CONFIG_SERVICE) private readonly configServices: ConfigService<DeployEnvironment>,
+    @inject(CONFIG_SERVICE) private readonly configService: ConfigService<DeployEnvironment>,
   ) {}
 
   private readonly DEFAULT_COPIED_ITEMS: string[] = [
@@ -40,9 +40,11 @@ export class FileServiceImpl implements FileService {
   async clearDeploymentUnnecessaryArtifacts(project: ProjectEntity): Promise<void> {
     const destinations: string[] = project.excludeFromBuild ?? [];
 
-    if (!this.configServices.get('CI')) {
+    if (!this.configService.get('CI')) {
+      const ciValue = this.configService.get('CI');
+
       this.logService.log(
-        `CI: ${this.configServices.get('CI')}, ${typeof this.configServices.get('CI')}`,
+        `CI: ${ciValue}, ${typeof ciValue === 'boolean'}, ${typeof ciValue === 'string'}`,
       );
 
       destinations.push('package-lock.json');
