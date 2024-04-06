@@ -1,0 +1,1 @@
+export const API_GATEWAY_CLIENT = Symbol('API_GATEWAY_CLIENT');

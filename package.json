@@ -4,31 +4,22 @@
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "format": "turbo run format",
-    "dev:admin": "turbo run dev --filter=admin",
-    "dev:backend": "turbo run dev --filter=backend",
-    "dev:frontend": "turbo run dev --filter=frontend",
     "dev": "turbo run dev",
-    "build:admin": "turbo run build --filter=admin",
-    "build:backend": "turbo run build --filter=backend",
-    "build:frontend": "turbo run build --filter=frontend",
     "build": "turbo run build",
-    "gen:package": "turbo gen package && npm install",
-    "gen:api": "turbo gen api",
-    "deploy": "turbo run deploy --filter=deploy",
-    "reset:admin": "turbo run reset --filter=admin",
-    "reset:backend": "turbo run reset --filter=backend",
-    "reset:frontend": "turbo run reset --filter=frontend",
+    "format": "turbo run format",
+    "gen:package": "turbo gen package && yarn",
     "reset": "rm -rf .turbo && turbo run reset"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.13.0",
+    "@turbo/gen": "latest",
     "prettier": "^3.2.5",
-    "turbo": "^1.13.0"
+    "turbo": "latest",
+    "yarn": "^1.22.22"
   },
   "engines": {
-    "node": "18.x"
+    "node": ">=18"
   },
+  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"

@@ -3,17 +3,14 @@
   "globalDependencies": ["**/.env"],
   "pipeline": {
     "dev": {
-      "dependsOn": ["^build"],
-      "cache": false
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
     },
     "build": {
       "dependsOn": ["^build"]
     },
     "format": {},
-    "reset": {},
-    "deploy": {
-      "dependsOn": ["^build"],
-      "cache": false
-    }
+    "reset": {}
   }
 }
