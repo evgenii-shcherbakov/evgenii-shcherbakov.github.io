@@ -37,10 +37,6 @@ export default function (configService: ConfigService<DeployEnvironment>): Proje
       watch: [join('apps', 'frontend'), 'packages', join('apps', 'deploy')],
       appName: configService.get('VERCEL_FRONTEND_APP_NAME') ?? '',
       validator: frontendEnvValidator,
-      prepareCommands: [
-        'npm install',
-        'npx turbo gen api --args angular-esm ../apps/frontend/dist/frontend/server/server.mjs',
-      ],
       configPath: join(APPS_ROOT, 'frontend/vercel.json'),
     },
   ];

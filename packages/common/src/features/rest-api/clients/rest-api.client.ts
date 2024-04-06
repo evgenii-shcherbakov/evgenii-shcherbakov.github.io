@@ -3,10 +3,10 @@ import {
   SchemaDefinitionResponseTypeOf,
   SchemaEndpointOf,
   SchemaType,
-} from '../types/schema';
-import { TypedRequestParamsOf } from '../types/client';
-import { HttpClient, HttpMethodEnum, RequestParams } from '../../http';
-import { RestApiMethods } from '../interfaces/rest-api.methods';
+} from 'features/rest-api/types/schema.types';
+import { TypedRequestParamsOf } from 'features/rest-api/types/client.types';
+import { HttpClient, HttpMethodEnum, RequestParams } from 'features/http';
+import { RestApiMethods } from 'features/rest-api/interfaces/rest-api.methods';
 
 export class RestApiClient<Schema extends SchemaType> extends HttpClient {
   constructor(baseUrl: string) {
@@ -14,6 +14,7 @@ export class RestApiClient<Schema extends SchemaType> extends HttpClient {
   }
 
   protected typedRequestFactory<Method extends HttpMethodEnum>(method: Method) {
+    //@ts-ignore
     return async <
       Endpoint extends SchemaEndpointOf<Schema>,
       Definition extends SchemaDefinitionOf<Schema, Method, Endpoint>,
@@ -27,7 +28,8 @@ export class RestApiClient<Schema extends SchemaType> extends HttpClient {
         .map((part) => {
           if (/:\w+/g.test(part)) {
             return (
-              (params.params as Record<string, string>)?.[part.replace(/^:/g, '')] ?? 'undefined'
+              (params.params as unknown as Record<string, string>)?.[part.replace(/^:/g, '')] ??
+              'undefined'
             );
           }
 
@@ -40,7 +42,9 @@ export class RestApiClient<Schema extends SchemaType> extends HttpClient {
         query: params.query,
       };
 
+      //@ts-ignore
       if (method !== HttpMethodEnum.GET && params.body) {
+        //@ts-ignore
         requestParams.body = params.body;
       }
 

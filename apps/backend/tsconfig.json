@@ -25,7 +25,7 @@
       "@application": ["src/layers/application"],
       "@application/*": ["src/layers/application/*"],
       "@infrastructure": ["src/layers/infrastructure"],
-      "@infrastructure/*": ["src/layers/infrastructure/*"],
+      "@infrastructure/*": ["src/layers/infrastructure/*"]
     }
   },
   "include": ["src"]

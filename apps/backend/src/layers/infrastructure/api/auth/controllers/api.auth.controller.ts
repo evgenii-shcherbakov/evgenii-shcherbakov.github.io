@@ -11,11 +11,9 @@ import {
 import { JwtAuth } from '@infrastructure/api/auth/decorators/jwt-auth.decorator';
 import { AllowedApps } from '@infrastructure/api/request/decorators/allowed-apps.decorator';
 import { DeploymentAppEnum } from '@domain/deployment/enums/deployment-app.enum';
-import {
-  BackendAuthResponseDto,
-  BackendAuthRequestDto,
-  BackendAuthUserIdentityResponseDto,
-} from '@packages/common';
+import { AuthRequestDto } from '@infrastructure/api/auth/dto/auth.request.dto';
+import { AuthResponseDto } from '@infrastructure/api/auth/dto/auth.response.dto';
+import { AuthUserIdentityResponseDto } from '@infrastructure/api/auth/dto/auth.user-identity.response.dto';
 
 @ApiController('auth')
 @AllowedApps(DeploymentAppEnum.ADMIN)
@@ -27,10 +25,10 @@ export class ApiAuthController {
     path: 'me',
     summary: 'Get user info',
     response: {
-      type: BackendAuthUserIdentityResponseDto,
+      type: AuthUserIdentityResponseDto,
     },
   })
-  async me(@User() user: UserEntity): Promise<BackendAuthUserIdentityResponseDto> {
+  async me(@User() user: UserEntity): Promise<AuthUserIdentityResponseDto> {
     return { id: user.id.toString() };
   }
 
@@ -39,11 +37,11 @@ export class ApiAuthController {
     path: 'refresh-token',
     summary: 'Refresh jwt token',
     response: {
-      type: BackendAuthResponseDto,
+      type: AuthResponseDto,
     },
     status: HttpStatus.OK,
   })
-  async refreshToken(@User() user: UserEntity) {
+  async refreshToken(@User() user: UserEntity): Promise<AuthResponseDto> {
     return { token: this.apiAuthService.generateToken(user) };
   }
 
@@ -51,10 +49,10 @@ export class ApiAuthController {
     path: 'register',
     summary: 'Register new user',
     response: {
-      type: BackendAuthResponseDto,
+      type: AuthResponseDto,
     },
   })
-  async register(@Body() dto: BackendAuthRequestDto): Promise<BackendAuthResponseDto> {
+  async register(@Body() dto: AuthRequestDto): Promise<AuthResponseDto> {
     return this.apiAuthService.register(dto);
   }
 
@@ -63,11 +61,11 @@ export class ApiAuthController {
     path: 'login',
     summary: 'Login',
     response: {
-      type: BackendAuthResponseDto,
+      type: AuthResponseDto,
     },
     status: HttpStatus.OK,
   })
-  async login(@User() user: UserEntity): Promise<BackendAuthResponseDto> {
+  async login(@User() user: UserEntity): Promise<AuthResponseDto> {
     return { token: this.apiAuthService.generateToken(user) };
   }
 }

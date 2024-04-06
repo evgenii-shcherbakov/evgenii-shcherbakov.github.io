@@ -10,10 +10,10 @@ import {
 import LoginPage from '@components/pages/login/login.page';
 import { authProvider, dataProvider } from '@features/http';
 import { darkTheme, lightTheme } from '@features/theme';
-import { BackendAuthRequestDto } from '@packages/common';
+import { BackendAuthRequest } from '@packages/common';
 
 const AdminPage: FC = () => {
-  const dto: BackendAuthRequestDto = { email: '123', password: '12' };
+  const dto: BackendAuthRequest = { email: '123', password: '12' };
 
   return (
     <Admin

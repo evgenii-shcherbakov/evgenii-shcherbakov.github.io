@@ -38,16 +38,6 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI) => {
       },
       {
         type: 'add',
-        path: `${packagePath}/tsconfig-cjs.json`,
-        templateFile: join(__dirname, 'assets/tsconfig-cjs.json'),
-      },
-      {
-        type: 'add',
-        path: `${packagePath}/nodemon.json`,
-        templateFile: join(__dirname, 'assets/nodemon.json'),
-      },
-      {
-        type: 'add',
         path: `${packagePath}/turbo.json`,
         templateFile: join(__dirname, 'assets/turbo.json'),
       },

@@ -5,21 +5,10 @@
   "github": {
     "enabled": false
   },
-  "framework": "angular",
+  "framework": "nextjs",
   "installCommand": "npm install",
   "buildCommand": "npm run build:frontend",
-  "outputDirectory": "apps/frontend/dist/frontend",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
-  ],
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "apps/frontend/dist/frontend/**"
-    }
-  },
+  "outputDirectory": "apps/frontend/.next",
   "env": {
     "NODE_ENV": "production"
   }

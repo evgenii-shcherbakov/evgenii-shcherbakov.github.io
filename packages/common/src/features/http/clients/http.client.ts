@@ -1,11 +1,11 @@
-import { HttpHeadersEnum } from '../enums/http-headers.enum';
+import { HttpHeadersEnum } from 'features/http/enums/http-headers.enum';
 import {
   RequestInterceptor,
   RequestParams,
   ResponseInterceptor,
   RequestErrorInterceptor,
   ResponseErrorInterceptor,
-} from '../types/http.types';
+} from 'features/http/types/http.types';
 
 export class HttpClient {
   private requestInterceptor: RequestInterceptor = (config) => config;

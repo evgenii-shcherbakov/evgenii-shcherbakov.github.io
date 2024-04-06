@@ -5,7 +5,8 @@ import {
   RegisterUserService,
 } from '@domain/auth/services/register-user.service';
 import { UserEntity } from '@domain/user/entities/user.entity';
-import { BackendAuthRequestDto, BackendAuthResponseDto } from '@packages/common';
+import { BackendAuthRequest, BackendAuthResponse } from '@packages/common';
+import { AuthJwtPayload } from '@infrastructure/api/auth/types/payload.types';
 
 @Injectable()
 export class ApiAuthService {
@@ -16,11 +17,12 @@ export class ApiAuthService {
   ) {}
 
   generateToken(user: UserEntity): string {
-    return this.jwtService.sign({ id: user.id.toString(), email: user.email });
+    const payload: AuthJwtPayload = { id: user.id.toString(), email: user.email };
+    return this.jwtService.sign(payload);
   }
 
-  async register(dto: BackendAuthRequestDto): Promise<BackendAuthResponseDto> {
-    const io = await this.registerUserService.register(dto.email, dto.password);
+  async register(data: BackendAuthRequest): Promise<BackendAuthResponse> {
+    const io = await this.registerUserService.register(data.email, data.password);
 
     if (io.isLeft()) {
       throw io.value;

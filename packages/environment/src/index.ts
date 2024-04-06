@@ -1,9 +1,9 @@
-import { EnvValidator } from './entities/env-validator';
-import { AdminSchema } from './schemas/admin.schema';
-import { BackendSchema } from './schemas/backend.schema';
-import { FrontendSchema } from './schemas/frontend.schema';
-import { DeploySchema } from './schemas/deploy.schema';
-import { EnvironmentOf } from './types/environment.types';
+import { EnvValidator } from 'entities/env-validator';
+import { AdminSchema } from 'schemas/admin.schema';
+import { BackendSchema } from 'schemas/backend.schema';
+import { FrontendSchema } from 'schemas/frontend.schema';
+import { DeploySchema } from 'schemas/deploy.schema';
+import { EnvironmentOf } from 'types/environment.types';
 
 export type { EnvValidator };
 

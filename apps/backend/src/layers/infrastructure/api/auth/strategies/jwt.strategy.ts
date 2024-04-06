@@ -7,7 +7,7 @@ import { USER_REPOSITORY, UserRepository } from '@domain/user/repositories/user.
 import { JWT_IGNORE_EXPIRATION } from '@/constants/configuration';
 import { UserEntity } from '@domain/user/entities/user.entity';
 import { IdEntity } from '@domain/shared/entities/id.entity';
-import { JwtPayloadDto } from '@infrastructure/api/auth/dto/jwt-payload.dto';
+import { AuthJwtPayload } from '@infrastructure/api/auth/types/payload.types';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -23,7 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: JwtPayloadDto): Promise<UserEntity> {
+  async validate(payload: AuthJwtPayload): Promise<UserEntity> {
     const ioUser = await this.userRepository.getById(new IdEntity(payload.id));
 
     if (ioUser.isLeft()) {

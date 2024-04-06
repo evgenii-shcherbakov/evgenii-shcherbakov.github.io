@@ -3,14 +3,16 @@
   "pipeline": {
     "build": {
       "inputs": [
-        "src/**",
-        "angular.json",
+        "public/**",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        ".eslintrc.json",
+        "next.config.mjs",
+        "next-env.d.ts",
         "package.json",
-        "server.ts",
-        "tailwind.config.js",
         "tsconfig*.json"
       ],
-      "outputs": ["dist/frontend/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     }
   }
 }

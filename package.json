@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "format": "turbo run format",
-    "dev:admin": "turbo run dev --filter=admin...",
-    "dev:backend": "turbo run dev --filter=backend...",
-    "dev:frontend": "turbo run dev --filter=frontend^... & cd apps/frontend && npm run dev",
+    "dev:admin": "turbo run dev --filter=admin",
+    "dev:backend": "turbo run dev --filter=backend",
+    "dev:frontend": "turbo run dev --filter=frontend",
     "dev": "turbo run dev",
     "build:admin": "turbo run build --filter=admin",
     "build:backend": "turbo run build --filter=backend",
@@ -22,9 +22,9 @@
     "reset": "rm -rf .turbo && turbo run reset"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.10.9",
+    "@turbo/gen": "^1.13.0",
     "prettier": "^3.2.5",
-    "turbo": "^1.12.2"
+    "turbo": "^1.13.0"
   },
   "engines": {
     "node": "18.x"

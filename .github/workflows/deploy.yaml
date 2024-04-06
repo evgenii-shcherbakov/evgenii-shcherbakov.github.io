@@ -3,8 +3,7 @@ name: 'Deploy'
 on:
   push:
     branches:
-      # - 'main'
-      - 'feature/turborepo-migration'
+       - 'main'
     paths:
       - 'apps/**'
       - 'packages/**'
@@ -32,6 +31,7 @@ env:
   NEXT_PUBLIC_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
 
   #  Frontend
+  NG_APP_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
 
   #  Github
   GITHUB_BASE_URL: 'https://${{ github.repository_owner }}.github.io'

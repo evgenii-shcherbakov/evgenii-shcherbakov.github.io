@@ -1,4 +1,4 @@
-import { Document, FilterQuery, Model, QueryOptions, UpdateQuery } from 'mongoose';
+import { Document, Model, QueryOptions } from 'mongoose';
 import { Either, left, right } from '@sweet-monads/either';
 import { BaseMapper } from '@infrastructure/persistence/shared/mappers/base.mapper';
 import { BaseRepository } from '@domain/shared/repositories/base.repository';
@@ -48,7 +48,8 @@ export abstract class BaseRepositoryImpl<
   }
 
   async getByIds(ids: IdEntity[]): Promise<Entity[]> {
-    return this.model.find({ _id: { $in: ids.map((id) => id.toString()) } }).lean();
+    //@ts-ignore
+    return this.model.find({ _id: { $in: ids.map((id) => id.toObjectId()) } }).lean();
   }
 
   async getMany(

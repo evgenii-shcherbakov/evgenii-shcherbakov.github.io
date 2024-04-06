@@ -10,11 +10,11 @@ export const authProvider = ((): AuthProvider => {
 
   restApiClient.interceptors.request.use(authInterceptor);
 
-  const login = async (data: AuthData) => {
+  const login = async ({ isRegister, ...dto }: AuthData) => {
     try {
       const { token } = await restApiClient.typed.post(
-        data.isRegister ? 'auth/register' : 'auth/login',
-        { body: data },
+        isRegister ? 'auth/register' : 'auth/login',
+        { body: dto },
       );
 
       if (!token) {

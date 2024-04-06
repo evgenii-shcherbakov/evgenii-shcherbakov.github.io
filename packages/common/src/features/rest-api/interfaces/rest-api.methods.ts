@@ -3,9 +3,9 @@ import {
   SchemaDefinitionResponseTypeOf,
   SchemaEndpointOf,
   SchemaType,
-} from '../types/schema';
-import { HttpMethodEnum } from '../../http';
-import { TypedRequestParamsOf } from '../types/client';
+} from 'features/rest-api/types/schema.types';
+import { HttpMethodEnum } from 'features/http';
+import { TypedRequestParamsOf } from 'features/rest-api/types/client.types';
 
 export interface RestApiMethods<Schema extends SchemaType> {
   get<
