@@ -3,38 +3,68 @@ name: 'Deploy'
 on:
   push:
     branches:
-      - 'main'
+       - 'main'
+    paths:
+      - 'apps/**'
+      - 'packages/**'
 
 env:
-  BASE_URL: 'https://${{ github.event.repository.name }}'
-  TELEGRAM_API_TOKEN: '${{ secrets.TELEGRAM_API_TOKEN }}'
-  TELEGRAM_AUTHOR_ID: '${{ secrets.TELEGRAM_AUTHOR_ID }}'
-  TELEGRAM_AUTHOR_NICKNAME: '${{ secrets.TELEGRAM_AUTHOR_NICKNAME }}'
+  #  Vercel
+  VERCEL_TOKEN: '${{ secrets.VERCEL_TOKEN }}'
+  VERCEL_API_URL: '${{ secrets.VERCEL_API_URL }}'
+  VERCEL_BACKEND_APP_NAME: '${{ secrets.VERCEL_BACKEND_APP_NAME }}'
+  VERCEL_BACKEND_ORGANIZATION_ID: '${{ secrets.VERCEL_BACKEND_ORGANIZATION_ID }}'
+  VERCEL_BACKEND_PROJECT_ID: '${{ secrets.VERCEL_BACKEND_PROJECT_ID }}'
+  VERCEL_ADMIN_APP_NAME: '${{ secrets.VERCEL_ADMIN_APP_NAME }}'
+  VERCEL_ADMIN_ORGANIZATION_ID: '${{ secrets.VERCEL_ADMIN_ORGANIZATION_ID }}'
+  VERCEL_ADMIN_PROJECT_ID: '${{ secrets.VERCEL_ADMIN_PROJECT_ID }}'
+  VERCEL_FRONTEND_APP_NAME: '${{ secrets.VERCEL_FRONTEND_APP_NAME }}'
+  VERCEL_FRONTEND_ORGANIZATION_ID: '${{ secrets.VERCEL_FRONTEND_ORGANIZATION_ID }}'
+  VERCEL_FRONTEND_PROJECT_ID: '${{ secrets.VERCEL_FRONTEND_PROJECT_ID }}'
+
+  #  Backend
+  DATABASE_URL: '${{ secrets.DATABASE_URL }}'
+  JWT_SECRET: '${{ secrets.JWT_SECRET }}'
+  BCRYPT_SALT: '${{ secrets.BCRYPT_SALT }}'
+
+  #  Admin
+  NEXT_PUBLIC_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
+
+  #  Frontend
+  NG_APP_BACKEND_URL: '${{ secrets.BACKEND_URL }}'
+
+  #  Github
+  GITHUB_BASE_URL: 'https://${{ github.repository_owner }}.github.io'
+  GITHUB_REPOSITORY_URL: 'https://github.com/${{ github.repository }}'
+  GITHUB_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
+  GITHUB_COMMITTER: '${{ github.actor }}'
 
 jobs:
   Deploy:
     runs-on: 'ubuntu-latest'
 
-    permissions:
-      contents: 'write'
-
     steps:
-      - name: 'Load code'
-        uses: 'actions/checkout@v3'
-      - name: 'Setup Node'
-        uses: 'actions/setup-node@v3'
+      - name: 'Load repository code'
+        uses: 'actions/checkout@v4'
+        with:
+          fetch-depth: 2
+      - name: 'Setup node.js'
+        uses: 'actions/setup-node@v4'
         with:
           node-version: 18
       - name: 'Install dependencies'
         run: 'npm install'
-      - name: 'Format code'
-        run: 'npm run format'
-      - name: 'Lint code'
-        run: 'npm run lint'
-      - name: 'Build'
-        run: 'npm run build'
-      - name: 'Deploy'
-        uses: 'peaceiris/actions-gh-pages@v3'
-        with:
-          github_token: '${{ secrets.GITHUB_TOKEN }}'
-          publish_dir: './dist'
+      - name: 'Vercel deployment'
+        run: 'npm run deploy'
+
+        # GITHUB
+
+#      - name: 'Prepare frontend github version'
+#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
+#        run: 'chmod +x scripts/github/prepare.sh && scripts/github/prepare.sh'
+#      - name: 'Deploy frontend github version'
+#        if: steps.changes-filter.outputs.frontend == 'true' || steps.changes-filter.outputs.packages == 'true'
+#        uses: 'peaceiris/actions-gh-pages@v3'
+#        with:
+#          github_token: '${{ secrets.GITHUB_TOKEN }}'
+#          publish_dir: './apps/frontend/dist/frontend/browser'

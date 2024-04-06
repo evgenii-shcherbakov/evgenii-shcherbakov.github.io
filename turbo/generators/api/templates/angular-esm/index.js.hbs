@@ -1,0 +1,6 @@
+async function loadServer() {
+  const server = await import('{{ path }}');
+  return server.app;
+}
+
+export default loadServer().then(app => app());
