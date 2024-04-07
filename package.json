@@ -12,9 +12,9 @@
     "docker": "docker-compose -f docker-compose.yml -p platform up --build"
   },
   "devDependencies": {
-    "@turbo/gen": "latest",
+    "@turbo/gen": "^1.13.2",
     "prettier": "^3.2.5",
-    "turbo": "latest",
+    "turbo": "^1.13.2",
     "yarn": "^1.22.22"
   },
   "engines": {
