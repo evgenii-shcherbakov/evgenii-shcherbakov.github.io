@@ -5,11 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "turbo run dev",
+    "dev:backend": "turbo run dev --filter=backend",
     "build": "turbo run build",
+    "build:backend": "turbo run build --filter=backend",
     "format": "turbo run format",
     "gen:package": "turbo gen package && yarn",
     "reset": "rm -rf .turbo && turbo run reset",
-    "docker": "docker-compose -f docker-compose.yml -p platform up --build"
+    "reset:backend": "turbo run reset --filter=backend",
+    "docker": "docker-compose -f docker-compose.yml -p evgenii-shcherbakov.github.io up --build"
   },
   "devDependencies": {
     "@turbo/gen": "^1.13.2",
