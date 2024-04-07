@@ -74,7 +74,8 @@ yarn build:backend # only backend
 Commands for run in docker
 
 ```shell
-yarn docker
+yarn docker # start all services (production mode)
+yarn docker:local # start only transport services (local development mode)
 ```
 
 Commands for reset build caches:
@@ -88,7 +89,7 @@ For format project with prettier run:
 yarn format
 ```
 
-### Code generators
+### Code generation
 
 For generate new package run:
 ```shell

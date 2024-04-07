@@ -12,7 +12,8 @@
     "gen:package": "turbo gen package && yarn",
     "reset": "rm -rf .turbo && turbo run reset",
     "reset:backend": "turbo run reset --filter=backend",
-    "docker": "docker-compose -f docker-compose.yml -p evgenii-shcherbakov.github.io up --build"
+    "docker:local": "docker-compose -f docker-compose.yml -p platform-local --profile local up --build",
+    "docker": "docker-compose -f docker-compose.yml -p platform --profile all up --build"
   },
   "devDependencies": {
     "@turbo/gen": "^1.13.2",

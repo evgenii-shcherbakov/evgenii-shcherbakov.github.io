@@ -1,54 +1,63 @@
 version: '3'
 
 services:
-#  mongodb:
-#    image: mongo:4.4
-#    restart: always
-#    ports:
-#      - '27017:27017'
-#    networks:
-#      - app_network
-#    volumes:
-#      - mongo_data:/data/db
-#    entrypoint: [ '/usr/bin/mongod', '--replSet', 'rs0', '--bind_ip_all' ]
-#
-#  mongodb_initializer:
-#    image: mongo:4.4
-#    depends_on:
-#      - mongodb
-#    networks:
-#      - app_network
-#    command:
-#      - /bin/sh
-#      - -c
-#      - |
-#        sleep 2 &&
-#        mongo --host mongodb:27017 --eval "
-#        if (!rs.status().ok) {
-#          rs.initiate();
-#        }
-#
-#        db = (new Mongo('mongodb:27017')).getDB('local');
-#
-#        if (db.oplog.rs.stats().maxSize.toNumber() !== 2097152000) {
-#          db.adminCommand({ 'replSetResizeOplog': 1, 'size': 2000 });
-#          db.runCommand({ 'compact': 'oplog.rs', 'force': true });
-#        }
-#        "
+  mongodb:
+    image: mongo:4.4
+    restart: always
+    profiles:
+      - local
+      - all
+    ports:
+      - '27017:27017'
+    networks:
+      - app_network
+    volumes:
+      - mongo_data:/data/db
+    entrypoint: [ '/usr/bin/mongod', '--replSet', 'rs0', '--bind_ip_all' ]
+
+  mongodb_initializer:
+    image: mongo:4.4
+    profiles:
+      - local
+      - all
+    depends_on:
+      - mongodb
+    networks:
+      - app_network
+    command:
+      - /bin/sh
+      - -c
+      - |
+        sleep 2 &&
+        mongo --host mongodb:27017 --eval "
+        if (!rs.status().ok) {
+          rs.initiate();
+        }
+
+        db = (new Mongo('mongodb:27017')).getDB('local');
+
+        if (db.oplog.rs.stats().maxSize.toNumber() !== 2097152000) {
+          db.adminCommand({ 'replSetResizeOplog': 1, 'size': 2000 });
+          db.runCommand({ 'compact': 'oplog.rs', 'force': true });
+        }
+        "
 
   backend:
     build:
       context: .
       dockerfile: ./apps/backend/Dockerfile
     restart: always
+    profiles:
+      - all
     ports:
       - '5555:5555'
     environment:
       PORT: 5555
+      DATABASE_URL: mongodb://mongodb:27017?directConnection=true
     networks:
       - app_network
-#    depends_on:
-#      - mongodb
+    depends_on:
+      - mongodb
 
 #  frontend:
 #    build:
@@ -68,5 +77,5 @@ networks:
   app_network:
     driver: bridge
 
-#volumes:
-#  mongo_data:
+volumes:
+  mongo_data:
