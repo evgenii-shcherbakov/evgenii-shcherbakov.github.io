@@ -46,7 +46,7 @@ apps/
 > Backend
 > 
 > - Nest.js
-> - GRPC
+> - gRPC
 > - Mongoose
 
 ### Usage

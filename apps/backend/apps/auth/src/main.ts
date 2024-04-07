@@ -1,5 +1,4 @@
-import { GrpcClientStrategy } from '@app/grpc';
-import { GrpcServiceEnum } from '@app/grpc/enums/grpc-service.enum';
+import { GrpcServiceEnum, GrpcClientStrategy } from '@app/grpc';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions } from '@nestjs/microservices';
 import { AuthModule } from './auth.module';
