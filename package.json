@@ -12,7 +12,7 @@
     "gen:package": "turbo gen package && yarn",
     "reset": "rm -rf .turbo && turbo run reset",
     "reset:backend": "turbo run reset --filter=backend",
-    "docker:local": "docker-compose -f docker-compose.yml -p platform-local --profile local up --build",
+    "docker:local": "docker-compose -f docker-compose.yml -p platform --profile local up --build",
     "docker": "docker-compose -f docker-compose.yml -p platform --profile all up --build"
   },
   "devDependencies": {
