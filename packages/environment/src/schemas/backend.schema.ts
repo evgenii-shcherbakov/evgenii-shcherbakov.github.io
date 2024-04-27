@@ -6,4 +6,6 @@ export const BackendSchema = {
   DATABASE_URL: Joi.string().required(),
   JWT_SECRET: Joi.string().required(),
   BCRYPT_SALT: Joi.number().required(),
+  GRPC_PORT: Joi.string().required(),
+  // PROTOC_PATH: Joi.string().required(),
 };

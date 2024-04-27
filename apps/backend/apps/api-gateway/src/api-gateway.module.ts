@@ -1,18 +1,9 @@
-import { CommonModule } from '@app/common';
-import { GrpcModule, GrpcServiceEnum } from '@app/grpc';
+import { AuthModule } from '@apps/api-gateway/modules/auth/auth.module';
+import { ContactModule } from '@apps/api-gateway/modules/contact/contact.module';
+import { CommonModule } from '@libs/common';
 import { Module } from '@nestjs/common';
-import { API_GATEWAY_AUTH_CLIENT } from 'apps/api-gateway/src/api-gateway.constants';
-import { ApiGatewayController } from './api-gateway.controller';
-import { ApiGatewayService } from './api-gateway.service';
 
 @Module({
-  imports: [
-    CommonModule,
-    GrpcModule.register({
-      clients: [{ name: API_GATEWAY_AUTH_CLIENT, service: GrpcServiceEnum.AUTH }],
-    }),
-  ],
-  controllers: [ApiGatewayController],
-  providers: [ApiGatewayService],
+  imports: [CommonModule, AuthModule, ContactModule],
 })
 export class ApiGatewayModule {}

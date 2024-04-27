@@ -1,50 +1,54 @@
-import { GrpcServiceEnum } from '@app/grpc/modules/grpc/enums/grpc.service.enum';
-import { GrpcClientStrategy } from '@app/grpc/modules/grpc/strategies/grpc.client.strategy';
-import { GrpcModuleOptions } from '@app/grpc/modules/grpc/grpc.types';
+import { GrpcClientEnum } from '@libs/grpc/modules/grpc/enums/grpc.client.enum';
+import { GrpcModuleOptions } from '@libs/grpc/modules/grpc/grpc.types';
+import { GrpcStrategy } from '@libs/grpc/modules/grpc/strategies/grpc.strategy';
 import { DynamicModule, Module, Provider } from '@nestjs/common';
 import { ClientGrpc, ClientsModule, ClientsProviderAsyncOptions } from '@nestjs/microservices';
 
-@Module({
-  providers: [GrpcClientStrategy],
-  exports: [GrpcClientStrategy],
-})
+@Module({})
 export class GrpcModule {
   static register(options: GrpcModuleOptions): DynamicModule {
-    const CLIENT = Symbol(`GRPC_CLIENT_${Date.now()}`);
+    const serviceTokens: (string | symbol)[] = [];
+    const services: Provider[] = [];
+    const clients: ClientsProviderAsyncOptions[] = [];
+    const clientAccumulator: Map<GrpcClientEnum, symbol> = new Map();
 
-    const grpcServices: GrpcServiceEnum[] = [];
-    const grpcClientInjectionTokens: (string | symbol)[] = [];
+    options.clients.forEach(({ service, name }) => {
+      const client = GrpcStrategy.getClient(service);
+      let clientSymbol: symbol;
 
-    const grpcClientProviders: Provider[] = options.clients.map((clientOptions) => {
-      grpcServices.push(clientOptions.service);
-      grpcClientInjectionTokens.push(clientOptions.name);
+      if (clientAccumulator.has(client)) {
+        clientSymbol = clientAccumulator.get(client);
+      } else {
+        clientSymbol = Symbol(`${client.toUpperCase()}_GRPC_CLIENT`);
+        clientAccumulator.set(client, clientSymbol);
 
-      return {
-        provide: clientOptions.name,
-        useFactory: (client: ClientGrpc, grpcStrategy: GrpcClientStrategy) => {
-          return client.getService(grpcStrategy.getServiceName(clientOptions.service));
+        clients.push({
+          name: clientSymbol,
+          useFactory: () => {
+            return GrpcStrategy.getClientOptions(client);
+          },
+        });
+      }
+
+      services.push({
+        provide: name,
+        useFactory: (client: ClientGrpc, grpcStrategy: GrpcStrategy) => {
+          return client.getService(grpcStrategy.getServiceName(service));
         },
-        inject: [CLIENT, GrpcClientStrategy],
-      };
-    });
+        inject: [clientSymbol, GrpcStrategy],
+      });
 
-    const mainGrpcClientOptions: ClientsProviderAsyncOptions = {
-      name: CLIENT,
-      useFactory: (grpcStrategy: GrpcClientStrategy) => {
-        return grpcStrategy.getOptions(...grpcServices);
-      },
-      inject: [GrpcClientStrategy],
-      imports: [GrpcModule],
-    };
+      serviceTokens.push(name);
+    });
 
     return {
       imports: [
         ClientsModule.registerAsync({
-          clients: [mainGrpcClientOptions],
+          clients: [...clients],
         }),
       ],
-      providers: [...grpcClientProviders],
-      exports: [...grpcClientInjectionTokens],
+      providers: [GrpcStrategy, ...services],
+      exports: [...serviceTokens],
       module: GrpcModule,
     };
   }

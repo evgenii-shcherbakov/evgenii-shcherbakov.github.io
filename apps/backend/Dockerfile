@@ -10,7 +10,10 @@ RUN turbo prune backend --docker
 
 FROM base AS installer
 RUN apk add --no-cache libc6-compat
+RUN apk add protobuf
 RUN apk update
+ENV PATH="/usr/bin:${PATH}"
+ENV PROTO_PATH="protoc"
 WORKDIR /app
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .

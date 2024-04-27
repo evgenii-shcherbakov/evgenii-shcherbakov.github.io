@@ -1,3 +1,5 @@
+import { HttpExceptionFilter } from '@apps/api-gateway/lib/filters/http-exception.filter';
+import { RpcExceptionFilter } from '@apps/api-gateway/lib/filters/rpc-exception.filter';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
@@ -12,6 +14,7 @@ async function bootstrap() {
   const logger = new Logger();
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.useGlobalFilters(new RpcExceptionFilter(), new HttpExceptionFilter());
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Platform')

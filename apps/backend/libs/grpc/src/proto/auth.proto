@@ -2,22 +2,24 @@ syntax = 'proto3';
 
 package auth;
 
-service AuthService {
-  rpc register (RegisterUserDto) returns (User) {}
-  rpc login (RegisterUserDto) returns (User) {}
-  rpc refreshToken (RefreshTokenDto) returns (RefreshTokenDto) {}
-}
-
-message RegisterUserDto {
+message RpcRegisterUser {
   string email = 1;
   string password = 2;
 }
 
-message RefreshTokenDto {
+message RpcRefreshToken {
   string token = 1;
 }
 
-message User {
+message RpcUser {
   string email = 1;
   bool isActive = 2;
 }
+
+service AuthService {
+  rpc register (RpcRegisterUser) returns (RpcUser) {}
+  rpc login (RpcRegisterUser) returns (RpcUser) {}
+  rpc refreshToken (RpcRefreshToken) returns (RpcRefreshToken) {}
+}
+
+

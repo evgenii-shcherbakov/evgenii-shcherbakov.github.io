@@ -1,7 +1,7 @@
-import { BaseMigration } from '@app/common/modules/migration/entities/base.migration';
-import { MIGRATIONS } from '@app/common/modules/migration/migration.constants';
-import { Migration, MigrationSchema } from '@app/common/modules/migration/migration.schema';
-import { MigrationService } from '@app/common/modules/migration/migration.service';
+import { BaseMigration } from '@libs/common/modules/migration/entities/base.migration';
+import { MIGRATIONS } from '@libs/common/modules/migration/migration.constants';
+import { Migration, MigrationSchema } from '@libs/common/modules/migration/migration.schema';
+import { MigrationService } from '@libs/common/modules/migration/migration.service';
 import { DynamicModule, Module, OnApplicationBootstrap, Type } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 

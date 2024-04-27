@@ -4,16 +4,16 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "auth";
 
-export interface RegisterUserDto {
+export interface RpcRegisterUser {
   email: string;
   password: string;
 }
 
-export interface RefreshTokenDto {
+export interface RpcRefreshToken {
   token: string;
 }
 
-export interface User {
+export interface RpcUser {
   email: string;
   isActive: boolean;
 }
@@ -21,19 +21,19 @@ export interface User {
 export const AUTH_PACKAGE_NAME = "auth";
 
 export interface AuthServiceClient {
-  register(request: RegisterUserDto): Observable<User>;
+  register(request: RpcRegisterUser): Observable<RpcUser>;
 
-  login(request: RegisterUserDto): Observable<User>;
+  login(request: RpcRegisterUser): Observable<RpcUser>;
 
-  refreshToken(request: RefreshTokenDto): Observable<RefreshTokenDto>;
+  refreshToken(request: RpcRefreshToken): Observable<RpcRefreshToken>;
 }
 
 export interface AuthServiceController {
-  register(request: RegisterUserDto): Promise<User> | Observable<User> | User;
+  register(request: RpcRegisterUser): Promise<RpcUser> | Observable<RpcUser> | RpcUser;
 
-  login(request: RegisterUserDto): Promise<User> | Observable<User> | User;
+  login(request: RpcRegisterUser): Promise<RpcUser> | Observable<RpcUser> | RpcUser;
 
-  refreshToken(request: RefreshTokenDto): Promise<RefreshTokenDto> | Observable<RefreshTokenDto> | RefreshTokenDto;
+  refreshToken(request: RpcRefreshToken): Promise<RpcRefreshToken> | Observable<RpcRefreshToken> | RpcRefreshToken;
 }
 
 export function AuthServiceControllerMethods() {

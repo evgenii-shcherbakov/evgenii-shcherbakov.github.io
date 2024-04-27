@@ -1,7 +1,7 @@
-import { BaseMigration } from '@app/common/modules/migration/entities/base.migration';
-import { MigrationStatusEnum } from '@app/common/modules/migration/enums/migration.status.enum';
-import { MIGRATIONS } from '@app/common/modules/migration/migration.constants';
-import { Migration } from '@app/common/modules/migration/migration.schema';
+import { BaseMigration } from '@libs/common';
+import { MigrationStatusEnum } from '@libs/common/modules/migration/enums/migration.status.enum';
+import { MIGRATIONS } from '@libs/common/modules/migration/migration.constants';
+import { Migration } from '@libs/common/modules/migration/migration.schema';
 import { Inject, Injectable, Logger, Type } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';

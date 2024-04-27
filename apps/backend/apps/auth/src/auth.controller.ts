@@ -1,11 +1,11 @@
+import { Controller } from '@nestjs/common';
 import {
   AuthServiceController,
   AuthServiceControllerMethods,
-  RefreshTokenDto,
-  RegisterUserDto,
-  User,
-} from '@app/grpc';
-import { Controller } from '@nestjs/common';
+  RpcRefreshToken,
+  RpcRegisterUser,
+  RpcUser,
+} from '@proto/auth';
 import { AuthService } from './auth.service';
 
 @Controller()
@@ -13,15 +13,15 @@ import { AuthService } from './auth.service';
 export class AuthController implements AuthServiceController {
   constructor(private readonly authService: AuthService) {}
 
-  async login(request: RegisterUserDto): Promise<User> {
+  async login(request: RpcRegisterUser): Promise<RpcUser> {
     return this.authService.login(request);
   }
 
-  async refreshToken(request: RefreshTokenDto): Promise<RefreshTokenDto> {
+  async refreshToken(request: RpcRefreshToken): Promise<RpcRefreshToken> {
     return this.authService.refreshToken(request);
   }
 
-  async register(request: RegisterUserDto): Promise<User> {
+  async register(request: RpcRegisterUser): Promise<RpcUser> {
     return this.authService.register(request);
   }
 }

@@ -18,18 +18,45 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/common": [
+      "@apps/api-gateway": [
+        "apps/api-gateway/src"
+      ],
+      "@apps/api-gateway/*": [
+        "apps/api-gateway/src/*"
+      ],
+      "@apps/auth": [
+        "apps/auth/src"
+      ],
+      "@apps/auth/*": [
+        "apps/auth/src/*"
+      ],
+      "@apps/identity": [
+        "apps/identity/src"
+      ],
+      "@apps/identity/*": [
+        "apps/identity/src/*"
+      ],
+      "@libs/common": [
         "libs/common/src"
       ],
-      "@app/common/*": [
+      "@libs/common/*": [
         "libs/common/src/*"
       ],
-      "@app/grpc": [
+      "@libs/grpc": [
         "libs/grpc/src"
       ],
-      "@app/grpc/*": [
+      "@libs/grpc/*": [
         "libs/grpc/src/*"
+      ],
+      "@proto/*": [
+        "libs/grpc/src/generated/*"
+      ],
+      "@libs/exceptions": [
+        "libs/exceptions/src"
+      ],
+      "@libs/exceptions/*": [
+        "libs/exceptions/src/*"
       ]
-    },
+    }
   }
 }

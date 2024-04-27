@@ -1,9 +1,9 @@
-import { MigrationStatusEnum } from '@app/common/modules/migration/enums/migration.status.enum';
-import { BaseSchema } from '@app/common/schemas/base.schema';
+import { MigrationStatusEnum } from '@libs/common/modules/migration/enums/migration.status.enum';
+import { MongoEntity } from '@libs/common/schemas/abstract/mongo.entity';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-@Schema({ collection: 'migrations' })
-export class Migration extends BaseSchema {
+@Schema({ collection: 'migrations', timestamps: true })
+export class Migration extends MongoEntity {
   @Prop({ required: true, index: true })
   name: string;
 

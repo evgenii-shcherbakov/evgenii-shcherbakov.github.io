@@ -1,22 +1,22 @@
-import { RefreshTokenDto, RegisterUserDto, User } from '@app/grpc';
 import { Injectable } from '@nestjs/common';
+import { RpcRefreshToken, RpcRegisterUser, RpcUser } from '@proto/auth';
 
 @Injectable()
 export class AuthService {
-  async login(request: RegisterUserDto): Promise<User> {
+  async login(request: RpcRegisterUser): Promise<RpcUser> {
     return {
       email: request.email,
       isActive: true,
     };
   }
 
-  async refreshToken(request: RefreshTokenDto): Promise<RefreshTokenDto> {
+  async refreshToken(request: RpcRefreshToken): Promise<RpcRefreshToken> {
     return {
       token: request.token,
     };
   }
 
-  async register(request: RegisterUserDto): Promise<User> {
+  async register(request: RpcRegisterUser): Promise<RpcUser> {
     return {
       email: request.email,
       isActive: true,

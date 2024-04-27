@@ -7,25 +7,28 @@
   "scripts": {
     "dev": "concurrently \"yarn run start:dev:*\"",
     "prod": "yarn start:prod",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\" --config ../../.prettierrc",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:dev:api-gateway": "yarn start:dev api-gateway",
     "start:dev:auth": "yarn start:dev auth",
+    "start:dev:identity": "yarn start:dev identity",
     "start:debug": "nest start --debug --watch",
     "start:prod": "concurrently \"yarn run start:prod:*\"",
     "start:prod:api-gateway": "node dist/apps/api-gateway/apps/api-gateway/src/main",
     "start:prod:auth": "node dist/apps/auth/apps/auth/src/main",
-    "build": "concurrently \"yarn run build:*\"",
+    "start:prod:identity": "node dist/apps/identity/apps/identity/src/main",
+    "build": "yarn proto && concurrently \"yarn run build:*\"",
     "build:api-gateway": "nest build api-gateway",
     "build:auth": "nest build auth",
+    "build:identity": "nest build identity",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/api-gateway/test/jest-e2e.json",
-    "proto": "protoc --plugin=../../node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./ --ts_proto_opt=nestJs=true ./libs/grpc/src/proto/*.proto",
+    "proto": "node scripts/generate-proto.js",
     "reset": "rm -rf .turbo dist"
   },
   "dependencies": {
@@ -62,6 +65,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jest": "^29.5.0",
+    "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "source-map-support": "^0.5.21",
     "supertest": "^6.3.3",
@@ -94,7 +98,8 @@
     ],
     "moduleNameMapper": {
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
-      "^@app/grpc(|/.*)$": "<rootDir>/libs/grpc/src/$1"
+      "^@app/grpc(|/.*)$": "<rootDir>/libs/grpc/src/$1",
+      "^@libs/exceptions(|/.*)$": "<rootDir>/libs/exceptions/src/$1"
     }
   }
 }
