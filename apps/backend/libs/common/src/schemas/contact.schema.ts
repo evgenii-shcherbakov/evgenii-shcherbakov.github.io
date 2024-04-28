@@ -1,9 +1,9 @@
 import { Contact } from '@libs/common/interfaces';
 import { MongoEntity } from '@libs/common/schemas/abstract/mongo.entity';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { BackendContactTypeEnum } from '@packages/common';
+import { BackendContactTypeEnum, Collection } from '@packages/common';
 
-@Schema({ collection: 'contacts', timestamps: true })
+@Schema({ collection: Collection.CONTACT, timestamps: true })
 export class ContactEntity extends MongoEntity implements Contact {
   @Prop({ required: false })
   link?: string;

@@ -62,6 +62,25 @@ services:
     depends_on:
       - mongodb
 
+  admin:
+    build:
+      context: .
+      dockerfile: ./apps/admin/Dockerfile
+    restart: always
+    profiles:
+      - all
+    ports:
+      - '3336:3336'
+    environment:
+      PORT: 3336
+      DATABASE_URL: mongodb://mongodb:27017/platform?directConnection=true
+      PAYLOAD_SECRET: 12345
+    networks:
+      - app_network
+    depends_on:
+      - mongodb
+      - backend
+
 #  frontend:
 #    build:
 #      context: .
