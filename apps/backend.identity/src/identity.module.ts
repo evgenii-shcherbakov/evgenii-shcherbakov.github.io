@@ -5,7 +5,9 @@ import { ContactModule } from 'modules/contact/contact.module';
 
 @Module({
   imports: [
-    CommonModule.register({ envValidator: BackendIdentityEnvValidator }),
+    CommonModule.register({
+      envValidator: BackendIdentityEnvValidator,
+    }),
     PersistenceModule.forRoot(),
     ContactModule,
   ],
