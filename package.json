@@ -24,6 +24,7 @@
     "gen:package": "turbo gen package && yarn",
     "gen:backend-package": "turbo gen backend-package && yarn",
     "gen:backend-microservice": "turbo gen backend-microservice && yarn",
+    "gen:backend-entity": "turbo gen backend-entity && turbo run build --filter=@packages/common",
     "reset": "turbo run reset && rm -rf .turbo node_modules yarn.lock",
     "reset:admin": "turbo run reset --filter=admin",
     "reset:backend": "turbo run reset --filter=\"backend.*\"",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@turbo/gen": "^1.13.2",
+    "change-case-all": "^2.1.0",
     "prettier": "^3.2.5",
     "turbo": "^1.13.2",
     "yarn": "^1.22.22"

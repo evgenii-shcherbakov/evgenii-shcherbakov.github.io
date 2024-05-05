@@ -1,6 +1,6 @@
-import { Contact } from '@packages/backend.common';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { BackendContactTypeEnum, DatabaseCollection } from '@packages/common';
+import { Contact } from 'interfaces';
 import { MongoEntity } from 'schemas/abstract/mongo.entity';
 import { MongooseSchemaType } from 'types';
 

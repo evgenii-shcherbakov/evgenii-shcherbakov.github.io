@@ -154,4 +154,5 @@ For generate new package run:
 yarn gen:package
 yarn gen:backend-package
 yarn gen:backend-microservice
+yarn gen:backend-entity
 ```
