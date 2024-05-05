@@ -9,7 +9,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "format": "prettier src --write --config ../../.prettierrc",
-    "dev": "npm run build -- --watch",
+    "dev": "yarn build -- --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "reset": "rm -rf .turbo dist"
   },
@@ -21,6 +21,7 @@
     "@types/node": "^20.11.30",
     "prettier": "^3.2.5",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "yarn": "^1.22.22"
   }
 }

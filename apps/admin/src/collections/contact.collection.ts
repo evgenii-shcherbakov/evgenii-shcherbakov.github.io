@@ -1,8 +1,8 @@
-import { BackendContactTypeEnum, Collection } from '@packages/common';
+import { BackendContactTypeEnum, DatabaseCollection } from '@packages/common';
 import { CollectionConfig } from 'payload/types';
 
 export const ContactCollection: CollectionConfig = {
-  slug: Collection.CONTACT,
+  slug: DatabaseCollection.CONTACT,
   admin: {
     useAsTitle: 'name',
     listSearchableFields: ['name', 'value', 'type'],

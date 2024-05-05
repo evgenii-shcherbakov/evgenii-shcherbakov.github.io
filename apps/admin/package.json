@@ -16,7 +16,7 @@
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema",
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
     "prod": "yarn serve",
-    "reset": "rm -rf .turbo dist build"
+    "reset": "rm -rf .turbo dist build node_modules"
   },
   "dependencies": {
     "@packages/common": "*",

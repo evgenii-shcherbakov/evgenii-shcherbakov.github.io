@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { EnvValidationErrorHandler, EnvValidationHandler } from 'types/env-validator.types';
+import { EnvValidationErrorHandler, EnvValidationHandler } from 'types';
 
 export class EnvValidator {
   private readonly errorHandlers: EnvValidationErrorHandler[] = [];

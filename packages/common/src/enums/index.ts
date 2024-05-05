@@ -1,1 +1,1 @@
-export * from './collection.enum';
+export * from 'enums/database-collection.enum';

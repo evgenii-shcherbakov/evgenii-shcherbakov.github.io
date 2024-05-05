@@ -2,7 +2,7 @@ import { PlopTypes } from '@turbo/gen';
 import { join } from 'path';
 
 export const packageGenerator = (plop: PlopTypes.NodePlopAPI) => {
-  const packagePath = '{{ turbo.paths.root }}/packages/{{ dashCase name }}';
+  const packagePath = '{{ turbo.paths.root }}/packages/{{ name }}';
 
   plop.setGenerator('package', {
     description: 'Creates new package',

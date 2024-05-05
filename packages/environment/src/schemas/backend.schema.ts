@@ -1,11 +1,32 @@
 import Joi from 'joi';
+import {
+  BackendCvTransportSchema,
+  BackendIdentityTransportSchema,
+  BackendTransportSchema,
+} from 'schemas/backend-transport.schema';
 import { CommonSchema } from './common.schema';
 
-export const BackendSchema = {
+export const BackendCommonSchema = {
   ...CommonSchema,
+  FIRST_LOCAL_GRPC_PORT: Joi.alternatives<string | number>(Joi.string(), Joi.number()).optional(),
+};
+
+export const BackendMicroserviceSchema = {
+  ...BackendCommonSchema,
   DATABASE_URL: Joi.string().required(),
-  // JWT_SECRET: Joi.string().required(),
-  // BCRYPT_SALT: Joi.number().required(),
-  GRPC_PORT: Joi.alternatives<string | number>(Joi.string(), Joi.number()).optional(),
-  // PROTOC_PATH: Joi.string().required(),
+};
+
+export const BackendApiGatewaySchema = {
+  ...BackendCommonSchema,
+  ...BackendTransportSchema,
+};
+
+export const BackendIdentitySchema = {
+  ...BackendMicroserviceSchema,
+  ...BackendIdentityTransportSchema,
+};
+
+export const BackendCvSchema = {
+  ...BackendMicroserviceSchema,
+  ...BackendCvTransportSchema,
 };

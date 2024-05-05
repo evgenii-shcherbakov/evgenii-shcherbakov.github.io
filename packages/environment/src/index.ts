@@ -1,18 +1,32 @@
-import { EnvValidator } from 'entities/env-validator';
-import { AdminSchema } from 'schemas/admin.schema';
-import { BackendSchema } from 'schemas/backend.schema';
-import { FrontendSchema } from 'schemas/frontend.schema';
-import { DeploySchema } from 'schemas/deploy.schema';
-import { EnvironmentOf } from 'types/environment.types';
+import { EnvValidator } from 'entities';
+import {
+  AdminSchema,
+  BackendApiGatewaySchema,
+  BackendCvSchema,
+  BackendIdentitySchema,
+  BackendMicroserviceSchema,
+  DeploySchema,
+  FrontendSchema,
+} from 'schemas';
+import { EnvironmentOf } from 'types';
 
 export type { EnvValidator };
 
-export const adminEnvValidator = new EnvValidator(AdminSchema);
-export const backendEnvValidator = new EnvValidator(BackendSchema);
-export const deployEnvValidator = new EnvValidator(DeploySchema);
-export const frontendEnvValidator = new EnvValidator(FrontendSchema);
+export const AdminEnvValidator = new EnvValidator(AdminSchema);
+export const DeployEnvValidator = new EnvValidator(DeploySchema);
+export const FrontendEnvValidator = new EnvValidator(FrontendSchema);
 
 export type AdminEnvironment = EnvironmentOf<typeof AdminSchema>;
-export type BackendEnvironment = EnvironmentOf<typeof BackendSchema>;
 export type DeployEnvironment = EnvironmentOf<typeof DeploySchema>;
 export type FrontendEnvironment = EnvironmentOf<typeof FrontendSchema>;
+
+export const BackendApiGatewayEnvValidator = new EnvValidator(BackendApiGatewaySchema);
+export const BackendIdentityEnvValidator = new EnvValidator(BackendIdentitySchema);
+export const BackendCvEnvValidator = new EnvValidator(BackendCvSchema);
+
+export type BackendMicroserviceEnvironment = EnvironmentOf<typeof BackendMicroserviceSchema>;
+export type BackendApiGatewayEnvironment = EnvironmentOf<typeof BackendApiGatewaySchema>;
+export type BackendIdentityEnvironment = EnvironmentOf<typeof BackendIdentitySchema>;
+export type BackendCvEnvironment = EnvironmentOf<typeof BackendCvSchema>;
+
+export type BackendEnvironment = BackendApiGatewayEnvironment & BackendIdentityEnvironment;
