@@ -7,7 +7,7 @@ import { {{ pascalCase name }}Module } from '{{ dashCase name }}.module';
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     {{ pascalCase name }}Module,
-    GrpcStrategy.getClientOptions(GrpcClientEnum.{{#if grpcClient}}{{grpcClient}}{{else}}{{ constantCase name }}{{/if}}),
+    GrpcStrategy.getClientOptions(GrpcClientEnum.{{ grpcClient }}),
   );
 
   app.useGlobalFilters(new ApiExceptionFilter());

@@ -1,5 +1,6 @@
 export enum GrpcClientEnum {
   IDENTITY = 'identity',
+  // GRPC CLIENT ENUM ITEMS
 }
 
 export enum GrpcServiceEnum {

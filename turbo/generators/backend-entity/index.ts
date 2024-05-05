@@ -1,6 +1,6 @@
-import { constantCase } from 'change-case-all';
 import { DatabaseCollection } from '@packages/common';
 import { PlopTypes } from '@turbo/gen';
+import { constantCase } from 'change-case-all';
 import { ActionType } from 'node-plop';
 import { join } from 'path';
 
