@@ -23,6 +23,7 @@
     "format": "turbo run format",
     "gen:package": "turbo gen package && yarn",
     "gen:backend-package": "turbo gen backend-package && yarn",
+    "gen:backend-microservice": "turbo gen backend-microservice && yarn",
     "reset": "turbo run reset && rm -rf .turbo node_modules yarn.lock",
     "reset:admin": "turbo run reset --filter=admin",
     "reset:backend": "turbo run reset --filter=\"backend.*\"",

@@ -153,4 +153,5 @@ For generate new package run:
 ```shell
 yarn gen:package
 yarn gen:backend-package
+yarn gen:backend-microservice
 ```

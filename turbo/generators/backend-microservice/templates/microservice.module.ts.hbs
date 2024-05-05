@@ -1,0 +1,13 @@
+import { Module } from '@nestjs/common';
+import { CommonModule, PersistenceModule } from '@packages/backend.common';
+import { {{#if envValidator}}{{ envValidator }}{{else}}Backend{{ pascalCase name }}EnvValidator{{/if}} } from '@packages/environment';
+
+@Module({
+  imports: [
+    CommonModule.register({
+      envValidator: {{#if envValidator}}{{ envValidator }}{{else}}Backend{{ pascalCase name }}EnvValidator{{/if}},
+    }),
+    PersistenceModule.forRoot(),
+  ],
+})
+export class {{ pascalCase name }}Module {}
