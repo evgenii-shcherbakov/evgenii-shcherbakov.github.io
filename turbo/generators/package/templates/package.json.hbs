@@ -1,5 +1,5 @@
 {
-  "name": "@packages/{{ name }}",
+  "name": "@packages/{{ dashCase name }}",
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "format": "prettier src --write --config ../../.prettierrc",
     "dev": "yarn build -- --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "reset": "rm -rf .turbo dist"
+    "reset": "rm -rf .turbo dist node_modules"
   },
   "devDependencies": {
     "@packages/ts-configs": "*",

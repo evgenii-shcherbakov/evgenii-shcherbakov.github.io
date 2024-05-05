@@ -152,4 +152,5 @@ yarn format
 For generate new package run:
 ```shell
 yarn gen:package
+yarn gen:backend-package
 ```

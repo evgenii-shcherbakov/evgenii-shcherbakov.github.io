@@ -18,7 +18,7 @@ const PROTOC_PATH = process.env.PROTOC_PATH ?? 'protoc';
           `--ts_proto_out=../generated`,
           '--ts_proto_opt=nestJs=true',
           '--ts_proto_opt=useDate=true',
-          '--ts_proto_opt=useOptionals=messages',
+          // '--ts_proto_opt=useOptionals=none',
           // '--ts_proto_opt=useMongoObjectId=true',
           '--ts_proto_opt=snakeToCamel=false',
           `./${file}`,

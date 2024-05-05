@@ -20,7 +20,7 @@ export interface RpcContactQuery {
 }
 
 export interface RpcContactRequest {
-  query?: RpcContactQuery | undefined;
+  query: RpcContactQuery | undefined;
 }
 
 export interface RpcContact {
@@ -31,7 +31,7 @@ export interface RpcContact {
   type: string;
   isPrimary: boolean;
   isVisible: boolean;
-  createdAt?: Date | undefined;
+  createdAt: Date | undefined;
   updatedAt?: Date | undefined;
 }
 
