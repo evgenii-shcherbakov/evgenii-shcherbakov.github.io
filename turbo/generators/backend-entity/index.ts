@@ -117,7 +117,7 @@ export const backendEntityGenerator = (plop: PlopTypes.NodePlopAPI) => {
 
         actions.push({
           type: 'modify',
-          path: `${commonPackagePath}/src/enums/database-collection.enum.ts`,
+          path: `${commonPackagePath}/src/enums/common.enums.ts`,
           pattern: /(\/\/ DATABASE COLLECTION ITEMS)/g,
           template: "{{ constantCase name }} = '{{ dashCase name }}',\n\t$1",
         });
