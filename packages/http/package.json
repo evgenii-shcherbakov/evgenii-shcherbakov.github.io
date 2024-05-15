@@ -1,5 +1,5 @@
 {
-  "name": "@packages/{{ dashCase name }}",
+  "name": "@packages/http",
   "private": true,
   "author": "Evgenii Shcherbakov <iipekolict@gmail.com>",
   "license": "MIT",
@@ -12,6 +12,9 @@
     "dev": "yarn build -- --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "reset": "rm -rf .turbo dist node_modules"
+  },
+  "dependencies": {
+    "change-case-all": "^2.1.0"
   },
   "devDependencies": {
     "@packages/ts-configs": "*",
