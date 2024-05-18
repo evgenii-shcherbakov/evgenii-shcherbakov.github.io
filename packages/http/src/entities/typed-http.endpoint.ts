@@ -16,11 +16,17 @@ export class TypedHttpEndpoint<
     private readonly method: Method,
   ) {}
 
-  request<Request>(): TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response> {
+  request<Request>(): Omit<
+    TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response>,
+    'request'
+  > {
     return this as any;
   }
 
-  response<Response>(): TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response> {
+  response<Response>(): Omit<
+    TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response>,
+    'response'
+  > {
     return this as any;
   }
 
@@ -39,7 +45,7 @@ export class TypedHttpEndpoint<
   [TypedHttpAction.INJECT_URL](
     url: string,
   ): TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response> {
-    this.fullUrl = [url, this.url].join('/');
+    this.fullUrl = `${url}/${this.url}`.replace(/(^\/|\/$)/gi, '').replace(/\/\//g, '/');
     return this;
   }
 

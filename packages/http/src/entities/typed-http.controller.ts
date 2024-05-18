@@ -1,62 +1,38 @@
-import { pascalCase } from 'change-case-all';
 import { TypedHttpAction } from 'enums';
 import {
-  TypedHttpAddEndpointToStrategy,
+  TypedHttpControllerBaseClass,
   TypedHttpControllerClass,
-  TypedHttpControllerSchema,
-  TypedHttpEndpointClass,
-  TypedHttpEndpointStrategy,
+  TypedHttpControllerEndpoints,
+  TypedHttpControllerEndpointsSchema,
 } from 'types';
 
 export class TypedHttpController<
   ControllerUrl extends string,
-  EndpointStrategy extends TypedHttpEndpointStrategy,
-> implements TypedHttpControllerClass<ControllerUrl, EndpointStrategy>
+  EndpointsSchema extends TypedHttpControllerEndpointsSchema<ControllerUrl>,
+> implements TypedHttpControllerClass<ControllerUrl, EndpointsSchema>
 {
-  private endpointStrategy: EndpointStrategy = {} as any;
+  private endpointsSchema: TypedHttpControllerEndpoints<ControllerUrl, EndpointsSchema> = {} as any;
 
   constructor(private readonly url: ControllerUrl) {}
 
-  get endpoints(): EndpointStrategy {
-    return this.endpointStrategy;
+  get endpoints(): TypedHttpControllerEndpoints<ControllerUrl, EndpointsSchema> {
+    return this.endpointsSchema;
   }
 
-  endpoint<Endpoint extends TypedHttpEndpointClass<any, any, any, any, any>>(
-    input: Endpoint,
-  ): TypedHttpControllerClass<
-    ControllerUrl,
-    TypedHttpAddEndpointToStrategy<ControllerUrl, EndpointStrategy, Endpoint>
-  > {
-    // @ts-ignore
-    const methodSchema = this.endpointStrategy[input[TypedHttpAction.SCHEMA].method] ?? {};
-
-    const fullUrl = `${this.url}/${input.getUrl()}`;
-
-    const identifier =
-      input[TypedHttpAction.SCHEMA].method +
-      fullUrl
-        .split(/[/:]/g)
-        .map((partial) => pascalCase(partial))
-        .join('');
-
-    // @ts-ignore
-    this.endpointStrategy[input[TypedHttpAction.SCHEMA].method] = {
-      ...methodSchema,
-      [identifier]: input[TypedHttpAction.INJECT_URL](this.url),
-    };
+  declareEndpoints<EndpointsSchema extends TypedHttpControllerEndpointsSchema<any>>(
+    endpointsSchema: EndpointsSchema,
+  ): TypedHttpControllerBaseClass<ControllerUrl, EndpointsSchema> {
+    for (const endpoint of Object.keys(endpointsSchema)) {
+      this.endpointsSchema = {
+        ...this.endpointsSchema,
+        [endpoint]: endpointsSchema[endpoint][TypedHttpAction.INJECT_URL](this.url),
+      };
+    }
 
     return this as any;
   }
 
   getUrl(): ControllerUrl {
     return this.url;
-  }
-
-  get [TypedHttpAction.SCHEMA](): TypedHttpControllerSchema<EndpointStrategy> {
-    return {} as any;
-  }
-
-  get [TypedHttpAction.STRATEGY](): EndpointStrategy {
-    return {} as any;
   }
 }

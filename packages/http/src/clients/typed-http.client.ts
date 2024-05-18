@@ -1,15 +1,13 @@
 import { HttpClient } from 'clients/http.client';
-import { HttpMethod } from 'enums';
+import { TypedHttpAction } from 'enums';
 import {
   HttpMethodType,
   RequestParams,
   TypedHttpClientClass,
   TypedHttpClientSchema,
   TypedHttpClientSchemaMethods,
-  TypedHttpControllerSchema,
-  TypedHttpEndpointSchemaOf,
-  TypedHttpEndpointStrategy,
-  TypedHttpEndpointUrlOf,
+  TypedHttpEndpointSchema,
+  TypedHttpMethod,
   TypedRequestParamsOf,
 } from 'types';
 
@@ -28,41 +26,41 @@ export class TypedHttpClient<ClientSchema extends TypedHttpClientSchema>
   }
 
   private generateTypedMethods(schema: ClientSchema): TypedHttpClientSchemaMethods<ClientSchema> {
-    return Object.keys(schema).reduce((acc: TypedHttpClientSchemaMethods<ClientSchema>, key) => {
-      return {
-        ...acc,
-        [key]: {
-          [HttpMethod.GET]: this.typedRequestFactory(HttpMethod.GET),
-          [HttpMethod.POST]: this.typedRequestFactory(HttpMethod.POST),
-          [HttpMethod.PATCH]: this.typedRequestFactory(HttpMethod.PATCH),
-          [HttpMethod.PUT]: this.typedRequestFactory(HttpMethod.PUT),
-          [HttpMethod.DELETE]: this.typedRequestFactory(HttpMethod.DELETE),
-        },
-      };
-    }, {} as any);
+    return Object.keys(schema).reduce(
+      (acc: TypedHttpClientSchemaMethods<ClientSchema>, controller) => {
+        const endpoints = Object.keys(schema[controller].endpoints).reduce(
+          (controllerEndpoints, endpoint) => {
+            const endpointSchema: TypedHttpEndpointSchema<any, any, any, any> =
+              schema[controller].endpoints[endpoint][TypedHttpAction.SCHEMA];
+
+            return {
+              ...controllerEndpoints,
+              [endpoint]: this.typedRequestFactory(endpointSchema.fullUrl, endpointSchema.method),
+            };
+          },
+          {} as any,
+        );
+
+        return {
+          ...acc,
+          [controller]: endpoints,
+        };
+      },
+      {} as any,
+    );
   }
 
   protected typedRequestFactory<
-    EndpointStrategy extends TypedHttpEndpointStrategy,
-    ControllerSchema extends TypedHttpControllerSchema<EndpointStrategy>,
-    Method extends HttpMethodType,
-  >(method: Method) {
-    return async <
-      Url extends TypedHttpEndpointUrlOf<Method, EndpointStrategy, ControllerSchema>,
-      EndpointSchema extends TypedHttpEndpointSchemaOf<
-        Method,
-        EndpointStrategy,
-        ControllerSchema,
-        Url
-      >,
-      Params extends TypedRequestParamsOf<Url, Method, EndpointSchema['request']>,
-      Response extends EndpointSchema['response'],
-    >(
-      endpoint: Url,
-      params: Params,
-    ): Promise<Response> => {
-      const url = endpoint
-        .toString()
+    EndpointSchema extends TypedHttpEndpointSchema<any, any, any, any>,
+    Params extends TypedRequestParamsOf<
+      EndpointSchema['fullUrl'],
+      EndpointSchema['method'],
+      EndpointSchema['request']
+    >,
+    Response extends EndpointSchema['response'],
+  >(fullUrl: string, method: HttpMethodType): TypedHttpMethod<EndpointSchema, Params, Response> {
+    return async (params: Params): Promise<Response> => {
+      const url = fullUrl
         .split('/')
         .map((part) => {
           if (/:\w+/g.test(part)) {
@@ -89,7 +87,7 @@ export class TypedHttpClient<ClientSchema extends TypedHttpClientSchema>
       }
 
       //@ts-ignore
-      return this[method](url, requestParams);
+      return super[method](url, requestParams);
     };
   }
 }

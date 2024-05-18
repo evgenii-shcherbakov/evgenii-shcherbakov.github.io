@@ -1,22 +1,9 @@
 import { TypedHttpAction } from 'enums';
 import { HttpClientClass } from 'interfaces';
 import { RequestQuery } from 'types/http.types';
-import { RouteParamsOf, TransformUrlToIdentifier } from 'types/utility.types';
+import { RouteParamsOf } from 'types/utility.types';
 
 export type HttpMethodType = 'get' | 'post' | 'patch' | 'put' | 'delete';
-
-export type TypedHttpEndpointStrategy = {};
-
-export type TypedHttpEndpointIdentifierFromUrl<
-  Method extends HttpMethodType,
-  ControllerUrl extends string,
-  EndpointUrl extends string,
-> = `${Method}${TransformUrlToIdentifier<ControllerUrl>}${TransformUrlToIdentifier<EndpointUrl>}`;
-
-export type TypedHttpEndpointIdentifierFromFullUrl<
-  Method extends HttpMethodType,
-  FullUrl extends string,
-> = `${Method}${TransformUrlToIdentifier<FullUrl>}`;
 
 export type TypedHttpEndpointSchema<
   FullUrl extends string,
@@ -31,19 +18,16 @@ export type TypedHttpEndpointSchema<
 };
 
 export type TypedHttpClientSchema = {
-  [key: string]: TypedHttpControllerClass<any, any>;
+  [key: string]: TypedHttpControllerBaseClass<any, any>;
 };
 
-export interface TypedHttpEndpointClass<
+export interface TypedHttpEndpointBaseClass<
   ControllerUrl extends string,
   Url extends string,
   Method extends HttpMethodType,
   Request = undefined,
   Response = undefined,
 > {
-  request<Request>(): TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response>;
-  response<Response>(): TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response>;
-
   readonly [TypedHttpAction.SCHEMA]: TypedHttpEndpointSchema<
     `${ControllerUrl}/${Url}`,
     Method,
@@ -58,53 +42,42 @@ export interface TypedHttpEndpointClass<
   getUrl(): Url;
 }
 
-export type TypedHttpControllerSchema<EndpointStrategy extends TypedHttpEndpointStrategy> = {
-  [Method in HttpMethodType]: {
-    [Identifier in keyof EndpointStrategy]: EndpointStrategy[Identifier] extends TypedHttpEndpointClass<
-      any,
-      any,
-      any,
-      any,
-      any
-    >
-      ? EndpointStrategy[Identifier][TypedHttpAction.SCHEMA]
-      : never;
-  };
-};
-
-export type TypedHttpAddEndpointToStrategy<
+export interface TypedHttpEndpointClass<
   ControllerUrl extends string,
-  EndpointStrategy extends TypedHttpEndpointStrategy,
-  Endpoint extends TypedHttpEndpointClass<any, any, any, any, any>,
-> = EndpointStrategy & {
-  [Identifier in ReturnType<Endpoint['getUrl']> as TypedHttpEndpointIdentifierFromUrl<
-    Endpoint[TypedHttpAction.SCHEMA]['method'],
-    ControllerUrl,
-    ReturnType<Endpoint['getUrl']>
-  >]: TypedHttpEndpointClass<
-    ControllerUrl,
-    ReturnType<Endpoint['getUrl']>,
-    Endpoint[TypedHttpAction.SCHEMA]['method'],
-    Endpoint[TypedHttpAction.SCHEMA]['request'],
-    Endpoint[TypedHttpAction.SCHEMA]['response']
+  Url extends string,
+  Method extends HttpMethodType,
+  Request = undefined,
+  Response = undefined,
+> extends TypedHttpEndpointBaseClass<ControllerUrl, Url, Method, Request, Response> {
+  request<Request>(): Omit<
+    TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response>,
+    'request'
   >;
+
+  response<Response>(): Omit<
+    TypedHttpEndpointClass<ControllerUrl, Url, Method, Request, Response>,
+    'response'
+  >;
+}
+
+export type TypedHttpControllerEndpointsSchema<ControllerUrl extends string> = {
+  [key: string]: TypedHttpEndpointBaseClass<ControllerUrl, any, any, any, any>;
 };
 
-export type TypedHttpEndpointUrlOf<
-  Method extends HttpMethodType,
-  Strategy extends TypedHttpEndpointStrategy,
-  ControllerSchema extends TypedHttpControllerSchema<Strategy>,
+export type TypedHttpControllerEndpoints<
+  ControllerUrl extends string,
+  EndpointsSchema extends TypedHttpControllerEndpointsSchema<ControllerUrl>,
 > = {
-  [Identifier in keyof ControllerSchema[Method]]: `${ControllerSchema[Method][Identifier]['fullUrl']}`;
-}[keyof ControllerSchema[Method]];
-
-export type TypedHttpEndpointSchemaOf<
-  Method extends HttpMethodType,
-  Strategy extends TypedHttpEndpointStrategy,
-  ControllerSchema extends TypedHttpControllerSchema<Strategy>,
-  FullUrl extends TypedHttpEndpointUrlOf<Method, Strategy, ControllerSchema>,
-  // @ts-ignore
-> = ControllerSchema[Method][TypedHttpEndpointIdentifierFromFullUrl<Method, FullUrl>];
+  [Endpoint in keyof EndpointsSchema]: EndpointsSchema[Endpoint] extends TypedHttpEndpointBaseClass<
+    any,
+    any,
+    any,
+    any,
+    any
+  >
+    ? EndpointsSchema[Endpoint]
+    : never;
+};
 
 export type TypedRequestBody<Method extends HttpMethodType, Request> = Method extends 'get'
   ? {}
@@ -131,109 +104,46 @@ export type TypedRequestParamsOf<
     headers?: HeadersInit;
   };
 
-export type TypedHttpClientMethods<
-  EndpointStrategy extends TypedHttpEndpointStrategy,
-  ControllerSchema extends TypedHttpControllerSchema<EndpointStrategy>,
-> = {
-  get<
-    Url extends TypedHttpEndpointUrlOf<'get', EndpointStrategy, ControllerSchema>,
-    EndpointSchema extends TypedHttpEndpointSchemaOf<
-      'get',
-      EndpointStrategy,
-      ControllerSchema,
-      Url
-    >,
-    Params extends TypedRequestParamsOf<Url, 'get', EndpointSchema['request']>,
-    Response extends EndpointSchema['response'],
-  >(
-    endpoint: Url,
-    params: Params,
-  ): Promise<Response>;
-
-  post<
-    Url extends TypedHttpEndpointUrlOf<'post', EndpointStrategy, ControllerSchema>,
-    EndpointSchema extends TypedHttpEndpointSchemaOf<
-      'post',
-      EndpointStrategy,
-      ControllerSchema,
-      Url
-    >,
-    Params extends TypedRequestParamsOf<Url, 'post', EndpointSchema['request']>,
-    Response extends EndpointSchema['response'],
-  >(
-    endpoint: Url,
-    params: Params,
-  ): Promise<Response>;
-
-  patch<
-    Url extends TypedHttpEndpointUrlOf<'patch', EndpointStrategy, ControllerSchema>,
-    EndpointSchema extends TypedHttpEndpointSchemaOf<
-      'patch',
-      EndpointStrategy,
-      ControllerSchema,
-      Url
-    >,
-    Params extends TypedRequestParamsOf<Url, 'patch', EndpointSchema['request']>,
-    Response extends EndpointSchema['response'],
-  >(
-    endpoint: Url,
-    params: Params,
-  ): Promise<Response>;
-
-  put<
-    Url extends TypedHttpEndpointUrlOf<'put', EndpointStrategy, ControllerSchema>,
-    EndpointSchema extends TypedHttpEndpointSchemaOf<
-      'put',
-      EndpointStrategy,
-      ControllerSchema,
-      Url
-    >,
-    Params extends TypedRequestParamsOf<Url, 'put', EndpointSchema['request']>,
-    Response extends EndpointSchema['response'],
-  >(
-    endpoint: Url,
-    params: Params,
-  ): Promise<Response>;
-
-  delete<
-    Url extends TypedHttpEndpointUrlOf<'delete', EndpointStrategy, ControllerSchema>,
-    EndpointSchema extends TypedHttpEndpointSchemaOf<
-      'delete',
-      EndpointStrategy,
-      ControllerSchema,
-      Url
-    >,
-    Params extends TypedRequestParamsOf<Url, 'delete', EndpointSchema['request']>,
-    Response extends EndpointSchema['response'],
-  >(
-    endpoint: Url,
-    params: Params,
-  ): Promise<Response>;
-};
+export type TypedHttpMethod<
+  EndpointSchema extends TypedHttpEndpointSchema<any, any, any, any>,
+  Params extends TypedRequestParamsOf<
+    EndpointSchema['fullUrl'],
+    EndpointSchema['method'],
+    EndpointSchema['request']
+  >,
+  Response extends EndpointSchema['response'],
+> = (params: Params) => Promise<Response>;
 
 export type TypedHttpClientSchemaMethods<ClientSchema extends TypedHttpClientSchema> = {
-  [Key in keyof ClientSchema]: TypedHttpClientMethods<
-    ClientSchema[Key][TypedHttpAction.STRATEGY],
-    ClientSchema[Key][TypedHttpAction.SCHEMA]
-  >;
+  [Controller in keyof ClientSchema]: {
+    [Endpoint in keyof ClientSchema[Controller]['endpoints']]: TypedHttpMethod<
+      ClientSchema[Controller]['endpoints'][Endpoint][TypedHttpAction.SCHEMA],
+      TypedRequestParamsOf<
+        ClientSchema[Controller]['endpoints'][Endpoint][TypedHttpAction.SCHEMA]['fullUrl'],
+        ClientSchema[Controller]['endpoints'][Endpoint][TypedHttpAction.SCHEMA]['method'],
+        ClientSchema[Controller]['endpoints'][Endpoint][TypedHttpAction.SCHEMA]['request']
+      >,
+      ClientSchema[Controller]['endpoints'][Endpoint][TypedHttpAction.SCHEMA]['response']
+    >;
+  };
 };
+
+export interface TypedHttpControllerBaseClass<
+  ControllerUrl extends string,
+  EndpointsSchema extends TypedHttpControllerEndpointsSchema<ControllerUrl>,
+> {
+  readonly endpoints: TypedHttpControllerEndpoints<ControllerUrl, EndpointsSchema>;
+
+  getUrl(): ControllerUrl;
+}
 
 export interface TypedHttpControllerClass<
   ControllerUrl extends string,
-  EndpointStrategy extends TypedHttpEndpointStrategy,
-> {
-  readonly endpoints: EndpointStrategy;
-  readonly [TypedHttpAction.SCHEMA]: TypedHttpControllerSchema<EndpointStrategy>;
-  readonly [TypedHttpAction.STRATEGY]: EndpointStrategy;
-
-  endpoint<Endpoint extends TypedHttpEndpointClass<any, any, any, any, any>>(
-    input: Endpoint,
-  ): TypedHttpControllerClass<
-    ControllerUrl,
-    TypedHttpAddEndpointToStrategy<ControllerUrl, EndpointStrategy, Endpoint>
-  >;
-
-  getUrl(): ControllerUrl;
+  EndpointsSchema extends TypedHttpControllerEndpointsSchema<ControllerUrl>,
+> extends TypedHttpControllerBaseClass<ControllerUrl, EndpointsSchema> {
+  declareEndpoints<EndpointsSchema extends TypedHttpControllerEndpointsSchema<any>>(
+    endpointsSchema: EndpointsSchema,
+  ): TypedHttpControllerBaseClass<ControllerUrl, EndpointsSchema>;
 }
 
 export interface TypedHttpClientClass<ClientSchema extends TypedHttpClientSchema>
